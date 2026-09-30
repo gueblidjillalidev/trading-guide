@@ -1,0 +1,2801 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل تعلّم التداول</title>
+<meta name="description" content="الفوركس والعملات الرقمية من الصفر — بشرح بسيط، لمن سيبني مشاريعه لاحقاً">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>:root{--font:'IBM Plex Sans Arabic', 'Inter', system-ui, sans-serif}
+:root{
+  --bg:#f6f7fb; --bg-soft:#eef1f8; --surface:#ffffff; --surface-2:#f8fafc; --border:#e3e7ef;
+  --text:#172033; --muted:#5b6478; --heading:#0c1426; --accent:#4f46e5; --accent-2:#0ea5e9;
+  --accent-soft:#eef0ff; --up:#16a34a; --down:#dc2626; --up-soft:#dcfce7; --down-soft:#fee2e2;
+  --code-bg:#0f172a; --code-text:#e2e8f0; --shadow:0 1px 2px rgba(16,24,40,.05),0 4px 16px rgba(16,24,40,.06);
+  --tip:#0ea5e9; --tip-bg:#e8f6fd; --note:#6366f1; --note-bg:#eef0ff; --warning:#d97706; --warning-bg:#fff5e6;
+  --caution:#dc2626; --caution-bg:#fdecec; --important:#7c3aed; --important-bg:#f3edff; --kid:#10b981; --kid-bg:#e7f8f1;
+  --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1020; --bg-soft:#0f1629; --surface:#121a2f; --surface-2:#172038; --border:#243049;
+    --text:#d8deea; --muted:#95a0b8; --heading:#f3f6fc; --accent:#8b8cff; --accent-2:#38bdf8;
+    --accent-soft:#1c2246; --up:#22c55e; --down:#f05252; --up-soft:#0f2a1c; --down-soft:#2e1216;
+    --code-bg:#0a0f1d; --code-text:#e2e8f0; --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+    --tip:#38bdf8; --tip-bg:#0d2231; --note:#8b8cff; --note-bg:#1a1d3d; --warning:#f59e0b; --warning-bg:#2a1f0b;
+    --caution:#f05252; --caution-bg:#2c1214; --important:#a78bfa; --important-bg:#221a3a; --kid:#34d399; --kid-bg:#0e2a22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1020; --bg-soft:#0f1629; --surface:#121a2f; --surface-2:#172038; --border:#243049;
+  --text:#d8deea; --muted:#95a0b8; --heading:#f3f6fc; --accent:#8b8cff; --accent-2:#38bdf8;
+  --accent-soft:#1c2246; --up:#22c55e; --down:#f05252; --up-soft:#0f2a1c; --down-soft:#2e1216;
+  --code-bg:#0a0f1d; --code-text:#e2e8f0; --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  --tip:#38bdf8; --tip-bg:#0d2231; --note:#8b8cff; --note-bg:#1a1d3d; --warning:#f59e0b; --warning-bg:#2a1f0b;
+  --caution:#f05252; --caution-bg:#2c1214; --important:#a78bfa; --important-bg:#221a3a; --kid:#34d399; --kid-bg:#0e2a22;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+#progress{position:fixed;inset-inline-start:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:60}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:10px 20px;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.topbar .brand{font-weight:800;color:var(--heading);display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .spacer{flex:1}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);
+  padding:6px 12px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:32px;max-width:1280px;margin:0 auto;padding:24px 20px 80px}
+nav.toc{position:sticky;top:72px;align-self:start;max-height:calc(100vh - 90px);overflow:auto;padding:16px;border:1px solid var(--border);
+  border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+nav.toc h4{margin:4px 8px 10px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc a{display:flex;gap:10px;align-items:baseline;padding:6px 8px;border-radius:10px;color:var(--text);font-size:14px;line-height:1.35}
+nav.toc a:hover{background:var(--bg-soft);text-decoration:none}
+nav.toc a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+nav.toc .n{flex:0 0 24px;font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px;font-weight:700}
+nav.toc a.active .n{color:var(--accent)}
+main{min-width:0}
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:44px 40px;margin-bottom:28px;color:#fff;
+  background:radial-gradient(1200px 400px at 10% -20%,rgba(255,255,255,.18),transparent 60%),linear-gradient(135deg,#4338ca 0%,#2563eb 50%,#0891b2 100%);box-shadow:var(--shadow)}
+.hero h1{margin:0 0 10px;font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:-.02em;color:#fff}
+.hero p.sub{margin:0;font-size:clamp(16px,2.2vw,19px);opacity:.92;max-width:720px}
+.hero .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:5px 12px;border-radius:999px;font-size:13.5px;font-weight:600}
+.hero svg.deco{position:absolute;inset-inline-end:-20px;bottom:-10px;width:360px;opacity:.28;pointer-events:none}
+.intro{margin-bottom:28px}
+section.part{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:30px 36px;margin-bottom:26px}
+section.part > h2{display:flex;align-items:center;gap:14px;margin:0 0 18px;font-size:clamp(22px,3vw,28px);line-height:1.25;color:var(--heading);letter-spacing:-.01em}
+.part-badge{flex:0 0 auto;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:14px;font-size:18px;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+h3{margin:30px 0 10px;font-size:20px;color:var(--heading);line-height:1.35}
+h4{margin:22px 0 8px;font-size:17px;color:var(--heading)}
+p{margin:10px 0}
+strong{color:var(--heading)}
+ul,ol{padding-inline-start:24px} li{margin:4px 0}
+li.task{list-style:none;margin-inline-start:-22px;display:flex;gap:10px;align-items:flex-start}
+li.task .box{flex:0 0 18px;height:18px;margin-top:5px;border:2px solid var(--accent);border-radius:5px;display:inline-grid;place-items:center;font-size:12px;color:var(--accent)}
+hr{border:0;height:1px;background:var(--border);margin:28px 0}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.88em;background:var(--bg-soft);border:1px solid var(--border);padding:1px 6px;border-radius:6px;direction:ltr;unicode-bidi:isolate}
+pre.code{position:relative;direction:ltr;text-align:left;background:var(--code-bg);color:var(--code-text);border-radius:14px;padding:18px 20px;overflow:auto;
+  font-size:13.5px;line-height:1.55;margin:16px 0;border:1px solid var(--border)}
+pre.code code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
+pre.code[data-lang]::before{content:attr(data-lang);position:absolute;top:8px;right:12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8}
+pre.ascii{background:var(--surface-2);color:var(--text)}
+.table-wrap{overflow-x:auto;margin:16px 0;border:1px solid var(--border);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{background:var(--bg-soft);color:var(--heading);font-weight:700;text-align:start;padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:var(--surface-2)}
+tbody tr:hover{background:var(--accent-soft)}
+.callout{--c:var(--note);--cb:var(--note-bg);position:relative;background:var(--cb);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);
+  border-inline-start:5px solid var(--c);border-radius:14px;padding:14px 18px;margin:18px 0}
+.callout-title{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--c);font-size:14px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.callout-icon{font-size:18px}
+.callout > p:first-of-type{margin-top:4px}
+.callout p:last-child,.callout ul:last-child,.callout ol:last-child{margin-bottom:2px}
+.callout-tip{--c:var(--tip);--cb:var(--tip-bg)} .callout-note{--c:var(--note);--cb:var(--note-bg)}
+.callout-warning{--c:var(--warning);--cb:var(--warning-bg)} .callout-caution{--c:var(--caution);--cb:var(--caution-bg)}
+.callout-important{--c:var(--important);--cb:var(--important-bg)}
+.callout-kid{--c:var(--kid);--cb:var(--kid-bg);font-size:17px}
+.callout-kid .callout-title{text-transform:none;letter-spacing:0;font-size:15px}
+.diagram{direction:ltr;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:16px;margin:18px 0;overflow-x:auto;text-align:center}
+.diagram pre.mermaid{margin:0;background:none;font-family:var(--font);white-space:pre}
+.diagram pre.mermaid[data-processed]{white-space:normal}
+.diagram svg{max-width:100%;height:auto}
+figure.svg-figure{margin:20px 0;padding:16px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;text-align:center}
+figure.svg-figure svg{width:100%;max-width:680px;height:auto}
+figure.svg-figure figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.svg-text{fill:var(--text);font-family:var(--font)} .svg-muted{fill:var(--muted);font-family:var(--font)}
+.svg-up{fill:var(--up);font-family:var(--font)} .svg-guide{stroke:var(--muted);stroke-dasharray:3 3;stroke-width:1}
+.body-up{fill:var(--up)} .body-down{fill:var(--down)} .wick-up{stroke:var(--up)} .wick-down{stroke:var(--down)}
+.line-up{stroke:var(--up)} .line-down{stroke:var(--down)} .line-neutral{stroke:var(--accent)}
+.dot-up{fill:var(--up)} .dot-down{fill:var(--down)} .arrow-up{stroke:var(--up)}
+.svg-panel{fill:var(--surface);stroke:var(--border)}
+.svg-res{stroke:var(--down)} .svg-sup{stroke:var(--up)}
+.zone-res{fill:var(--down);opacity:.14} .zone-sup{fill:var(--up);opacity:.14}
+.svg-res-t{fill:var(--down);font-family:var(--font)} .svg-sup-t{fill:var(--up);font-family:var(--font)}
+footer{color:var(--muted);font-size:14px;text-align:center;margin-top:30px}
+#toTop{position:fixed;inset-inline-end:20px;bottom:20px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+#toTop.show{opacity:1;pointer-events:auto}
+[dir="rtl"] body,[dir="rtl"]{font-size:17px}
+[dir="rtl"] .hero{background:radial-gradient(1200px 400px at 90% -20%,rgba(255,255,255,.18),transparent 60%),linear-gradient(225deg,#4338ca 0%,#2563eb 50%,#0891b2 100%)}
+[dir="rtl"] .callout-title,[dir="rtl"] th{letter-spacing:0}
+@media (max-width: 980px){
+  .layout{grid-template-columns:1fr;padding:16px 16px 60px}
+  #menuBtn{display:inline-flex}
+  nav.toc{position:fixed;top:56px;inset-inline-start:12px;inset-inline-end:12px;max-height:70vh;z-index:55;display:none}
+  nav.toc.open{display:block}
+  section.part{padding:22px 18px}
+  .hero{padding:32px 22px}
+  .hero svg.deco{width:220px}
+}
+@media (max-width: 520px){
+  .topbar .brand span.t{display:none}
+  body{font-size:16px}
+  section.part > h2{gap:10px} .part-badge{width:36px;height:36px;font-size:15px;border-radius:11px}
+}
+@media print{
+  .topbar,nav.toc,#toTop,#progress{display:none} .layout{display:block} section.part{box-shadow:none;break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="topbar">
+  <button class="btn" id="menuBtn" aria-label="المحتويات">☰ المحتويات</button>
+  <div class="brand">📘 <span class="t">دليل تعلّم التداول</span></div>
+  <div class="spacer"></div>
+  <a class="btn" href="TRADING_GUIDE_EN.html">🌐 English</a>
+  <button class="btn" id="themeBtn" aria-label="المظهر">◐ المظهر</button>
+</header>
+<div class="layout">
+  <nav class="toc" aria-label="المحتويات"><h4>المحتويات</h4><ol><li><a href="#s0"><span class="n">•</span><span>🧭 كيف تستخدم هذا الدليل</span></a></li><li><a href="#part-1"><span class="n">1</span><span>ما هو التداول فعلاً</span></a></li><li><a href="#part-2"><span class="n">2</span><span>الأسواق والأصول والأزواج والأسعار</span></a></li><li><a href="#part-3"><span class="n">3</span><span>الفوركس مقابل العملات الرقمية</span></a></li><li><a href="#part-4"><span class="n">4</span><span>منصات التداول مقابل الوسطاء (والتداول الفوري مقابل المشتقات)</span></a></li><li><a href="#part-5"><span class="n">5</span><span>حساباتك: Binance وMEXC وMT5 وExness</span></a></li><li><a href="#part-6"><span class="n">6</span><span>الرسوم البيانية والشموع اليابانية</span></a></li><li><a href="#part-7"><span class="n">7</span><span>الشراء (Long) مقابل البيع على المكشوف (Short)</span></a></li><li><a href="#part-8"><span class="n">8</span><span>أنواع الأوامر</span></a></li><li><a href="#part-9"><span class="n">9</span><span>الفارق السعري والرسوم والرافعة المالية والهامش والسيولة والتقلب</span></a></li><li><a href="#part-10"><span class="n">10</span><span>أساسيات التحليل الفني</span></a></li><li><a href="#part-11"><span class="n">11</span><span>المؤشرات والإشارات</span></a></li><li><a href="#part-12"><span class="n">12</span><span>استراتيجيات التداول الأساسية</span></a></li><li><a href="#part-13"><span class="n">13</span><span>إدارة المخاطر</span></a></li><li><a href="#part-14"><span class="n">14</span><span>الحساب التجريبي / التداول الورقي مقابل المال الحقيقي</span></a></li><li><a href="#part-15"><span class="n">15</span><span>سيكولوجية التداول</span></a></li><li><a href="#part-16"><span class="n">16</span><span>أخطاء المبتدئين الشائعة والمخاطر</span></a></li><li><a href="#part-17"><span class="n">17</span><span>حياة الصفقة</span></a></li><li><a href="#part-18"><span class="n">18</span><span>أمثلة عملية كاملة</span></a></li><li><a href="#part-19"><span class="n">19</span><span>البنية التحتية للعملات الرقمية مقابل الفوركس</span></a></li><li><a href="#part-20"><span class="n">20</span><span>بوتات التداول والأتمتة</span></a></li><li><a href="#part-21"><span class="n">21</span><span>واجهات API والاتصال بمنصات التداول والوسطاء</span></a></li><li><a href="#part-22"><span class="n">22</span><span>كيف يمكن لمشروعك المستقبلي أن يتصل بكل هذا</span></a></li><li><a href="#part-23"><span class="n">23</span><span>قاموس المصطلحات</span></a></li><li><a href="#part-24"><span class="n">24</span><span>ماذا أتعلّم بعد ذلك؟</span></a></li></ol></nav>
+  <main>
+    <div class="hero"><svg class="deco" viewBox="0 0 360 200" aria-hidden="true">
+<g stroke="#fff" stroke-width="3"><line x1="30" y1="120" x2="30" y2="180"/><line x1="70" y1="100" x2="70" y2="170"/><line x1="110" y1="110" x2="110" y2="160"/>
+<line x1="150" y1="70" x2="150" y2="140"/><line x1="190" y1="80" x2="190" y2="130"/><line x1="230" y1="40" x2="230" y2="110"/><line x1="270" y1="50" x2="270" y2="100"/><line x1="310" y1="10" x2="310" y2="80"/></g>
+<g fill="#fff"><rect x="20" y="130" width="20" height="40" rx="3"/><rect x="60" y="110" width="20" height="45" rx="3"/><rect x="100" y="120" width="20" height="25" rx="3" opacity=".5"/>
+<rect x="140" y="80" width="20" height="45" rx="3"/><rect x="180" y="90" width="20" height="25" rx="3" opacity=".5"/><rect x="220" y="50" width="20" height="45" rx="3"/>
+<rect x="260" y="60" width="20" height="25" rx="3" opacity=".5"/><rect x="300" y="20" width="20" height="45" rx="3"/></g></svg><h1>📘 دليل تعلّم التداول</h1><p class="sub">الفوركس والعملات الرقمية من الصفر — بشرح بسيط، لمن سيبني مشاريعه لاحقاً</p><div class="pills"><span class="pill">24 جزءاً</span><span class="pill">3 أمثلة تطبيقية</span><span class="pill">للتعليم فقط — ليست نصيحة مالية</span></div></div>
+    <div class="intro">
+<aside class="callout callout-important"><div class="callout-title"><span class="callout-icon">📌</span>مهم</div><p><strong>هذا الدليل للتعلّم فقط.</strong> إنه يشرح كيف يعمل التداول حتى تفهم الأنظمة قبل أن تبني برامج حولها. وهو <strong>ليس</strong> نصيحة مالية، ولا يخبرك بما يجب أن تشتريه أو تبيعه. معظم المبتدئين الذين يتداولون بأموال حقيقية يخسرون المال. على سبيل المثال، الوسطاء الذين يقدّمون عقود الفروقات (CFD) ملزمون بنشر تحذيرات مثل <em>&quot;70% من حسابات العملاء الأفراد تخسر المال عند تداول عقود الفروقات&quot;</em> (الرقم الدقيق يختلف من وسيط لآخر ويتغيّر مع الوقت).</p>
+</aside>
+</div>
+    <section class="part" id="s0"><h2><span>🧭 كيف تستخدم هذا الدليل</span></h2>
+<ul>
+<li>اقرأه <strong>بالترتيب</strong> في المرة الأولى. كل جزء يُبنى على الجزء الذي قبله.</li>
+<li>الكلمات الجديدة تظهر <strong>بخط عريض</strong> ويتم شرحها مباشرة. ويوجد أيضاً <strong>مسرد مصطلحات</strong> كامل قرب النهاية.</li>
+<li>كل جزء فيه صندوق <strong>🧒 &quot;كأنني في العاشرة&quot;</strong> يحتوي على صورة بسيطة بالكلمات، يليه الشرح الأكثر دقة.</li>
+<li><strong>الأمثلة الكاملة</strong> الثلاثة (الجزء 18) تجمع كل شيء معاً بأرقام تبدو حقيقية.</li>
+<li>الأجزاء الأخيرة (19–24) مخصّصة <strong>لك بصفتك مطوّراً</strong>: كيف تترابط منصات التداول والوسطاء وواجهات البرمجة والروبوتات معاً.</li>
+</ul>
+<h3 id="h3-2">جدول المحتويات</h3>
+<ol>
+<li><a href="#part-1">ما هو التداول فعلاً</a></li>
+<li><a href="#part-2">الأسواق والأصول والأزواج والأسعار</a></li>
+<li><a href="#part-3">الفوركس مقابل العملات الرقمية</a></li>
+<li><a href="#part-4">منصات التداول مقابل الوسطاء (والتداول الفوري مقابل المشتقات)</a></li>
+<li><a href="#part-5">حساباتك: Binance وMEXC وMT5 وExness</a></li>
+<li><a href="#part-6">الرسوم البيانية والشموع اليابانية</a></li>
+<li><a href="#part-7">الشراء (Long) مقابل البيع على المكشوف (Short)</a></li>
+<li><a href="#part-8">أنواع الأوامر</a></li>
+<li><a href="#part-9">الفارق السعري والرسوم والرافعة المالية والهامش والسيولة والتقلب</a></li>
+<li><a href="#part-10">أساسيات التحليل الفني</a></li>
+<li><a href="#part-11">المؤشرات والإشارات</a></li>
+<li><a href="#part-12">استراتيجيات التداول الأساسية</a></li>
+<li><a href="#part-13">إدارة المخاطر</a></li>
+<li><a href="#part-14">الحساب التجريبي / التداول الورقي مقابل المال الحقيقي</a></li>
+<li><a href="#part-15">سيكولوجية التداول</a></li>
+<li><a href="#part-16">أخطاء المبتدئين الشائعة والمخاطر</a></li>
+<li><a href="#part-17">دورة حياة الصفقة</a></li>
+<li><a href="#part-18">أمثلة عملية كاملة</a></li>
+<li><a href="#part-19">البنية التحتية للعملات الرقمية مقابل الفوركس</a></li>
+<li><a href="#part-20">روبوتات التداول والأتمتة</a></li>
+<li><a href="#part-21">واجهات البرمجة والاتصال بمنصات التداول والوسطاء</a></li>
+<li><a href="#part-22">كيف يمكن لمشروعك المستقبلي أن يتصل بكل هذا</a></li>
+<li><a href="#part-23">مسرد المصطلحات</a></li>
+<li><a href="#part-24">ماذا يجب أن أتعلّم بعد ذلك؟</a></li>
+</ol>
+</section><section class="part" id="part-1"><h2><span class="part-badge">1</span><span>ما هو التداول فعلاً</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>تخيّل أنك تجمع ملصقات كرة القدم. يوم الاثنين، كان ملصق نادر يساوي ملصقين عاديين. فبادلت للحصول عليه. يوم الجمعة، أصبح الجميع يريد ذلك الملصق النادر وصار يساوي 5 ملصقات عادية. فبادلته وأصبح لديك الآن 5 ملصقات بدلاً من 2. أنت لم تصنع أي ملصق — أنت فقط <strong>اشتريت عندما كان رخيصاً وبعت عندما صار غالياً</strong>. هذا هو التداول.</p>
+</aside>
+<p><strong>التداول (Trading)</strong> يعني <strong>شراء وبيع أشياء ذات قيمة (تُسمّى <em>الأصول (Assets)</em>) لتحقيق ربح من تغيّر أسعارها.</strong></p>
+<p><strong>السعر (Price)</strong> هو ببساطة ما يتفق الناس على دفعه مقابل شيء ما <em>في هذه اللحظة</em>. الأسعار تتحرك طوال الوقت لأن عدد الناس الذين يريدون الشراء وعدد الذين يريدون البيع يتغيّر باستمرار.</p>
+<h3 id="h3-3">لماذا تتحرك الأسعار؟ العرض والطلب</h3>
+<ul>
+<li><strong>الطلب (Demand)</strong> = عدد الناس الذين يريدون الشراء.</li>
+<li><strong>العرض (Supply)</strong> = عدد الناس الذين يريدون البيع.</li>
+</ul>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;مشترون أكثر من البائعين&lt;br/&gt;(طلب مرتفع)&quot;] --&gt; B[&quot;المشترون يتنافسون&lt;br/&gt;ويعرضون أكثر&quot;] --&gt; C[&quot;📈 السعر يرتفع&quot;]
+    D[&quot;بائعون أكثر من المشترين&lt;br/&gt;(عرض مرتفع)&quot;] --&gt; E[&quot;البائعون يتنافسون&lt;br/&gt;ويقبلون أقل&quot;] --&gt; F[&quot;📉 السعر ينخفض&quot;]
+</pre></div>
+<p>ما الذي يجعل الناس يريدون الشراء أو البيع؟ الأخبار (بنك مركزي يغيّر أسعار الفائدة)، ونتائج الشركات أو المشاريع، والخوف، والحماس، وكبار اللاعبين الذين ينقلون أموالهم، وردود فعل المتداولين الآخرين على كل ذلك.</p>
+<h3 id="h3-4">من أين يأتي ربح المتداول؟</h3>
+<p>يربح المتداول المال فقط من <strong>الفرق بين السعر الذي يدخل به والسعر الذي يخرج به</strong>، مطروحاً منه <strong>التكاليف</strong> (الرسوم).</p>
+<pre class="code ascii"><code>الربح = (سعر الخروج − سعر الدخول) × الكمية − التكاليف      ← عندما تشتري أولاً
+</code></pre>
+<p>لا أحد يدفع لك لمجرد &quot;المشاركة&quot;. في التداول قصير المدى، مكسب متداول ما هو غالباً خسارة متداول آخر، والمنصات تجمع الرسوم من الطرفين. وهذا أحد الأسباب التي تجعل الربح المستمر أمراً صعباً.</p>
+<h3 id="h3-5">التداول مقابل الاستثمار</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>🏃 <strong>التداول</strong></th>
+<th>🌳 <strong>الاستثمار</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>المدة</td>
+<td>من دقائق إلى أسابيع</td>
+<td>من أشهر إلى عقود</td>
+</tr>
+<tr>
+<td>الهدف</td>
+<td>الربح من <strong>تحركات</strong> السعر</td>
+<td>تنمية الثروة مع <strong>نمو</strong> الأصل (وكسب الأرباح الموزعة/الفوائد)</td>
+</tr>
+<tr>
+<td>الملكية</td>
+<td>غالباً <strong>لا تملك</strong> الأصل (أنت تتداول عقداً على سعره)</td>
+<td>عادةً <strong>تملك</strong> الأصل</td>
+</tr>
+<tr>
+<td>الأدوات</td>
+<td>الرسوم البيانية، الأوامر، الرافعة المالية</td>
+<td>البحث، الصبر، التنويع</td>
+</tr>
+<tr>
+<td>النشاط</td>
+<td>مرتفع (قرارات كثيرة)</td>
+<td>منخفض (قرارات قليلة)</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>ملاحظة</div><p><strong>المضاربة (Speculation)</strong> هي الكلمة التي تعني &quot;الرهان على الاتجاه الذي سيتحرك فيه السعر&quot;. معظم التداول مضاربة. وهي ليست مثل القمار في الكازينو، لكن من دون <strong>ميزة (Edge)</strong> (أفضلية حقيقية ومُختبَرة) ومن دون <strong>التحكم في المخاطر</strong>، قد تتصرف بشكل يشبه القمار كثيراً.</p>
+</aside>
+<h3 id="h3-6">من الموجود في السوق؟</h3>
+<ul>
+<li><strong>المؤسسات</strong> — البنوك، وصناديق التحوّط، وصناديق التقاعد، وصانعو السوق. يتداولون كميات ضخمة ويشكّلون معظم حجم التداول.</li>
+<li><strong>المتداولون الأفراد</strong> — أشخاص مثلك، يتداولون من تطبيق أو منصة.</li>
+<li><strong>صانعو السوق (Market Makers)</strong> — شركات تعرض دائماً الشراء <em>والبيع</em> معاً، وتربح الفرق الصغير بين السعرين.</li>
+<li><strong>الروبوتات/الخوارزميات</strong> — برامج حاسوبية تتداول تلقائياً. حصة كبيرة من جميع الأوامر اليوم تأتي من الخوارزميات.</li>
+</ul>
+</section><section class="part" id="part-2"><h2><span class="part-badge">2</span><span>الأسواق والأصول والأزواج والأسعار</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p><strong>السوق</strong> يشبه سوق تبادل ضخماً في ساحة اللعب. <strong>الأصل</strong> هو الشيء الذي يتم تبادله (ملصقات، كُرات زجاجية). و<strong>الزوج</strong> هو أن تقول &quot;كم كُرة زجاجية مقابل ملصق واحد؟&quot; — أنت دائماً تقارن شيئاً <em>مقابل</em> شيء آخر.</p>
+</aside>
+<h3 id="h3-7">كلمات مهمة</h3>
+<ul>
+<li><strong>السوق (Market)</strong> — مكان (اليوم، دائماً تقريباً رقمي) يلتقي فيه المشترون والبائعون. أمثلة: سوق الفوركس، سوق العملات الرقمية، سوق الأسهم.</li>
+<li><strong>الأصل (Asset)</strong> — أي شيء له سعر ويمكن تداوله: العملات، والعملات الرقمية، وأسهم الشركات، والذهب، والنفط…</li>
+<li><strong>الأداة / الرمز (Instrument / Symbol)</strong> — الشيء المحدد الذي تتداوله على منصة، مثل <code>EURUSD</code> أو <code>BTCUSDT</code>.</li>
+<li><strong>رمز التداول المختصر (Ticker)</strong> — الكود القصير للأصل: <code>BTC</code> (بيتكوين)، <code>ETH</code> (إيثر)، <code>EUR</code> (اليورو)، <code>USD</code> (الدولار الأمريكي)، <code>XAU</code> (الذهب).</li>
+</ul>
+<h3 id="h3-8">الأزواج: العملة الأساسية وعملة التسعير</h3>
+<p>في الفوركس والعملات الرقمية، أنت دائماً تقريباً تتداول <strong>زوجاً (Pair)</strong>: أصل واحد مُسعَّر بأصل آخر.</p>
+<pre class="code ascii"><code>      EUR / USD = 1.0850
+      ───   ───
+       │     └── عملة التسعير (QUOTE): ما تدفع به
+       └──────── العملة الأساسية (BASE): ما تشتريه/تبيعه
+
+ &quot;1 يورو يكلّف 1.0850 دولار أمريكي&quot;
+</code></pre>
+<pre class="code ascii"><code>      BTC / USDT = 60,000
+       │      └── عملة التسعير (QUOTE): USDT (عملة &quot;مستقرة&quot; يُفترض أن تساوي 1 دولار أمريكي)
+       └───────── العملة الأساسية (BASE): بيتكوين
+
+ &quot;1 بيتكوين يكلّف 60,000 USDT&quot;
+</code></pre>
+<ul>
+<li>إذا <strong>اشتريت</strong> <code>EURUSD</code> فأنت تشتري اليورو <strong>وتدفع</strong> بالدولار.</li>
+<li>إذا <strong>بعت</strong> <code>EURUSD</code> فأنت تبيع اليورو <strong>وتستلم</strong> الدولار.</li>
+</ul>
+<p><strong>العملة المستقرة (Stablecoin)</strong> هي رمز رقمي مصمَّم ليحافظ على قيمة ثابتة، عادةً 1 دولار أمريكي (أمثلة: USDT وUSDC). تستخدمها منصات العملات الرقمية على أنها &quot;دولارات رقمية&quot;.</p>
+<h3 id="h3-9">سعران، وليس سعراً واحداً: سعر البيع (Bid) وسعر الطلب (Ask)</h3>
+<p>عندما تنظر بدقة، ستجد دائماً <strong>سعرين</strong>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>السعر</th>
+<th>المعنى</th>
+<th>من يستخدمه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>سعر البيع (Bid)</strong></td>
+<td>أعلى سعر يرغب شخص ما في <strong>دفعه</strong> الآن</td>
+<td><strong>أنت تبيع</strong> بسعر Bid</td>
+</tr>
+<tr>
+<td><strong>سعر الطلب (Ask)</strong> (أو <strong>العرض / Offer</strong>)</td>
+<td>أدنى سعر يرغب شخص ما في <strong>البيع</strong> به الآن</td>
+<td><strong>أنت تشتري</strong> بسعر Ask</td>
+</tr>
+</tbody>
+</table></div>
+<p>سعر Ask دائماً أعلى قليلاً من سعر Bid. هذه الفجوة هي <strong>الفارق السعري (السبريد / Spread)</strong> (الجزء 9).</p>
+<pre class="code ascii"><code>   Bid 1.08500  |  Ask 1.08510      →  Spread = 0.00010 = 1 pip
+   (أنت تبيع)       (أنت تشتري)
+</code></pre>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>متجر يشتري ألعابك القديمة بـ 8$ ويبيع الألعاب نفسها بـ 10$. سعر &quot;Bid&quot; لدى المتجر هو 8$، وسعر &quot;Ask&quot; لديه هو 10$. إذا اشتريت ثم بعت فوراً، تخسر 2$. هذه الـ 2$ هي الفارق السعري.</p>
+</aside>
+<h3 id="h3-10">الوحدات الصغيرة: النقاط (Pips) والنقاط الجزئية (Points) والتكّات (Ticks)</h3>
+<ul>
+<li><strong>النقطة (Pip)</strong> (&quot;percentage in point&quot;) — الحركة الصغيرة المعيارية في الفوركس. في معظم الأزواج هي <strong>الخانة العشرية الرابعة</strong> (0.0001). وفي الأزواج التي فيها الين الياباني، هي <strong>الخانة العشرية الثانية</strong> (0.01).
+<ul>
+<li><code>EURUSD</code> من 1.0850 → 1.0851 = <strong>+1 نقطة</strong>.</li>
+<li><code>USDJPY</code> من 150.20 → 150.21 = <strong>+1 نقطة</strong>.</li>
+</ul>
+</li>
+<li><strong>النقطة الجزئية (Pipette / Point)</strong> — عُشر النقطة (الخانة العشرية الخامسة). غالباً ما يعرض MT5 الأسعار بـ 5 خانات عشرية ويسمّي أصغر خطوة <strong>point</strong>. إذن 10 points = نقطة واحدة (1 pip).</li>
+<li><strong>التِّك / حجم التِّك (Tick / Tick size)</strong> — أصغر خطوة سعرية يمكن أن تتحركها الأداة. في العملات الرقمية، لكل زوج حجم تِك خاص به (مثلاً 0.01 USDT لزوج BTCUSDT).</li>
+</ul>
+<h3 id="h3-11">الكمية: اللوتات (في الفوركس) والوحدات (في العملات الرقمية)</h3>
+<ul>
+<li><strong>الفوركس</strong> يُتداول بـ <strong>اللوتات (Lots)</strong>:</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>اسم اللوت</th>
+<th>الحجم</th>
+<th>وحدات العملة الأساسية</th>
+<th>قيمة نقطة واحدة على EURUSD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>اللوت القياسي (Standard lot)</td>
+<td>1.00</td>
+<td>100,000</td>
+<td>≈ $10</td>
+</tr>
+<tr>
+<td>الميني لوت (Mini lot)</td>
+<td>0.10</td>
+<td>10,000</td>
+<td>≈ $1</td>
+</tr>
+<tr>
+<td>المايكرو لوت (Micro lot)</td>
+<td>0.01</td>
+<td>1,000</td>
+<td>≈ $0.10</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>العملات الرقمية</strong> تُتداول بـ <strong>وحدات العملة نفسها</strong>، وغالباً بكسور صغيرة: 0.00125 BTC أمر عادي تماماً. لكل منصة تداول <strong>حد أدنى لحجم الأمر</strong> و<strong>حجم خطوة (Step size)</strong> (عدد الخانات العشرية المسموح بها).</li>
+</ul>
+<h3 id="h3-12">أنواع الأصول التي ستراها</h3>
+<div class="diagram"><pre class="mermaid">mindmap
+  root((الأصول القابلة للتداول))
+    الفوركس
+      الأزواج الرئيسية: EURUSD, GBPUSD, USDJPY
+      الأزواج الثانوية: EURGBP, AUDJPY
+      الأزواج الغريبة: USDTRY, EURZAR
+    العملات الرقمية
+      بيتكوين BTC
+      إيثر ETH
+      العملات البديلة: SOL, XRP...
+      العملات المستقرة: USDT, USDC
+    السلع
+      الذهب XAUUSD
+      النفط
+    المؤشرات
+      US500, US30, DE40
+    الأسهم
+      Apple, Tesla...
+</pre></div>
+<ul>
+<li><strong>أزواج الفوركس الرئيسية (Major pairs)</strong> تحتوي على الدولار الأمريكي وعملة كبيرة أخرى. وهي الأكثر تداولاً، والأرخص، و&quot;الأهدأ&quot;.</li>
+<li><strong>الأزواج الغريبة (Exotic pairs)</strong> تتضمن اقتصادات أصغر: فوارق سعرية أكبر وقفزات مفاجئة.</li>
+<li><strong>العملات البديلة (Altcoins)</strong> = أي عملة رقمية ليست بيتكوين. كثير منها صغير، وشديد <strong>التقلب (Volatile)</strong> (يقفز صعوداً وهبوطاً كثيراً)، وبعضها ينهار إلى الصفر.</li>
+</ul>
+</section><section class="part" id="part-3"><h2><span class="part-badge">3</span><span>الفوركس مقابل العملات الرقمية</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p><strong>الفوركس</strong> هو تداول أموال الدول — مثل تبديل اليورو بالدولار قبل العطلة، لكنك تفعل ذلك لتربح من تغيّرات صغيرة جداً. <strong>العملات الرقمية</strong> هي تداول عملات رقمية تعيش على الإنترنت — أصغر عمراً، وأكثر جنوناً، ومفتوحة طوال الليل وطوال عطلة نهاية الأسبوع.</p>
+</aside>
+<p><strong>الفوركس (Forex)</strong> (FX، &quot;صرف العملات الأجنبية&quot;) هو سوق تبادل العملات الوطنية. وهو أكبر سوق مالي في العالم — تنتقل فيه تريليونات الدولارات من يد إلى يد كل يوم. <strong>العملات الرقمية (Crypto)</strong> هي أموال رقمية مُسجَّلة على <strong>البلوكتشين (Blockchain)</strong> (سجل عام مشترك تحافظ عليه حواسيب كثيرة وتُبقيه متطابقاً).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>الموضوع</th>
+<th>💱 الفوركس</th>
+<th>🪙 العملات الرقمية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ما الذي يُتداول</td>
+<td>عملات الدول (EUR، USD، JPY…)</td>
+<td>العملات والرموز الرقمية (BTC، ETH، SOL…)</td>
+</tr>
+<tr>
+<td>ساعات العمل</td>
+<td>24 ساعة، <strong>5 أيام</strong> في الأسبوع (مغلق في عطلة نهاية الأسبوع)</td>
+<td><strong>24/7/365</strong></td>
+</tr>
+<tr>
+<td>الحركة اليومية المعتادة لزوج رئيسي</td>
+<td>~0.3%–1% (EURUSD)</td>
+<td>~2%–5% لـ BTC، وغالباً أكثر بكثير للعملات البديلة</td>
+</tr>
+<tr>
+<td>من يحدد السعر</td>
+<td>البنوك الكبرى ومزوّدو السيولة؛ و<strong>وسيطك</strong> يعرض لك سعراً</td>
+<td>المشترون والبائعون في <strong>دفتر الأوامر</strong> الخاص بكل <strong>منصة تداول</strong></td>
+</tr>
+<tr>
+<td>أين تتداول</td>
+<td>عبر <strong>وسيط</strong> (مثل Exness) باستخدام منصة (مثل MT5)</td>
+<td>على <strong>منصة تداول (Exchange)</strong> (مثل Binance وMEXC)</td>
+</tr>
+<tr>
+<td>هل تملك الأصل؟</td>
+<td>عادةً <strong>لا</strong> — فوركس الأفراد في الغالب عقود فروقات (CFD) (عقود على السعر)</td>
+<td>في <strong>التداول الفوري</strong> أنت <strong>تملك</strong> العملات ويمكنك سحبها؛ وفي العقود الآجلة لا تملكها</td>
+</tr>
+<tr>
+<td>الرافعة المالية</td>
+<td>غالباً مرتفعة (1:30 في المناطق ذات التنظيم الصارم، وحتى 1:500+ لدى الجهات الخارجية)</td>
+<td>الفوري: لا توجد. العقود الآجلة: حتى 100x+ في بعض المنصات</td>
+</tr>
+<tr>
+<td>ما الذي يحرّك السعر</td>
+<td>أسعار الفائدة، التضخم، البيانات الاقتصادية، السياسة</td>
+<td>مدى التبنّي، أخبار التنظيم، كبار الحائزين (&quot;الحيتان&quot;)، الضجة الإعلامية، المزاج العام تجاه المخاطرة</td>
+</tr>
+<tr>
+<td>التنظيم</td>
+<td>ناضج، لكنه يختلف حسب الدولة وحسب الكيان التابع له الوسيط</td>
+<td>أحدث عهداً؛ القواعد تختلف كثيراً من دولة لأخرى وتتغيّر كثيراً</td>
+</tr>
+<tr>
+<td>تكاليف خاصة</td>
+<td>الفارق السعري، العمولة، <strong>رسوم التبييت (Swap)</strong> (رسوم الليلة)</td>
+<td>رسوم التداول (صانع/آخذ)، <strong>معدل التمويل (Funding Rate)</strong> على العقود الآجلة الدائمة، رسوم السحب/الشبكة</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-13">جلسات تداول الفوركس</h3>
+<p>الفوركس مفتوح 24/5 لأن يوم التداول &quot;يسافر&quot; حول العالم. يكون النشاط في أعلى مستوياته عندما تتداخل جلستان كبيرتان.</p>
+<div class="diagram"><pre class="mermaid">gantt
+    title جلسات الفوركس (تقريبية، بتوقيت UTC، تتغيّر مع التوقيت الصيفي)
+    dateFormat HH:mm
+    axisFormat %H:%M
+    section سيدني
+    سيدني   :00:00, 6h
+    section طوكيو
+    طوكيو    :00:00, 9h
+    section لندن
+    لندن   :07:00, 9h
+    section نيويورك
+    نيويورك :12:00, 9h
+</pre></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>ملاحظة</div><p><strong>تداخل لندن–نيويورك</strong> (تقريباً 12:00–16:00 UTC) هو عادةً أكثر الأوقات ازدحاماً وأعلاها <strong>سيولة (Liquidity)</strong> في الفوركس. جلسة سيدني تبدأ في الحقيقة مساء اليوم السابق (≈21:00–22:00 UTC)؛ والرسم يبسّط ذلك.</p>
+</aside>
+</section><section class="part" id="part-4"><h2><span class="part-badge">4</span><span>منصات التداول مقابل الوسطاء (والتداول الفوري مقابل المشتقات)</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p><strong>منصة التداول</strong> تشبه ساحة سوق كبيرة مفتوحة: البائعون يرفعون لافتات بأسعارهم، والمشترون يرفعون لافتات بأسعارهم، والساحة تطابق بينهم فقط. أما <strong>الوسيط</strong> فهو صاحب متجر: أنت لا ترى الناس الآخرين — أنت تشتري من المتجر وتبيع له، والمتجر يتعامل مع السوق الكبير من وراء الكواليس.</p>
+</aside>
+<h3 id="h3-14">منصة التداول</h3>
+<p><strong>منصة التداول (Exchange)</strong> هي منصة <strong>تطابق بين المشترين والبائعين</strong>. تدخل أوامر الجميع في <strong>دفتر الأوامر (Order Book)</strong> — وهو قائمة حيّة بكل أوامر الشراء والبيع المنتظرة — ويقوم <strong>محرك المطابقة (Matching Engine)</strong> بالجمع بينها.</p>
+<pre class="code ascii"><code>                ORDER BOOK  BTC/USDT
+      ┌──────────────── SELL orders (asks) ────────────────┐
+      │   60,030.00   0.80 BTC                              │
+      │   60,020.00   1.20 BTC                              │
+      │   60,010.00   0.45 BTC   ← best ask (lowest seller) │
+      ├───────────────────── spread ────────────────────────┤
+      │   60,000.00   0.60 BTC   ← best bid (highest buyer) │
+      │   59,990.00   2.10 BTC                              │
+      │   59,980.00   0.95 BTC                              │
+      └──────────────── BUY orders (bids) ─────────────────┘
+</code></pre>
+<p>(في الأعلى أوامر البيع (asks)، وفي الأسفل أوامر الشراء (bids)؛ best ask = أدنى سعر يقبله بائع، best bid = أعلى سعر يدفعه مشترٍ، وبينهما الفارق السعري.)</p>
+<p>Binance وMEXC هما <strong>منصتا تداول للعملات الرقمية</strong>. تكسبان المال في الغالب من <strong>رسوم التداول</strong>.</p>
+<h3 id="h3-15">الوسيط</h3>
+<p><strong>الوسيط (Broker)</strong> هو شركة تمنحك <strong>إمكانية الوصول</strong> إلى الأسواق. في فوركس الأفراد، يعرض لك الوسيط عادةً سعراً ويصبح هو الطرف الآخر في صفقتك (أو يمرّرها إلى شركاء أكبر يُسمَّون <strong>مزوّدي السيولة (Liquidity Providers)</strong>). Exness هو <strong>وسيط فوركس/عقود فروقات</strong>. يكسب الوسطاء المال من <strong>الفوارق السعرية</strong> و<strong>العمولات</strong> و<strong>رسوم التبييت</strong> — وبعضهم يربح أيضاً عندما يخسر العملاء (انظر &quot;B-book&quot; في الجزء 19).</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    subgraph EX[&quot;🏛️ نموذج منصة التداول (Binance, MEXC)&quot;]
+        U1[&quot;أنت&quot;] --&gt; OB[&quot;دفتر الأوامر +&lt;br/&gt;محرك المطابقة&quot;]
+        U2[&quot;متداولون آخرون&quot;] --&gt; OB
+        U3[&quot;صانعو السوق&quot;] --&gt; OB
+    end
+    subgraph BR[&quot;🏪 نموذج الوسيط (Exness)&quot;]
+        V1[&quot;أنت (MT5)&quot;] --&gt; B[&quot;الوسيط&quot;]
+        B --&gt; LP[&quot;مزوّدو السيولة&lt;br/&gt;(بنوك، شركات كبرى)&quot;]
+        B -.-&gt; INT[&quot;...أو يحتفظ الوسيط&lt;br/&gt;بالطرف الآخر بنفسه&quot;]
+    end
+</pre></div>
+<h3 id="h3-16">التداول الفوري مقابل المشتقات</h3>
+<p>هذه واحدة من أهم الأفكار في هذا الدليل كله.</p>
+<ul>
+<li><strong>التداول الفوري (Spot)</strong> — أنت <strong>تشتري الأصل فعلاً</strong> وتدفع السعر كاملاً. اشترِ 0.01 BTC على Binance Spot وستملك 0.01 BTC. يمكنك الاحتفاظ به أو سحبه إلى محفظتك الخاصة. ولا يمكنك أن تخسر أكثر مما دفعت.</li>
+<li><strong>المشتق المالي (Derivative)</strong> — <strong>عقد تعتمد قيمته على سعر</strong> شيء آخر (أي &quot;مُشتقّة&quot; منه). أنت لا تملك الشيء نفسه؛ أنت تملك وعداً يتعلق بسعره.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>المشتق المالي</th>
+<th>ما هو</th>
+<th>أين ستصادفه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>عقود الفروقات (CFD)</strong> (Contract for Difference)</td>
+<td>أنت والوسيط تتفقان على تبادل <strong>الفرق</strong> في السعر بين لحظة فتح الصفقة ولحظة إغلاقها.</td>
+<td>Exness / MT5: EURUSD، الذهب، المؤشرات، وحتى عقود فروقات على BTC</td>
+</tr>
+<tr>
+<td><strong>العقود الآجلة (Futures)</strong></td>
+<td>عقد للشراء/البيع بسعر محدد في تاريخ مستقبلي.</td>
+<td>بورصات العقود الآجلة المنظَّمة؛ &quot;العقود الآجلة ذات التسليم&quot; في العملات الرقمية</td>
+</tr>
+<tr>
+<td><strong>العقود الآجلة الدائمة (Perpetual / &quot;perps&quot;)</strong></td>
+<td>عقود آجلة للعملات الرقمية <strong>بلا تاريخ انتهاء</strong>. يُدفع <strong>معدل تمويل</strong> بين أصحاب صفقات الشراء وأصحاب صفقات البيع لإبقاء سعرها قريباً من السعر الفوري.</td>
+<td>Binance Futures، MEXC Futures</td>
+</tr>
+<tr>
+<td><strong>عقود الخيارات (Options)</strong></td>
+<td><strong>الحق، وليس الالتزام</strong>، في الشراء/البيع بسعر معيّن.</td>
+<td>أكثر تقدّماً؛ تجاوزها الآن</td>
+</tr>
+</tbody>
+</table></div>
+<p>المشتقات تجعل أمرين سهلين: <strong>البيع على المكشوف (Short)</strong> (الربح عندما ينخفض السعر — الجزء 7) و<strong>الرافعة المالية (Leverage)</strong> (التداول بأكثر مما تملك من مال — الجزء 9). كلاهما قوي وخطير.</p>
+<aside class="callout callout-warning"><div class="callout-title"><span class="callout-icon">⚠️</span>تحذير</div><p>في التداول الفوري، أسوأ احتمال هو أن تنهار عملتك إلى الصفر. أما مع المشتقات ذات الرافعة المالية، فيمكنك أن تخسر إيداعك بالكامل <strong>في دقائق</strong>، وأحياناً بسبب حركة مفاجئة واحدة.</p>
+</aside>
+</section><section class="part" id="part-5"><h2><span class="part-badge">5</span><span>حساباتك: Binance وMEXC وMT5 وExness</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>Binance وMEXC هما <strong>سوقان كبيران للعملات الرقمية</strong>. Exness هو <strong>متجر (وسيط)</strong> للفوركس وأشياء أخرى. أما MT5 فهو <strong>ليس متجراً على الإطلاق</strong> — إنه تطبيق <strong>آلة الدفع / لوحة التحكم</strong> الذي تسمح لك متاجر كثيرة (منها Exness) باستخدامه.</p>
+</aside>
+<div class="diagram"><pre class="mermaid">flowchart TB
+    YOU([&quot;🧑 أنت&quot;])
+    YOU --&gt; BIN[&quot;🟡 Binance&lt;br/&gt;منصة تداول عملات رقمية&quot;]
+    YOU --&gt; MEX[&quot;🔵 MEXC&lt;br/&gt;منصة تداول عملات رقمية&quot;]
+    YOU --&gt; EXN[&quot;🟢 Exness&lt;br/&gt;وسيط فوركس وعقود فروقات&quot;]
+    EXN --&gt; MT5[&quot;🖥️ MetaTrader 5&lt;br/&gt;برنامج منصة تداول&quot;]
+    BIN --&gt; BS[&quot;Spot&quot;] &amp; BF[&quot;Futures (USDⓈ-M, COIN-M)&quot;] &amp; BT[&quot;Testnet للمطوّرين&quot;]
+    MEX --&gt; MS[&quot;Spot (رموز جديدة كثيرة)&quot;] &amp; MF[&quot;Futures&quot;]
+    MT5 --&gt; F1[&quot;أزواج الفوركس&quot;] &amp; F2[&quot;الذهب / المعادن&quot;] &amp; F3[&quot;مؤشرات، أسهم، عقود فروقات عملات رقمية&quot;]
+</pre></div>
+<h3 id="h3-17">🟡 Binance</h3>
+<ul>
+<li><strong>أكبر منصة تداول للعملات الرقمية</strong> من حيث حجم التداول.</li>
+<li>المنتجات: <strong>Spot</strong> (فوري)، <strong>Margin</strong> (هامش)، <strong>Futures</strong> (عقود آجلة: USDⓈ-M = تُسوّى بالعملات المستقرة، COIN-M = تُسوّى بالعملة نفسها)، بالإضافة إلى الادخار و&quot;Earn&quot; وغيرها.</li>
+<li>رسوم التداول الفوري: السعر الأساسي حوالي <strong>0.1%</strong> لكل صفقة (أقل مع BNB أو مستويات VIP — راجع صفحة الرسوم الحالية).</li>
+<li><strong>واجهة برمجة تطبيقات (API)</strong> موثّقة جيداً جداً (الجزء 21) و<strong>شبكة اختبار (Testnet)</strong> (نسخة بأموال وهمية للمطوّرين): شبكة اختبار Spot على <code>testnet.binance.vision</code>.</li>
+<li>التوفّر والمنتجات المسموح بها يعتمدان على <strong>بلدك</strong>.</li>
+</ul>
+<h3 id="h3-18">🔵 MEXC</h3>
+<ul>
+<li>منصة تداول عملات رقمية معروفة بإدراج <strong>رموز كثيرة جديدة وصغيرة</strong> مبكراً (خيارات أكثر، لكن كثيراً من هذه الرموز شديد الخطورة أو ضعيف السيولة).</li>
+<li>Spot وFutures، مع <strong>رسوم منخفضة</strong> عادةً (تظهر كثيراً عروض ترويجية برسوم 0% للصانع — راجع الأسعار الحالية).</li>
+<li>واجهة Spot API لديها (v3) <strong>مشابهة جداً لواجهة Binance</strong>، مما يسهّل على الكود دعم المنصتين معاً. أما الوصول إلى Futures API لوضع الأوامر فقد خضع لقيود في بعض الأوقات — اقرأ دائماً التوثيق الحالي.</li>
+</ul>
+<h3 id="h3-19">🖥️ MetaTrader 5 (MT5)</h3>
+<ul>
+<li><strong>برنامج</strong> من صنع شركة MetaQuotes، <strong>يقدّمه الوسطاء لعملائهم</strong>. إنه ليس وسيطاً ولا يحتفظ بأموالك.</li>
+<li>تسجّل الدخول برقم حساب وكلمة مرور و<strong>خادم (Server)</strong> يعطيك إياه وسيطك (مثلاً خادم Exness).</li>
+<li>المزايا: رسوم بيانية، و21 إطاراً زمنياً، ومؤشرات مدمجة كثيرة، وتداول بنقرة واحدة، و<strong>المستشارون الخبراء (Expert Advisors / EAs)</strong> = روبوتات تداول مكتوبة بلغة <strong>MQL5</strong>، و<strong>مختبر الاستراتيجيات (Strategy Tester)</strong> لإجراء الاختبار الرجعي (Backtest).</li>
+<li>متوفر على Windows وMac والويب وAndroid وiOS. وتوجد <strong>حزمة Python</strong> رسمية (<code>MetaTrader5</code>) تتواصل مع برنامج سطح المكتب (Windows).</li>
+</ul>
+<h3 id="h3-20">🟢 Exness</h3>
+<ul>
+<li><strong>وسيط</strong> يقدّم الفوركس والمعادن (الذهب/الفضة) والطاقة والمؤشرات والأسهم والعملات الرقمية <strong>على شكل عقود فروقات</strong>.</li>
+<li>تتداول عبر <strong>MT4 أو MT5</strong> أو منصة Exness الخاصة على الويب/التطبيق.</li>
+<li>عدة أنواع من الحسابات (مثل Standard وPro وRaw Spread وZero) تختلف في <strong>الفارق السعري مقابل العمولة</strong>.</li>
+<li>يقدّم <strong>رافعة مالية مرتفعة جداً</strong> في بعض المناطق — وهذا خطر، وليس هدية.</li>
+<li><strong>حسابات تجريبية (Demo accounts)</strong> مجانية بأموال افتراضية: مثالية لتعلّم MT5.</li>
+<li>التنظيم يعتمد على <strong>كيان Exness</strong> الذي ينتمي إليه حسابك — تحقّق من ذلك في حسابك.</li>
+</ul>
+<h3 id="h3-21">من يفعل ماذا؟</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>السؤال</th>
+<th>Binance</th>
+<th>MEXC</th>
+<th>Exness (+MT5)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>النوع</td>
+<td>منصة تداول</td>
+<td>منصة تداول</td>
+<td>وسيط (+ منصة)</td>
+</tr>
+<tr>
+<td>الاستخدام الرئيسي</td>
+<td>التداول الفوري والعقود الآجلة للعملات الرقمية</td>
+<td>التداول الفوري والعقود الآجلة للعملات الرقمية، الرموز الجديدة</td>
+<td>الفوركس، الذهب، المؤشرات (عقود فروقات)</td>
+</tr>
+<tr>
+<td>هل تملك العملات في التداول الفوري؟</td>
+<td>✅ نعم</td>
+<td>✅ نعم</td>
+<td>❌ لا (عقود فروقات)</td>
+</tr>
+<tr>
+<td>هل يمكنك سحب العملات الرقمية إلى محفظة؟</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌ (تسحب نقوداً، لا عملات رقمية)</td>
+</tr>
+<tr>
+<td>مفتوح في عطلة نهاية الأسبوع؟</td>
+<td>✅ 24/7</td>
+<td>✅ 24/7</td>
+<td>الفوركس ❌ (عقود فروقات العملات الرقمية ✅)</td>
+</tr>
+<tr>
+<td>أموال تجريبية / اختبار</td>
+<td>Testnet (API)</td>
+<td>محدود</td>
+<td>✅ حسابات تجريبية</td>
+</tr>
+<tr>
+<td>الوصول البرمجي</td>
+<td>REST + WebSocket API</td>
+<td>REST + WebSocket API</td>
+<td>MQL5 EAs، حزمة Python MT5</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="part" id="part-6"><h2><span class="part-badge">6</span><span>الرسوم البيانية والشموع اليابانية</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>الرسم البياني للسعر يشبه دفتر مذكرات السعر. كل <strong>شمعة</strong> هي صفحة واحدة من الدفتر: تخبرك أين <strong>بدأ</strong> السعر، وأين <strong>انتهى</strong>، وما <strong>أعلى</strong> و<strong>أدنى</strong> مكان زاره خلال تلك المدة.</p>
+</aside>
+<h3 id="h3-22">أنواع الرسوم البيانية</h3>
+<ul>
+<li><strong>الرسم الخطي (Line chart)</strong> — يصل أسعار الإغلاق بخط. بسيط، لكنه يُخفي التفاصيل.</li>
+<li><strong>الرسم بالأعمدة (Bar chart / OHLC)</strong> — كل فترة عبارة عن عمود عمودي مع علامات صغيرة للافتتاح والإغلاق.</li>
+<li><strong>رسم الشموع اليابانية (Candlestick chart)</strong> — الأكثر شيوعاً. يحمل نفس معلومات العمود، لكنه أسهل في القراءة.</li>
+</ul>
+<h3 id="h3-23">تشريح الشمعة</h3>
+<p>كل شمعة تُظهر 4 أسعار لفترة زمنية واحدة — <strong>OHLC</strong>:</p>
+<ul>
+<li><strong>O</strong>pen (الافتتاح) — أول سعر في الفترة</li>
+<li><strong>H</strong>igh (الأعلى) — أعلى سعر تم الوصول إليه</li>
+<li><strong>L</strong>ow (الأدنى) — أدنى سعر تم الوصول إليه</li>
+<li><strong>C</strong>lose (الإغلاق) — آخر سعر في الفترة</li>
+</ul>
+<figure class="svg-figure"><svg viewBox="0 0 680 350" role="img" aria-label="الأسعار الأربعة داخل كل شمعة." direction="ltr" xmlns="http://www.w3.org/2000/svg"><line x1="170" y1="40" x2="170" y2="300" class="wick-up" stroke-width="3"/><rect x="130" y="100" width="80" height="130" rx="4" class="body-up"/><line x1="174" y1="40" x2="226" y2="40" class="svg-guide"/><text x="230" y="44" class="svg-text" text-anchor="start" font-size="13" font-weight="600">الأعلى</text><line x1="174" y1="100" x2="226" y2="100" class="svg-guide"/><text x="230" y="104" class="svg-text" text-anchor="start" font-size="13" font-weight="600">الإغلاق</text><line x1="174" y1="230" x2="226" y2="230" class="svg-guide"/><text x="230" y="234" class="svg-text" text-anchor="start" font-size="13" font-weight="600">الافتتاح</text><line x1="174" y1="300" x2="226" y2="300" class="svg-guide"/><text x="230" y="304" class="svg-text" text-anchor="start" font-size="13" font-weight="600">الأدنى</text><text x="110" y="74.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">الذيل العلوي</text><text x="110" y="169.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">الجسم</text><text x="110" y="269.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">الذيل السفلي</text><text x="170" y="332" class="svg-text" text-anchor="middle" font-size="14" font-weight="700">شمعة صاعدة (السعر ارتفع)</text><line x1="500" y1="40" x2="500" y2="300" class="wick-down" stroke-width="3"/><rect x="460" y="100" width="80" height="130" rx="4" class="body-down"/><line x1="504" y1="40" x2="556" y2="40" class="svg-guide"/><text x="560" y="44" class="svg-text" text-anchor="start" font-size="13" font-weight="600">الأعلى</text><line x1="504" y1="230" x2="556" y2="230" class="svg-guide"/><text x="560" y="234" class="svg-text" text-anchor="start" font-size="13" font-weight="600">الإغلاق</text><line x1="504" y1="100" x2="556" y2="100" class="svg-guide"/><text x="560" y="104" class="svg-text" text-anchor="start" font-size="13" font-weight="600">الافتتاح</text><line x1="504" y1="300" x2="556" y2="300" class="svg-guide"/><text x="560" y="304" class="svg-text" text-anchor="start" font-size="13" font-weight="600">الأدنى</text><text x="440" y="74.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">الذيل العلوي</text><text x="440" y="169.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">الجسم</text><text x="440" y="269.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">الذيل السفلي</text><text x="500" y="332" class="svg-text" text-anchor="middle" font-size="14" font-weight="700">شمعة هابطة (السعر انخفض)</text></svg><figcaption>الأسعار الأربعة داخل كل شمعة.</figcaption></figure>
+<ul>
+<li><strong>جسم الشمعة (Body)</strong> — الجزء السميك بين الافتتاح والإغلاق. <strong>جسم كبير</strong> = حركة قوية في اتجاه واحد.</li>
+<li><strong>الذيول (الظلال / Wicks)</strong> — الخطوط الرفيعة. <strong>الذيل الطويل</strong> يعني أن السعر ذهب إلى هناك لكنه <strong>دُفع إلى الوراء</strong> — وهي علامة رفض.</li>
+<li><strong>الشمعة الخضراء / الصاعدة (Bullish)</strong> — الإغلاق أعلى من الافتتاح. <strong>صاعد</strong> = في ارتفاع (الثور يهاجم بدفع قرنيه إلى الأعلى).</li>
+<li><strong>الشمعة الحمراء / الهابطة (Bearish)</strong> — الإغلاق أدنى من الافتتاح. <strong>هابط</strong> = في انخفاض (الدب يضرب بمخالبه إلى الأسفل).</li>
+</ul>
+<h3 id="h3-24">الأطر الزمنية</h3>
+<p><strong>الإطار الزمني (Timeframe)</strong> هو مقدار الوقت الذي تمثّله كل شمعة: دقيقة واحدة (M1)، 5 دقائق (M5)، 15 دقيقة (M15)، ساعة واحدة (H1)، 4 ساعات (H4)، يوم واحد (D1)، أسبوع واحد (W1)…</p>
+<p><strong>السوق نفسه يبدو مختلفاً تماماً</strong> على الأطر الزمنية المختلفة: ارتفاع قوي على M5 قد يكون مجرد نتوء صغير على D1. عادةً يكون أداء المبتدئين أفضل عندما يبدؤون بـ <strong>الأطر الزمنية الأعلى</strong> (H4 وD1): قرارات أقل، وأبطأ، وأقل ضجيجاً.</p>
+<h3 id="h3-25">بعض أنماط الشموع الشائعة</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>النمط</th>
+<th>كيف يبدو</th>
+<th>ما <em>يعتقد</em> الناس أنه يعنيه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>الدوجي (Doji)</strong></td>
+<td>الافتتاح ≈ الإغلاق، جسم صغير جداً، ذيول من الجهتين</td>
+<td>التردد: المشترون والبائعون متوازنون</td>
+</tr>
+<tr>
+<td><strong>المطرقة (Hammer)</strong></td>
+<td>جسم صغير في الأعلى، ذيل سفلي طويل</td>
+<td>البائعون دفعوا السعر للأسفل، والمشترون أعادوه للأعلى → ارتداد محتمل</td>
+</tr>
+<tr>
+<td><strong>الشهاب (Shooting star)</strong></td>
+<td>جسم صغير في الأسفل، ذيل علوي طويل</td>
+<td>المشترون دفعوا السعر للأعلى، والبائعون أعادوه للأسفل → هبوط محتمل</td>
+</tr>
+<tr>
+<td><strong>الابتلاع الصاعد (Bullish engulfing)</strong></td>
+<td>جسم أخضر يغطي بالكامل الجسم الأحمر السابق</td>
+<td>المشترون سيطروا</td>
+</tr>
+<tr>
+<td><strong>الابتلاع الهابط (Bearish engulfing)</strong></td>
+<td>جسم أحمر يغطي بالكامل الجسم الأخضر السابق</td>
+<td>البائعون سيطروا</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="svg-figure"><svg viewBox="0 0 680 245" role="img" aria-label="أنماط شموع شائعة. إنها تلميحات، وليست وعوداً." direction="ltr" xmlns="http://www.w3.org/2000/svg"><line x1="60" y1="60" x2="60" y2="180" class="wick-down" stroke-width="2"/><rect x="49.0" y="120" width="22" height="2" rx="2" class="body-down"/><text x="60" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">دوجي</text><line x1="190" y1="72" x2="190" y2="190" class="wick-up" stroke-width="2"/><rect x="179.0" y="78" width="22" height="12" rx="2" class="body-up"/><text x="190" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">المطرقة</text><line x1="320" y1="50" x2="320" y2="170" class="wick-down" stroke-width="2"/><rect x="309.0" y="150" width="22" height="14" rx="2" class="body-down"/><text x="320" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">النجم الساقط</text><line x1="444" y1="92" x2="444" y2="150" class="wick-down" stroke-width="2"/><rect x="435.0" y="100" width="18" height="40" rx="2" class="body-down"/><line x1="476" y1="80" x2="476" y2="156" class="wick-up" stroke-width="2"/><rect x="463.0" y="90" width="26" height="56" rx="2" class="body-up"/><text x="460" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">ابتلاع صاعد</text><line x1="604" y1="90" x2="604" y2="148" class="wick-up" stroke-width="2"/><rect x="595.0" y="100" width="18" height="40" rx="2" class="body-up"/><line x1="636" y1="84" x2="636" y2="160" class="wick-down" stroke-width="2"/><rect x="623.0" y="94" width="26" height="56" rx="2" class="body-down"/><text x="620" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">ابتلاع هابط</text></svg><figcaption>أنماط شموع شائعة. إنها تلميحات، وليست وعوداً.</figcaption></figure>
+<aside class="callout callout-warning"><div class="callout-title"><span class="callout-icon">⚠️</span>تحذير</div><p>الأنماط <strong>تلميحات، وليست وعوداً</strong>. وحدها، تكون خاطئة في كثير من الأحيان. وتصبح ذات معنى أكبر بكثير عندما تظهر في مكان مهم على الرسم البياني (مثل الدعم أو المقاومة — الجزء 10).</p>
+</aside>
+<h3 id="h3-26">حجم التداول</h3>
+<p><strong>حجم التداول (Volume)</strong> هو مقدار ما تم تداوله في فترة ما، ويُعرض عادةً على شكل أعمدة تحت الرسم البياني. حركة السعر المصحوبة بـ <strong>حجم تداول مرتفع</strong> يقف &quot;وراءها ناس أكثر&quot; من الحركة نفسها بحجم تداول منخفض.</p>
+</section><section class="part" id="part-7"><h2><span class="part-badge">7</span><span>الشراء (Long) مقابل البيع على المكشوف (Short)</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div>
+<ul>
+<li><strong>الشراء (Going long)</strong> = &quot;أعتقد أن هذه اللعبة ستصبح أكثر شعبية.&quot; تشتريها الآن، وتبيعها لاحقاً بسعر أعلى.</li>
+<li><strong>البيع على المكشوف (Going short)</strong> = &quot;أعتقد أن هذه اللعبة ستصبح أقل شعبية.&quot; <strong>تستعير</strong> واحدة من صديقك، وتبيعها الآن بـ 10$، ثم عندما ينخفض سعرها إلى 6$ تشتري واحدة وتعيدها لصديقك، وتحتفظ بالـ 4$.</li>
+</ul>
+</aside>
+<ul>
+<li><strong>الشراء (Long / Buy)</strong> — تربح عندما <strong>يرتفع</strong> السعر.</li>
+<li><strong>البيع على المكشوف (Short / Sell)</strong> — تربح عندما <strong>ينخفض</strong> السعر.</li>
+</ul>
+<figure class="svg-figure"><svg viewBox="0 0 680 250" role="img" aria-label="الشراء والبيع على المكشوف صورتان متعاكستان." direction="ltr" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah-up" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="dot-up"/></marker></defs><rect x="10" y="10" width="320" height="230" rx="14" class="svg-panel"/><text x="170" y="38" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">شراء (Long) — ربح عند ارتفاع السعر</text><polyline points="40,200 90,180 130,190 180,140 220,150 290,80" class="line-up" fill="none" stroke-width="3"/><circle cx="40" cy="200" r="6" class="dot-up"/><circle cx="290" cy="80" r="6" class="dot-down"/><text x="40" y="222" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">شراء ①</text><text x="290" y="68" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">بيع ②</text><line x1="305" y1="198" x2="305" y2="84" class="arrow-up" stroke-width="2" marker-end="url(#ah-up)"/><text x="300" y="145" class="svg-up" text-anchor="end" font-size="12" font-weight="700">الربح</text><rect x="350" y="10" width="320" height="230" rx="14" class="svg-panel"/><text x="510" y="38" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">بيع على المكشوف (Short) — ربح عند انخفاض السعر</text><polyline points="380,80 430,100 470,90 520,140 560,130 630,200" class="line-down" fill="none" stroke-width="3"/><circle cx="380" cy="80" r="6" class="dot-down"/><circle cx="630" cy="200" r="6" class="dot-up"/><text x="380" y="68" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">بيع ①</text><text x="630" y="222" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">إعادة شراء ②</text><line x1="648" y1="84" x2="648" y2="196" class="arrow-up" stroke-width="2" marker-end="url(#ah-up)"/><text x="642" y="145" class="svg-up" text-anchor="end" font-size="12" font-weight="700">الربح</text></svg><figcaption>الشراء والبيع على المكشوف صورتان متعاكستان.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>📈 الشراء (Long)</th>
+<th>📉 البيع على المكشوف (Short)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>إجراء الفتح</td>
+<td><strong>شراء</strong></td>
+<td><strong>بيع</strong></td>
+</tr>
+<tr>
+<td>إجراء الإغلاق</td>
+<td><strong>بيع</strong></td>
+<td><strong>إعادة الشراء</strong></td>
+</tr>
+<tr>
+<td>تربح إذا كان السعر…</td>
+<td><strong>يرتفع</strong></td>
+<td><strong>ينخفض</strong></td>
+</tr>
+<tr>
+<td>يُفتح عند…</td>
+<td>سعر Ask</td>
+<td>سعر Bid</td>
+</tr>
+<tr>
+<td>أقصى خسارة ممكنة (بدون رافعة مالية)</td>
+<td>ما دفعته (السعر قد يصل إلى 0)</td>
+<td><strong>غير محدودة نظرياً</strong> (السعر قد يستمر في الارتفاع)</td>
+</tr>
+<tr>
+<td>المعادلة</td>
+<td>(الخروج − الدخول) × الحجم</td>
+<td>(الدخول − الخروج) × الحجم</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-27">أين يمكنك البيع على المكشوف؟</h3>
+<ul>
+<li><strong>الفوركس / عقود الفروقات على MT5 (Exness):</strong> نعم، فقط اضغط <strong>Sell</strong>. كل صفقة فوركس هي في الحقيقة شراء لعملة وبيع على المكشوف لعملة أخرى — بيع <code>EURUSD</code> = بيع اليورو على المكشوف، وشراء الدولار.</li>
+<li><strong>التداول الفوري للعملات الرقمية (Binance/MEXC):</strong> يمكنك فقط بيع العملات التي <strong>تملكها بالفعل</strong>. بيع ما لديك من BTC هو &quot;خروج&quot;، وليس بيعاً على المكشوف.</li>
+<li><strong>العقود الآجلة/الهامش للعملات الرقمية:</strong> نعم، يمكنك فتح صفقة بيع على المكشوف.</li>
+</ul>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>ملاحظة</div><p>في MT5، زر &quot;Buy&quot; يفتح صفقة شراء (Long) وزر &quot;Sell&quot; يفتح صفقة بيع (Short). وللإغلاق، لا تضغط الزر المعاكس — بل <strong>تُغلق الصفقة المفتوحة</strong> (والمنصة تنفّذ الصفقة المعاكسة نيابةً عنك).</p>
+</aside>
+</section><section class="part" id="part-8"><h2><span class="part-badge">8</span><span>أنواع الأوامر</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p><strong>الأمر</strong> هو تعليمة توجّهها إلى السوق.</p>
+<ul>
+<li><strong>أمر السوق</strong>: &quot;أعطني واحدة الآن، مهما كان ثمنها!&quot;</li>
+<li><strong>الأمر المحدد</strong>: &quot;سأشتري فقط إذا كان السعر 5$ أو أرخص.&quot;</li>
+<li><strong>أمر الإيقاف</strong>: &quot;إذا وصل السعر إلى 8$، فاشترِ/بِع لي.&quot; (زناد)</li>
+<li><strong>وقف الخسارة</strong>: &quot;إذا ساءت الأمور، أخرجني عند هذه النقطة.&quot;</li>
+<li><strong>جني الأرباح</strong>: &quot;إذا سارت الأمور جيداً، اقبض الأرباح عند هذه النقطة.&quot;</li>
+</ul>
+</aside>
+<p><strong>الأمر (Order)</strong> هو تعليمتك بالشراء أو البيع. و<strong>الصفقة المفتوحة / المركز (Position)</strong> هي ما تحتفظ به <strong>بعد</strong> تنفيذ الأمر. و<strong>التنفيذ (Fill / Execution)</strong> يعني أن الأمر حدث فعلاً.</p>
+<h3 id="h3-28">أنواع الأوامر الرئيسية</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>الأمر</th>
+<th>ماذا يفعل</th>
+<th>المزايا</th>
+<th>العيوب</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>أمر السوق (Market)</strong></td>
+<td>يشتري/يبيع <strong>فوراً</strong> بأفضل سعر متاح</td>
+<td>يُنفَّذ دائماً (إذا وُجدت سيولة)</td>
+<td>السعر غير مضمون → <strong>انزلاق سعري (Slippage)</strong></td>
+</tr>
+<tr>
+<td><strong>الأمر المحدد (Limit)</strong></td>
+<td>يشتري <strong>بهذا السعر أو أقل</strong> / يبيع <strong>بهذا السعر أو أعلى</strong></td>
+<td>السعر مضمون أو أفضل</td>
+<td>قد <strong>لا يُنفَّذ أبداً</strong></td>
+</tr>
+<tr>
+<td><strong>أمر الإيقاف (Stop / stop-market)</strong></td>
+<td>عندما <strong>يلمس السعر سعر الإيقاف</strong>، يُرسَل أمر سوق</td>
+<td>الدخول في الاختراقات، والخروج من الخسائر تلقائياً</td>
+<td>قد يُنفَّذ بسعر <strong>أسوأ</strong> من سعر الإيقاف في الأسواق السريعة</td>
+</tr>
+<tr>
+<td><strong>أمر الإيقاف المحدد (Stop-limit)</strong></td>
+<td>عندما يلمس السعر سعر الإيقاف، يُوضَع <strong>أمر محدد</strong></td>
+<td>يتحكم في أسوأ سعر</td>
+<td>قد <strong>لا يُنفَّذ</strong> على الإطلاق إذا قفز السعر متجاوزاً إياه</td>
+</tr>
+<tr>
+<td><strong>وقف الخسارة (Stop-Loss / SL)</strong></td>
+<td>أمر إيقاف <strong>يُغلق</strong> صفقتك لتحديد الخسارة</td>
+<td>يحمي حسابك</td>
+<td>قد يُضرَب بارتفاع قصير مفاجئ (&quot;صيد الإيقافات&quot;)، وانزلاق سعري عند الفجوات</td>
+</tr>
+<tr>
+<td><strong>جني الأرباح (Take-Profit / TP)</strong></td>
+<td>أمر محدد <strong>يُغلق</strong> صفقتك عند هدفك</td>
+<td>يثبّت الربح دون الحاجة إلى المراقبة</td>
+<td>قد ينعكس السعر قبل الوصول إليه بقليل</td>
+</tr>
+<tr>
+<td><strong>الوقف المتحرك (Trailing stop)</strong></td>
+<td>وقف خسارة <strong>يتبع</strong> السعر على مسافة ثابتة كلما تحرك لصالحك</td>
+<td>يترك الصفقات الرابحة تستمر</td>
+<td>قد يُغلق بسبب التذبذبات العادية إذا كان قريباً جداً</td>
+</tr>
+<tr>
+<td><strong>OCO</strong> (One-Cancels-the-Other، أحدهما يلغي الآخر)</td>
+<td>أمران مرتبطان: عندما يُنفَّذ أحدهما، يُلغى الآخر</td>
+<td>وضع جني الأرباح ووقف الخسارة معاً على منصات التداول الفوري</td>
+<td>أكثر تعقيداً بقليل</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-29">أين تضعها؟ (صورة لصفقة شراء LONG)</h3>
+<pre class="code ascii"><code>Price
+  ▲
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  جني الأرباح (sell limit)      ← خروج بربح
+  │
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  Buy STOP (ادخل إذا اخترق السعر هذا المستوى صعوداً)
+  │
+  │  ●  السعر الحالي
+  │
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  Buy LIMIT (ادخل إذا هبط السعر إلى هنا)
+  │
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  وقف الخسارة (sell stop)        ← خروج بخسارة صغيرة
+  └──────────────────────────────────────▶ time
+</code></pre>
+<p>في MT5 تحمل الأوامر المعلّقة هذه الأسماء بالضبط: <strong>Buy Limit وSell Limit وBuy Stop وSell Stop وBuy Stop Limit وSell Stop Limit</strong>.</p>
+<ul>
+<li><strong>Buy Limit</strong> — تحت السعر الحالي (شراء الانخفاض).</li>
+<li><strong>Sell Limit</strong> — فوق السعر الحالي (بيع الارتفاع).</li>
+<li><strong>Buy Stop</strong> — فوق السعر الحالي (شراء الاختراق الصاعد).</li>
+<li><strong>Sell Stop</strong> — تحت السعر الحالي (بيع الكسر الهابط).</li>
+</ul>
+<h3 id="h3-30">كيف يتنقّل الأمر داخل النظام</h3>
+<div class="diagram"><pre class="mermaid">stateDiagram-v2
+    [*] --&gt; New: ترسل الأمر
+    New --&gt; Rejected: المال غير كافٍ / سعر غير صالح
+    New --&gt; Open: ينتظر في دفتر الأوامر (limit/stop)
+    New --&gt; Filled: تمت مطابقة أمر السوق
+    Open --&gt; PartiallyFilled: تمت مطابقة جزء منه
+    PartiallyFilled --&gt; Filled: تمت مطابقة الباقي
+    Open --&gt; Canceled: أنت تلغيه
+    Open --&gt; Expired: انتهت المهلة الزمنية
+    Filled --&gt; [*]
+    Canceled --&gt; [*]
+    Rejected --&gt; [*]
+    Expired --&gt; [*]
+</pre></div>
+<h3 id="h3-31">كلمات إضافية ستراها على منصات التداول</h3>
+<ul>
+<li><strong>الصانع (Maker)</strong> — أمرك <strong>يضيف</strong> سيولة لأنه ينتظر في الدفتر (عادةً أمر محدد). غالباً ما يدفع الصانعون رسوماً <strong>أقل</strong>.</li>
+<li><strong>الآخذ (Taker)</strong> — أمرك <strong>يأخذ</strong> سيولة لأنه يُطابَق فوراً (أوامر السوق، أو الأوامر المحددة التي تُطابَق في الحال). يدفع الآخذون رسوماً <strong>أعلى</strong>.</li>
+<li><strong>مدة صلاحية الأمر (Time in force)</strong> — كم يبقى الأمر حياً:
+<ul>
+<li><strong>GTC</strong> (Good-Til-Canceled) — حتى يُنفَّذ أو تلغيه أنت.</li>
+<li><strong>IOC</strong> (Immediate-Or-Cancel) — نفّذ ما يمكن تنفيذه الآن، وألغِ الباقي.</li>
+<li><strong>FOK</strong> (Fill-Or-Kill) — نفّذ كل شيء الآن أو لا شيء.</li>
+</ul>
+</li>
+<li><strong>Post-only</strong> — &quot;اقبل أمري المحدد فقط إذا كان سيصبح صانعاً&quot; (وليس آخذاً أبداً).</li>
+<li><strong>Reduce-only</strong> (في العقود الآجلة) — الأمر يمكنه فقط تصغير صفقتك، ولا يفتح صفقة جديدة أبداً. مفيد جداً للروبوتات.</li>
+</ul>
+</section><section class="part" id="part-9"><h2><span class="part-badge">9</span><span>الفارق السعري والرسوم والرافعة المالية والهامش والسيولة والتقلب</span></h2>
+<p>هذه الكلمات الست تحدد <strong>كم يكلّفك التداول</strong> و<strong>بأي سرعة يمكن أن تخسر</strong>. تعلّمها جيداً.</p>
+<h3 id="h3-32">9.1 الفارق السعري</h3>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>الفارق السعري هو &quot;حصة المتجر&quot; — الفجوة بين سعر الشراء وسعر البيع. أنت تبدأ كل صفقة وأنت خاسر قليلاً بسببه.</p>
+</aside>
+<p><strong>الفارق السعري = Ask − Bid.</strong></p>
+<ul>
+<li>EURUSD سعر Bid 1.08500 / سعر Ask 1.08510 → الفارق السعري <strong>1.0 نقطة</strong>.</li>
+<li>في صفقة حجمها 0.10 لوت (≈1$ لكل نقطة) يكلّفك ذلك حوالي <strong>1$</strong> للدخول.</li>
+<li>الفوارق السعرية <strong>صغيرة</strong> في الأزواج الشائعة (EURUSD) و<strong>كبيرة</strong> في الأزواج الغريبة والعملات البديلة الصغيرة، وخلال الأخبار أو عند التجديد اليومي (Rollover) (حوالي 21:00–22:00 UTC).</li>
+</ul>
+<h3 id="h3-33">9.2 الرسوم والتكاليف الأخرى</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>التكلفة</th>
+<th>أين</th>
+<th>كيف تعمل</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>الفارق السعري (Spread)</strong></td>
+<td>في كل مكان، خاصة لدى الوسطاء</td>
+<td>مدمج في السعر</td>
+</tr>
+<tr>
+<td><strong>العمولة (Commission)</strong></td>
+<td>الوسطاء (حسابات raw/zero-spread)</td>
+<td>مبلغ ثابت لكل لوت، مثلاً بضعة دولارات لكل لوت في كل اتجاه</td>
+</tr>
+<tr>
+<td><strong>رسوم التداول (صانع/آخذ – Maker/Taker)</strong></td>
+<td>منصات تداول العملات الرقمية</td>
+<td>نسبة % من قيمة الصفقة، مثلاً 0.1% من 500$ = 0.50$</td>
+</tr>
+<tr>
+<td><strong>رسوم التبييت / التجديد (Swap / Rollover)</strong></td>
+<td>الفوركس/عقود الفروقات المُحتفَظ بها <strong>بعد التجديد اليومي</strong></td>
+<td>فرق الفائدة بين العملتين؛ قد <strong>تدفعه أو تستلمه</strong>. بعض الحسابات &quot;خالية من رسوم التبييت&quot; (swap-free).</td>
+</tr>
+<tr>
+<td><strong>معدل التمويل (Funding Rate)</strong></td>
+<td>العقود الآجلة الدائمة للعملات الرقمية</td>
+<td>كل بضع ساعات (غالباً كل 8 ساعات) يدفع أصحاب صفقات الشراء لأصحاب صفقات البيع أو العكس. مثلاً 0.01% على 2,000$ = 0.20$ في كل دفعة تمويل.</td>
+</tr>
+<tr>
+<td><strong>رسوم السحب / الشبكة</strong></td>
+<td>سحب العملات الرقمية</td>
+<td>رسوم إرسال العملات على البلوكتشين</td>
+</tr>
+<tr>
+<td><strong>الانزلاق السعري (Slippage)</strong></td>
+<td>في كل مكان</td>
+<td>الحصول على سعر أسوأ من المتوقع (ليس رسوماً، لكنه تكلفة حقيقية)</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>ملاحظة</div><p>التكاليف تبدو ضئيلة في كل صفقة، لكن الروبوت الذي يتداول 20 مرة في اليوم يدفعها 20 مرة في اليوم. <strong>كثير من الاستراتيجيات التي تبدو مربحة على الورق تصبح خاسرة بعد احتساب التكاليف.</strong></p>
+</aside>
+<h3 id="h3-34">9.3 الرافعة المالية</h3>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>الرافعة المالية تشبه <strong>العدسة المكبّرة</strong> للمال. ضع 10$ تحت عدسة تكبّر 10 مرات فـ<em>تبدو</em> وكأنها 100$. إذا تحرك السعر قليلاً لصالحك، يصبح ربحك أكبر 10 مرات. وإذا تحرك قليلاً ضدك، تصبح خسارتك أكبر 10 مرات — والعدسة قد تحرق الـ 10$ حتى لا يبقى منها شيء.</p>
+</aside>
+<p><strong>الرافعة المالية (Leverage)</strong> تتيح لك التحكم في صفقة <strong>أكبر من أموالك الخاصة</strong>. وتُكتب على شكل نسبة (1:100) أو مُضاعِف (100x).</p>
+<pre class="code ascii"><code>حجم الصفقة (القيمة الاسمية) = الهامش الخاص بك × الرافعة المالية
+    $100 × 10  = $1,000 صفقة
+    $100 × 100 = $10,000 صفقة
+</code></pre>
+<p><strong>القيمة الاسمية (Notional value)</strong> هي الحجم الكامل للصفقة بالمال.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>حركة السعر ضدك</th>
+<th>1x (بدون رافعة)</th>
+<th>10x</th>
+<th>50x</th>
+<th>100x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>−1%</td>
+<td>−1% من أموالك</td>
+<td><strong>−10%</strong></td>
+<td><strong>−50%</strong></td>
+<td><strong>−100% 💥</strong></td>
+</tr>
+<tr>
+<td>−2%</td>
+<td>−2%</td>
+<td>−20%</td>
+<td>−100% 💥</td>
+<td>💥</td>
+</tr>
+<tr>
+<td>−5%</td>
+<td>−5%</td>
+<td>−50%</td>
+<td>💥</td>
+<td>💥</td>
+</tr>
+<tr>
+<td>−10%</td>
+<td>−10%</td>
+<td><strong>−100% 💥</strong></td>
+<td>💥</td>
+<td>💥</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-caution"><div class="callout-title"><span class="callout-icon">🛑</span>انتبه</div><p>الرافعة المالية <strong>لا تغيّر السوق</strong>. إنها تغيّر <strong>مدى أهمية كل حركة بالنسبة لك</strong>. مفتاح الأمان هو <strong>حجم الصفقة</strong> و<strong>وقف الخسارة</strong> — وليس رقم الرافعة المالية المعروض في حسابك. (المثال 1 في الجزء 18 يوضح كيف أن متداولاً لديه رافعة 1:100 متاحة يمكنه مع ذلك أن يخاطر بـ 1% فقط.)</p>
+</aside>
+<h3 id="h3-35">9.4 الهامش</h3>
+<p><strong>الهامش (Margin)</strong> هو المال الذي <strong>تحجزه</strong> المنصة كوديعة ما دامت صفقتك ذات الرافعة المالية مفتوحة.</p>
+<pre class="code ascii"><code>الهامش المطلوب = القيمة الاسمية ÷ الرافعة المالية
+   EURUSD 0.10 lot = 10,000 EUR ≈ $10,850 قيمة اسمية
+   عند 1:100 → الهامش ≈ $108.50
+</code></pre>
+<p>كلمات ستراها في MT5:</p>
+<ul>
+<li><strong>الرصيد (Balance)</strong> — المال الموجود في الحساب، دون احتساب الصفقات المفتوحة.</li>
+<li><strong>حقوق الملكية (Equity)</strong> — الرصيد <strong>+/−</strong> ربح/خسارة الصفقات المفتوحة. (&quot;ما سيكون لديك لو أغلقت كل شيء الآن.&quot;)</li>
+<li><strong>الهامش المستخدم (Used margin)</strong> — المال المحجوز بسبب الصفقات المفتوحة.</li>
+<li><strong>الهامش الحر (Free margin)</strong> — حقوق الملكية − الهامش المستخدم (ما يتبقى لفتح صفقات جديدة أو لامتصاص الخسائر).</li>
+<li><strong>مستوى الهامش (Margin level)</strong> — <code>Equity ÷ Used margin × 100%</code>.</li>
+<li><strong>نداء الهامش (Margin Call)</strong> — تحذير عندما ينخفض مستوى الهامش إلى حدٍّ معيّن (يختلف حسب الوسيط).</li>
+<li><strong>الإغلاق القسري (Stop Out)</strong> — يقوم الوسيط <strong>بإغلاق</strong> صفقاتك <strong>تلقائياً</strong> عندما ينخفض مستوى الهامش إلى حدٍّ أدنى، لمنع حسابك من أن يصبح بالسالب.</li>
+</ul>
+<p>في العقود الآجلة للعملات الرقمية تُسمّى الفكرة نفسها <strong>التصفية (Liquidation)</strong>: إذا التهمت خسائرك هامشك حتى تصل إلى <strong>هامش الصيانة (Maintenance margin)</strong>، تُغلق المنصة صفقتك قسراً وتخسر ذلك الهامش.</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;فتح صفقة برافعة مالية&quot;] --&gt; B{&quot;السعر يتحرك&lt;br/&gt;ضدك&quot;}
+    B --&gt; C[&quot;حقوق الملكية تنخفض&quot;]
+    C --&gt; D[&quot;مستوى الهامش يهبط&quot;]
+    D --&gt; E[&quot;⚠️ نداء الهامش&lt;br/&gt;(تحذير)&quot;]
+    E --&gt; F[&quot;🛑 الإغلاق القسري / التصفية&lt;br/&gt;إغلاق الصفقات قسراً&quot;]
+    F --&gt; G[&quot;الخسارة تصبح نهائية&quot;]
+</pre></div>
+<p><strong>الهامش المتقاطع مقابل الهامش المعزول (Cross vs Isolated)</strong> (في العقود الآجلة للعملات الرقمية):</p>
+<ul>
+<li><strong>المعزول (Isolated)</strong> — لكل صفقة هامشها الخاص. إذا تمت تصفيتها، يضيع ذلك الهامش فقط.</li>
+<li><strong>المتقاطع (Cross)</strong> — كامل رصيدك في العقود الآجلة يدعم كل الصفقات. صفقة واحدة سيئة يمكن أن تستنزف كل شيء.</li>
+</ul>
+<h3 id="h3-36">9.5 السيولة</h3>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>السيولة هي مدى <strong>سهولة</strong> مبادلة شيء ما بسرعة وبسعر عادل. الملصقات المشهورة — التي يريدها أطفال كثيرون — سهلة التبادل. أما الملصق الغريب الذي لا يريده أحد — فقد تنتظر أياماً أو تضطر لقبول صفقة سيئة.</p>
+</aside>
+<ul>
+<li><strong>سيولة مرتفعة</strong> (EURUSD، BTC/USDT): فوارق سعرية ضيقة، والأوامر الكبيرة تُنفَّذ دون أن تحرّك السعر كثيراً.</li>
+<li><strong>سيولة منخفضة</strong> (الأزواج الغريبة، العملات البديلة الصغيرة جداً): فوارق سعرية واسعة، و<strong>انزلاق سعري</strong>، وأحياناً <strong>لا تستطيع الخروج</strong> عندما تريد.</li>
+</ul>
+<p><strong>الانزلاق السعري (Slippage)</strong> = الفرق بين السعر الذي توقعته والسعر الذي حصلت عليه. يحدث مع أوامر السوق وأوامر الإيقاف عندما يكون الدفتر ضعيفاً أو يتحرك السعر بسرعة.</p>
+<p><strong>عمق دفتر الأوامر (Order book depth)</strong> = حجم الكمية المنتظرة عند كل سعر. الدفتر العميق = سيولة مرتفعة.</p>
+<h3 id="h3-37">9.6 التقلب</h3>
+<p><strong>التقلب (Volatility)</strong> هو <strong>مقدار وسرعة</strong> تحرّك السعر.</p>
+<ul>
+<li>تقلب مرتفع = تأرجحات كبيرة = أرباح <strong>وخسائر</strong> محتملة أكبر، ووقف الخسارة يُضرَب أكثر.</li>
+<li>تقلب منخفض = هدوء، وحركات صغيرة.</li>
+<li>يقفز التقلب حول <strong>الأخبار</strong> (مثل تقرير الوظائف الأمريكي، وقرارات البنوك المركزية)، وافتتاحات الأسواق، وفي العملات الرقمية حول الإعلانات الكبيرة أو موجات التصفية.</li>
+<li>طريقة شائعة لقياسه هي مؤشر <strong>ATR</strong> (الجزء 11).</li>
+</ul>
+<div class="diagram"><pre class="mermaid">xychart-beta
+    title &quot;المدى اليومي المعتاد (نسب % توضيحية)&quot;
+    x-axis [&quot;EURUSD&quot;, &quot;GBPUSD&quot;, &quot;الذهب&quot;, &quot;BTC&quot;, &quot;ETH&quot;, &quot;عملة بديلة صغيرة&quot;]
+    y-axis &quot;الحركة اليومية %&quot; 0 --&gt; 16
+    bar [0.5, 0.7, 1.2, 3, 4, 12]
+</pre></div>
+</section><section class="part" id="part-10"><h2><span class="part-badge">10</span><span>أساسيات التحليل الفني</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>التحليل الفني يشبه النظر إلى <strong>آثار الأقدام على الرمل</strong> لتخمين إلى أين يمشي شخص ما. لا يمكنك أن تكون متأكداً، لكن إذا كانت الآثار تستمر في الصعود على الشاطئ، فهو <em>على الأرجح</em> ما زال يصعد.</p>
+</aside>
+<p>هناك ثلاث طرق يحاول بها المتداولون فهم الأسعار:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>التحليل</th>
+<th>ينظر إلى</th>
+<th>سؤال على سبيل المثال</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>التحليل الأساسي (Fundamental analysis)</strong></td>
+<td>&quot;العالم الحقيقي&quot;: الاقتصاد، أسعار الفائدة، أخبار الشركات أو المشاريع</td>
+<td>&quot;هل سيرفع البنك المركزي أسعار الفائدة؟&quot;</td>
+</tr>
+<tr>
+<td><strong>تحليل معنويات السوق (Sentiment analysis)</strong></td>
+<td>ما يشعر به الجمهور</td>
+<td>&quot;هل الجميع طمّاع جداً الآن؟&quot;</td>
+</tr>
+<tr>
+<td><strong>التحليل الفني (Technical analysis / TA)</strong></td>
+<td><strong>الرسم البياني</strong>: السعر، حجم التداول، الأنماط</td>
+<td>&quot;هل السعر قريب من مستوى ارتدّ منه من قبل؟&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<p>التحليل الفني هو الأكثر شيوعاً في التداول قصير المدى وفي <strong>الروبوتات</strong>، لأن بيانات الأسعار سهلة الحصول عليها وسهلة المعالجة بالحاسوب.</p>
+<p>المعتقدات الأساسية للتحليل الفني:</p>
+<ol>
+<li>السعر يعكس مسبقاً الكثير من المعلومات المعروفة.</li>
+<li>الأسعار تميل إلى التحرك في <strong>اتجاهات (Trends)</strong>.</li>
+<li>السلوك البشري (الخوف، الطمع) يتكرر، ولذلك تتكرر بعض الأنماط.</li>
+</ol>
+<p>لا شيء من هذا مضمون. التحليل الفني يعطي <strong>احتمالات</strong>، وليس يقيناً أبداً.</p>
+<h3 id="h3-38">10.1 الاتجاهات وهيكل السوق</h3>
+<ul>
+<li><strong>الاتجاه الصاعد (Uptrend)</strong> — السعر يصنع <strong>قمماً أعلى (Higher Highs / HH)</strong> و<strong>قيعاناً أعلى (Higher Lows / HL)</strong>. مثل صعود الدرج.</li>
+<li><strong>الاتجاه الهابط (Downtrend)</strong> — <strong>قمم أدنى (Lower Highs / LH)</strong> و<strong>قيعان أدنى (Lower Lows / LL)</strong>. مثل نزول الدرج.</li>
+<li><strong>النطاق العرضي (Range / Sideways)</strong> — السعر يرتد بين أرضية وسقف.</li>
+</ul>
+<figure class="svg-figure"><svg viewBox="0 0 680 240" role="img" aria-label="هيكل السوق: درج صاعد، درج هابط، أو ممر أفقي." direction="ltr" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="220" height="220" rx="14" class="svg-panel"/><text x="120" y="36" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">اتجاه صاعد</text><polyline points="40,190 80,140 110,165 150,105 180,130 220,70" class="line-up" fill="none" stroke-width="3"/><text x="80" y="130" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HH</text><text x="110" y="185" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HL</text><text x="150" y="95" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HH</text><text x="180" y="150" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HL</text><text x="220" y="60" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HH</text><rect x="240" y="10" width="220" height="220" rx="14" class="svg-panel"/><text x="350" y="36" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">اتجاه هابط</text><polyline points="270,60 310,115 340,90 380,150 410,125 450,190" class="line-down" fill="none" stroke-width="3"/><text x="310" y="135" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LL</text><text x="340" y="80" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LH</text><text x="380" y="170" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LL</text><text x="410" y="115" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LH</text><text x="450" y="210" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LL</text><rect x="470" y="10" width="200" height="220" rx="14" class="svg-panel"/><text x="570" y="36" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">نطاق عرضي</text><line x1="485" y1="75" x2="655" y2="75" class="svg-res" stroke-width="2" stroke-dasharray="6 4"/><line x1="485" y1="180" x2="655" y2="180" class="svg-sup" stroke-width="2" stroke-dasharray="6 4"/><text x="655" y="68" class="svg-muted" text-anchor="end" font-size="11" font-weight="400">السقف</text><text x="655" y="197" class="svg-muted" text-anchor="end" font-size="11" font-weight="400">الأرضية</text><polyline points="490,170 520,80 550,176 580,82 610,174 645,84" class="line-neutral" fill="none" stroke-width="3"/></svg><figcaption>هيكل السوق: درج صاعد، درج هابط، أو ممر أفقي.</figcaption></figure>
+<p>&quot;<strong>الاتجاه صديقك (The trend is your friend)</strong>&quot; — كثير من الاستراتيجيات لا تتداول إلا <strong>في اتجاه</strong> الاتجاه الأكبر.</p>
+<h3 id="h3-39">10.2 الدعم والمقاومة</h3>
+<ul>
+<li><strong>الدعم (Support)</strong> — منطقة سعرية تميل الأسعار الهابطة إلى <strong>التوقف عندها والارتداد</strong>، لأن المشترين يظهرون هناك. إنه <strong>أرضية</strong>.</li>
+<li><strong>المقاومة (Resistance)</strong> — منطقة سعرية تميل الأسعار الصاعدة إلى <strong>التوقف عندها والانعكاس للأسفل</strong>، لأن البائعين يظهرون هناك. إنها <strong>سقف</strong>.</li>
+<li>إنها <strong>مناطق</strong>، وليست خطوطاً دقيقة.</li>
+<li>عندما تُكسر مقاومة بوضوح، فإنها غالباً تصبح دعماً جديداً (<strong>تبادل الأدوار / Role reversal</strong>)، والعكس صحيح.</li>
+<li><strong>الأرقام المستديرة</strong> (1.1000 في EURUSD، و60,000 في BTC) كثيراً ما تعمل كدعم/مقاومة لأن كثيراً من الناس يضعون أوامرهم هناك.</li>
+</ul>
+<figure class="svg-figure"><svg viewBox="0 0 680 300" role="img" aria-label="السعر يرتد بين الدعم والمقاومة، ثم يخترق." direction="ltr" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="680" height="300" rx="14" class="svg-panel"/><rect x="20" y="137.8" width="640" height="14" class="zone-res"/><rect x="20" y="224.2" width="640" height="14" class="zone-sup"/><text x="28" y="130.8" class="svg-res-t" text-anchor="start" font-size="12" font-weight="700">المقاومة (السقف)</text><text x="654" y="255.2" class="svg-sup-t" text-anchor="end" font-size="12" font-weight="700">الدعم (الأرضية)</text><line x1="40" y1="164.0" x2="40" y2="186.4" class="wick-down" stroke-width="2"/><rect x="35.0" y="170.4" width="10" height="9.599999999999994" rx="2" class="body-down"/><line x1="56" y1="170.4" x2="56" y2="207.20000000000002" class="wick-down" stroke-width="2"/><rect x="51.0" y="180.0" width="10" height="19.200000000000017" rx="2" class="body-down"/><line x1="72" y1="186.4" x2="72" y2="228.0" class="wick-down" stroke-width="2"/><rect x="67.0" y="199.20000000000002" width="10" height="19.19999999999999" rx="2" class="body-down"/><line x1="88" y1="210.4" x2="88" y2="242.4" class="wick-down" stroke-width="2"/><rect x="83.0" y="218.4" width="10" height="12.799999999999983" rx="2" class="body-down"/><line x1="104" y1="210.4" x2="104" y2="244.0" class="wick-up" stroke-width="2"/><rect x="99.0" y="221.6" width="10" height="9.599999999999994" rx="2" class="body-up"/><line x1="120" y1="196.0" x2="120" y2="228.0" class="wick-up" stroke-width="2"/><rect x="115.0" y="202.4" width="10" height="19.19999999999999" rx="2" class="body-up"/><line x1="136" y1="173.6" x2="136" y2="210.4" class="wick-up" stroke-width="2"/><rect x="131.0" y="183.20000000000002" width="10" height="19.19999999999999" rx="2" class="body-up"/><line x1="152" y1="151.2" x2="152" y2="192.79999999999998" class="wick-up" stroke-width="2"/><rect x="147.0" y="164.0" width="10" height="19.200000000000017" rx="2" class="body-up"/><line x1="168" y1="143.2" x2="168" y2="175.2" class="wick-up" stroke-width="2"/><rect x="163.0" y="151.2" width="10" height="12.800000000000011" rx="2" class="body-up"/><line x1="184" y1="140.0" x2="184" y2="173.6" class="wick-down" stroke-width="2"/><rect x="179.0" y="151.2" width="10" height="9.600000000000023" rx="2" class="body-down"/><line x1="200" y1="154.4" x2="200" y2="186.4" class="wick-down" stroke-width="2"/><rect x="195.0" y="160.8" width="10" height="19.19999999999999" rx="2" class="body-down"/><line x1="216" y1="170.4" x2="216" y2="207.20000000000002" class="wick-down" stroke-width="2"/><rect x="211.0" y="180.0" width="10" height="19.200000000000017" rx="2" class="body-down"/><line x1="232" y1="186.4" x2="232" y2="224.8" class="wick-down" stroke-width="2"/><rect x="227.0" y="199.20000000000002" width="10" height="16.0" rx="2" class="body-down"/><line x1="248" y1="207.20000000000002" x2="248" y2="239.2" class="wick-down" stroke-width="2"/><rect x="243.0" y="215.20000000000002" width="10" height="12.799999999999983" rx="2" class="body-down"/><line x1="264" y1="207.20000000000002" x2="264" y2="240.8" class="wick-up" stroke-width="2"/><rect x="259.0" y="218.4" width="10" height="9.599999999999994" rx="2" class="body-up"/><line x1="280" y1="192.79999999999998" x2="280" y2="224.8" class="wick-up" stroke-width="2"/><rect x="275.0" y="199.20000000000002" width="10" height="19.19999999999999" rx="2" class="body-up"/><line x1="296" y1="170.4" x2="296" y2="207.20000000000002" class="wick-up" stroke-width="2"/><rect x="291.0" y="180.0" width="10" height="19.200000000000017" rx="2" class="body-up"/><line x1="312" y1="148.0" x2="312" y2="189.6" class="wick-up" stroke-width="2"/><rect x="307.0" y="160.8" width="10" height="19.19999999999999" rx="2" class="body-up"/><line x1="328" y1="140.0" x2="328" y2="172.0" class="wick-up" stroke-width="2"/><rect x="323.0" y="148.0" width="10" height="12.800000000000011" rx="2" class="body-up"/><line x1="344" y1="136.8" x2="344" y2="170.4" class="wick-down" stroke-width="2"/><rect x="339.0" y="148.0" width="10" height="9.599999999999994" rx="2" class="body-down"/><line x1="360" y1="151.2" x2="360" y2="183.20000000000002" class="wick-down" stroke-width="2"/><rect x="355.0" y="157.6" width="10" height="19.200000000000017" rx="2" class="body-down"/><line x1="376" y1="167.2" x2="376" y2="200.79999999999998" class="wick-down" stroke-width="2"/><rect x="371.0" y="176.8" width="10" height="15.999999999999972" rx="2" class="body-down"/><line x1="392" y1="180.0" x2="392" y2="221.6" class="wick-down" stroke-width="2"/><rect x="387.0" y="192.79999999999998" width="10" height="19.200000000000017" rx="2" class="body-down"/><line x1="408" y1="204.0" x2="408" y2="236.0" class="wick-down" stroke-width="2"/><rect x="403.0" y="212.0" width="10" height="12.800000000000011" rx="2" class="body-down"/><line x1="424" y1="200.79999999999998" x2="424" y2="237.6" class="wick-up" stroke-width="2"/><rect x="419.0" y="212.0" width="10" height="12.800000000000011" rx="2" class="body-up"/><line x1="440" y1="183.20000000000002" x2="440" y2="218.4" class="wick-up" stroke-width="2"/><rect x="435.0" y="189.6" width="10" height="22.400000000000006" rx="2" class="body-up"/><line x1="456" y1="157.6" x2="456" y2="197.6" class="wick-up" stroke-width="2"/><rect x="451.0" y="167.2" width="10" height="22.400000000000006" rx="2" class="body-up"/><line x1="472" y1="132.0" x2="472" y2="176.8" class="wick-up" stroke-width="2"/><rect x="467.0" y="144.8" width="10" height="22.399999999999977" rx="2" class="body-up"/><line x1="488" y1="108.0" x2="488" y2="156.0" class="wick-up" stroke-width="2"/><rect x="483.0" y="116.0" width="10" height="28.80000000000001" rx="2" class="body-up"/><line x1="504" y1="76.0" x2="504" y2="128.8" class="wick-up" stroke-width="2"/><rect x="499.0" y="87.2" width="10" height="28.799999999999997" rx="2" class="body-up"/><line x1="520" y1="71.2" x2="520" y2="93.6" class="wick-up" stroke-width="2"/><rect x="515.0" y="77.6" width="10" height="9.600000000000009" rx="2" class="body-up"/><line x1="536" y1="68.0" x2="536" y2="98.4" class="wick-down" stroke-width="2"/><rect x="531.0" y="77.6" width="10" height="12.800000000000011" rx="2" class="body-down"/><line x1="552" y1="77.6" x2="552" y2="116.0" class="wick-down" stroke-width="2"/><rect x="547.0" y="90.4" width="10" height="15.999999999999986" rx="2" class="body-down"/><line x1="568" y1="98.4" x2="568" y2="127.2" class="wick-down" stroke-width="2"/><rect x="563.0" y="106.39999999999999" width="10" height="9.600000000000009" rx="2" class="body-down"/><line x1="584" y1="92.0" x2="584" y2="128.8" class="wick-up" stroke-width="2"/><rect x="579.0" y="103.2" width="10" height="12.799999999999997" rx="2" class="body-up"/><line x1="600" y1="74.4" x2="600" y2="109.60000000000001" class="wick-up" stroke-width="2"/><rect x="595.0" y="80.80000000000001" width="10" height="22.39999999999999" rx="2" class="body-up"/><line x1="616" y1="48.8" x2="616" y2="88.8" class="wick-up" stroke-width="2"/><rect x="611.0" y="58.4" width="10" height="22.400000000000013" rx="2" class="body-up"/><line x1="632" y1="26.4" x2="632" y2="68.0" class="wick-up" stroke-width="2"/><rect x="627.0" y="39.2" width="10" height="19.199999999999996" rx="2" class="body-up"/><text x="88" y="273.2" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↑ ارتداد</text><text x="248" y="273.2" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↑ ارتداد</text><text x="408" y="273.2" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↑ ارتداد</text><text x="168" y="114.80000000000001" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↓ رفض</text><text x="328" y="114.80000000000001" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↓ رفض</text><text x="504" y="52.0" class="svg-up" text-anchor="middle" font-size="13" font-weight="700">اختراق!</text><text x="568" y="190.8" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">المقاومة القديمة ← دعم جديد</text></svg><figcaption>السعر يرتد بين الدعم والمقاومة، ثم يخترق.</figcaption></figure>
+<h3 id="h3-40">10.3 الاختراقات والاختراقات الكاذبة</h3>
+<ul>
+<li><strong>الاختراق (Breakout)</strong> — يتحرك السعر <strong>عبر</strong> الدعم أو المقاومة بقوة (غالباً مع حجم تداول مرتفع).</li>
+<li><strong>الاختراق الكاذب (Fakeout / False breakout)</strong> — يخترق السعر المستوى قليلاً، ثم يعود بسرعة. هذا شائع جداً. كثير من المتداولين ينتظرون <strong>إغلاق شمعة</strong> خلف المستوى، أو <strong>إعادة اختبار (Retest)</strong> للمستوى، قبل الوثوق بالاختراق.</li>
+</ul>
+<h3 id="h3-41">10.4 خطوط الاتجاه والقنوات</h3>
+<p><strong>خط الاتجاه (Trendline)</strong> يصل بين قاعين متأرجحين أو أكثر في الاتجاه الصاعد (أو بين قمتين متأرجحتين أو أكثر في الاتجاه الهابط). و<strong>القناة (Channel)</strong> تضيف خطاً موازياً على الجهة الأخرى. تساعدك على رؤية &quot;ميل&quot; الاتجاه.</p>
+<h3 id="h3-42">10.5 التحليل متعدد الأطر الزمنية</h3>
+<p>انظر إلى <strong>الصورة الكبيرة أولاً</strong>، ثم قرّب:</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;📅 اليومي (D1)&lt;br/&gt;ما هو الاتجاه الرئيسي؟&quot;] --&gt; B[&quot;🕓 4 ساعات (H4)&lt;br/&gt;أين المستويات المهمة؟&quot;] --&gt; C[&quot;🕐 ساعة واحدة (H1)&lt;br/&gt;هل توجد إشارة دخول واضحة؟&quot;]
+</pre></div>
+</section><section class="part" id="part-11"><h2><span class="part-badge">11</span><span>المؤشرات والإشارات</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>المؤشرات تشبه العدّادات في لوحة قيادة السيارة: السرعة، والوقود، والحرارة. تُحسب من السعر، فتساعدك على <em>قراءة</em> حالة السيارة — لكنها لا تقودها، ولا تستطيع رؤية الطريق أمامك.</p>
+</aside>
+<p><strong>المؤشر (Indicator)</strong> هو <strong>معادلة رياضية تُطبَّق على السعر (و/أو حجم التداول)</strong> وتُنتج خطاً أو أعمدة على الرسم البياني.</p>
+<ul>
+<li><strong>المؤشرات المتأخرة (Lagging)</strong> تؤكد ما حدث بالفعل (المتوسطات المتحركة). موثوقة لكنها متأخرة.</li>
+<li><strong>المؤشرات القائدة / المذبذبات (Leading / Oscillators)</strong> تحاول إظهار تغيّرات الزخم مبكراً (RSI). مبكرة لكنها كثيراً ما تخطئ.</li>
+</ul>
+<p><strong>الإشارة (Signal)</strong> هي قاعدة محددة تقول &quot;تصرّف الآن&quot;، مثلاً <em>&quot;عاد RSI ليتجاوز 30 صعوداً&quot;</em>. و<strong>التأكيد (Confirmation)</strong> هو دليل ثانٍ مستقل يتفق مع الأول.</p>
+<h3 id="h3-43">المؤشرات الأساسية</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>المؤشر</th>
+<th>ماذا يقيس</th>
+<th>الإعدادات الشائعة</th>
+<th>الطريقة المعتادة لقراءته</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMA</strong> — المتوسط المتحرك البسيط (Simple Moving Average)</td>
+<td>متوسط سعر الإغلاق لآخر N شمعة</td>
+<td>20، 50، 200</td>
+<td>السعر فوق SMA 200 → اتجاه صاعد طويل المدى</td>
+</tr>
+<tr>
+<td><strong>EMA</strong> — المتوسط المتحرك الأسّي (Exponential Moving Average)</td>
+<td>مثل SMA لكن الأسعار الأحدث لها وزن أكبر (يتفاعل أسرع)</td>
+<td>9، 21، 50</td>
+<td>تقاطع EMA السريع فوق EMA البطيء → بداية محتملة لاتجاه صاعد</td>
+</tr>
+<tr>
+<td><strong>RSI</strong> — مؤشر القوة النسبية (Relative Strength Index)</td>
+<td>سرعة المكاسب الأخيرة مقارنة بالخسائر، على مقياس 0–100</td>
+<td>14</td>
+<td>&gt; 70 &quot;تشبّع شرائي&quot;، &lt; 30 &quot;تشبّع بيعي&quot;</td>
+</tr>
+<tr>
+<td><strong>MACD</strong></td>
+<td>الفرق بين متوسطين أسّيين + خط إشارة</td>
+<td>12، 26، 9</td>
+<td>تقاطع خط MACD فوق خط الإشارة → زخم صاعد</td>
+</tr>
+<tr>
+<td><strong>Bollinger Bands</strong> (نطاقات بولينجر)</td>
+<td>متوسط متحرك مع نطاقين على بُعد انحرافين معياريين</td>
+<td>20، 2</td>
+<td>انضغاط النطاقات = تقلب منخفض (غالباً قبل حركة كبيرة)</td>
+</tr>
+<tr>
+<td><strong>ATR</strong> — متوسط المدى الحقيقي (Average True Range)</td>
+<td>متوسط حجم مدى الشمعة → التقلب</td>
+<td>14</td>
+<td>يُستخدم لوضع وقف الخسارة: مثلاً SL على بُعد 1.5 × ATR</td>
+</tr>
+<tr>
+<td><strong>حجم التداول (Volume)</strong></td>
+<td>كم يتم تداوله</td>
+<td>—</td>
+<td>الاختراقات المصحوبة بحجم تداول متزايد أكثر إقناعاً</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-44">كيف يعمل المتوسط المتحرك (مثال صغير)</h3>
+<p>آخر 5 أسعار إغلاق: 10، 11، 12، 13، 14 → <strong>SMA لـ 5 فترات</strong> = (10+11+12+13+14) ÷ 5 = <strong>12</strong>.
+الشمعة التالية تُغلق عند 15 → نحذف الأقدم (10)، ونضيف 15 → (11+12+13+14+15) ÷ 5 = <strong>13</strong>.
+المتوسط &quot;يتحرك&quot; مع كل شمعة جديدة — ولهذا يُسمّى <em>المتوسط المتحرك (Moving average)</em>.</p>
+<h3 id="h3-45">إشارة كلاسيكية: تقاطع المتوسطات المتحركة</h3>
+<div class="diagram"><pre class="mermaid">flowchart TD
+    A[&quot;احسب EMA السريع (مثلاً 20)&lt;br/&gt;وEMA البطيء (مثلاً 50)&quot;] --&gt; B{&quot;هل تقاطع السريع&lt;br/&gt;فوق البطيء؟&quot;}
+    B -- نعم --&gt; C[&quot;📈 إشارة من نوع 'التقاطع الذهبي'&lt;br/&gt;→ فكّر في الشراء&quot;]
+    B -- لا --&gt; D{&quot;هل تقاطع السريع&lt;br/&gt;تحت البطيء؟&quot;}
+    D -- نعم --&gt; E[&quot;📉 إشارة من نوع 'تقاطع الموت'&lt;br/&gt;→ فكّر في البيع على المكشوف / الخروج من الشراء&quot;]
+    D -- لا --&gt; F[&quot;⏸️ لا توجد إشارة — لا تفعل شيئاً&quot;]
+</pre></div>
+<h3 id="h3-46">حقائق مهمة عن المؤشرات</h3>
+<aside class="callout callout-warning"><div class="callout-title"><span class="callout-icon">⚠️</span>تحذير</div>
+<ul>
+<li>المؤشرات <strong>مبنية من السعر</strong>. لا يمكنها أن تعرف شيئاً لا يعرفه السعر بالفعل.</li>
+<li><strong>&quot;التشبّع الشرائي&quot; لا يعني &quot;على وشك الهبوط&quot;.</strong> في الاتجاه الصاعد القوي يمكن أن يبقى RSI فوق 70 لأسابيع.</li>
+<li>إضافة مؤشرات أكثر عادةً <strong>لا</strong> تضيف معلومات أكثر — كثير منها يقول الشيء نفسه. أداتان أو ثلاث مفهومة جيداً أفضل من 10 أدوات مربكة.</li>
+<li>كل إعداد (14، 20، 50…) هو اختيار. إذا جرّبت مئات الإعدادات على بيانات قديمة، سيبدو أحدها مذهلاً بمحض الصدفة (<strong>الإفراط في المواءمة (Overfitting)</strong>، الجزء 20).</li>
+</ul>
+</aside>
+</section><section class="part" id="part-12"><h2><span class="part-badge">12</span><span>استراتيجيات التداول الأساسية</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>الاستراتيجية هي <strong>وصفة طبخ</strong>. تقول بالضبط: <em>متى</em> تبدأ الطبخ (الدخول)، و<em>كم</em> تطبخ (الحجم)، و<em>متى ينضج</em> الطعام (جني الأرباح)، و<em>متى ترميه</em> (وقف الخسارة). من دون وصفة، أنت فقط ترمي الأشياء في المقلاة.</p>
+</aside>
+<p><strong>استراتيجية التداول (Trading strategy)</strong> هي <strong>مجموعة كاملة من القواعد</strong>:</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    M[&quot;1️⃣ السوق والإطار الزمني&lt;br/&gt;ماذا تراقب ومتى&quot;] --&gt; S[&quot;2️⃣ الإعداد&lt;br/&gt;الشروط التي تبحث عنها&quot;]
+    S --&gt; E[&quot;3️⃣ الدخول&lt;br/&gt;الزناد الدقيق&quot;]
+    E --&gt; R[&quot;4️⃣ المخاطرة&lt;br/&gt;وقف الخسارة وحجم الصفقة&quot;]
+    R --&gt; X[&quot;5️⃣ الخروج&lt;br/&gt;جني الأرباح / الوقف المتحرك / الوقت&quot;]
+    X --&gt; J[&quot;6️⃣ المراجعة&lt;br/&gt;سجل التداول والإحصاءات&quot;]
+</pre></div>
+<p>إذا لم تُكتب القاعدة بدقة، فهي ليست استراتيجية بعد. <strong>والقواعد الدقيقة هي بالضبط ما يحتاجه الروبوت أيضاً</strong> — وهذا هو الجسر نحو مشروعك المستقبلي.</p>
+<h3 id="h3-47">أساليب التداول (حسب مدة الاحتفاظ)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>الأسلوب</th>
+<th>مدة الاحتفاظ</th>
+<th>الأطر الزمنية</th>
+<th>ملاحظات</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>المضاربة السريعة (Scalping)</strong></td>
+<td>ثوانٍ–دقائق</td>
+<td>M1–M5</td>
+<td>التكاليف مهمة جداً؛ مرهق للغاية؛ في الغالب للخبراء/الروبوتات ذات الرسوم المنخفضة</td>
+</tr>
+<tr>
+<td><strong>التداول اليومي (Day trading)</strong></td>
+<td>دقائق–ساعات، تُغلق في اليوم نفسه</td>
+<td>M5–H1</td>
+<td>لا رسوم تبييت ليلية، ويحتاج وقتاً طويلاً أمام الشاشة</td>
+</tr>
+<tr>
+<td><strong>التداول المتأرجح (Swing trading)</strong></td>
+<td>أيام–أسابيع</td>
+<td>H4–D1</td>
+<td>قرارات أقل؛ غالباً الأنسب للمبتدئين أثناء التعلّم</td>
+</tr>
+<tr>
+<td><strong>تداول المراكز (Position trading)</strong></td>
+<td>أسابيع–أشهر</td>
+<td>D1–W1</td>
+<td>قريب من الاستثمار</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-48">خمس عائلات أساسية من الاستراتيجيات</h3>
+<p><strong>1. تتبّع الاتجاه (Trend following)</strong> — &quot;اركب الموجة.&quot;</p>
+<ul>
+<li>الفكرة: ابحث عن اتجاه وتداول في اتجاهه.</li>
+<li>مثال على القواعد: <em>لا تشترِ إلا عندما يكون السعر فوق SMA 200. ادخل عندما يتقاطع EMA 20 فوق EMA 50. ضع وقف الخسارة تحت آخر قاع متأرجح. اخرج عندما يعود EMA 20 ليتقاطع تحت EMA 50.</em></li>
+<li>نقطة القوة: يلتقط الحركات الكبيرة. نقطة الضعف: خسائر صغيرة كثيرة في الأسواق العرضية.</li>
+</ul>
+<p><strong>2. تداول النطاق (الدعم والمقاومة – Range trading)</strong> — &quot;اشترِ عند الأرضية، وبِع عند السقف.&quot;</p>
+<ul>
+<li>الفكرة: في السوق العرضي، اشترِ قرب الدعم، وبِع قرب المقاومة.</li>
+<li>وقف الخسارة خارج النطاق مباشرة. نقطة الضعف: عندما ينكسر النطاق أخيراً، قد ينكسر بقوة.</li>
+</ul>
+<p><strong>3. تداول الاختراقات (Breakout trading)</strong> — &quot;اقفز معه عندما يهرب.&quot;</p>
+<ul>
+<li>الفكرة: عندما يخترق السعر نطاقاً أو نمطاً مع حجم تداول قوي، تداول في اتجاه الاختراق.</li>
+<li>يستخدم غالباً أوامر Buy Stop / Sell Stop. نقطة الضعف: الاختراقات الكاذبة.</li>
+</ul>
+<p><strong>4. العودة إلى المتوسط (Mean reversion)</strong> — &quot;ما يبتعد كثيراً يميل إلى العودة.&quot;</p>
+<ul>
+<li>الفكرة: عندما يبتعد السعر كثيراً عن متوسطه (مثلاً خارج نطاق بولينجر، أو RSI &lt; 30)، راهن على عودته إلى المتوسط.</li>
+<li>نقطة الضعف: في الاتجاه القوي، &quot;البعيد كثيراً&quot; يمكن أن يذهب أبعد بكثير.</li>
+</ul>
+<p><strong>5. متوسط تكلفة الدولار (Dollar-Cost Averaging / DCA)</strong> — من الناحية التقنية هو <strong>استثمار</strong>، وليس تداولاً.</p>
+<ul>
+<li>اشترِ مبلغاً ثابتاً في أوقات منتظمة (مثلاً 50$ كل أسبوع) بغض النظر عن السعر.</li>
+<li>يلغي قرارات التوقيت؛ وهو شائع بين حائزي العملات الرقمية على المدى الطويل. كثير من منصات التداول تقدّم ميزات &quot;الشراء المتكرر&quot; وروبوتات DCA.</li>
+</ul>
+<p><strong>إضافة — التداول الشبكي (Grid trading)</strong> (شائع مع الروبوتات): ضع أوامر شراء كثيرة تحت السعر الحالي وأوامر بيع فوقه على مسافات ثابتة، لتربح من الحركة ذهاباً وإياباً. ينجح في النطاقات العرضية، ويعاني بشدة في الاتجاهات القوية ذات الاتجاه الواحد.</p>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>ملاحظة</div><p><strong>لا توجد استراتيجية تنجح طوال الوقت.</strong> استراتيجيات الاتجاه تعاني في النطاقات العرضية؛ واستراتيجيات النطاق تعاني في الاتجاهات. المهم هو ما إذا كانت الاستراتيجية، عبر <strong>مئات</strong> الصفقات و<strong>بعد احتساب التكاليف</strong>، تملك توقعاً رياضياً (Expectancy) موجباً (الجزء 13) — وما إذا كنت قادراً على الالتزام بها.</p>
+</aside>
+</section><section class="part" id="part-13"><h2><span class="part-badge">13</span><span>إدارة المخاطر</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>تخيّل لعبة تبدأها بـ 100 كُرة زجاجية. القاعدة رقم 1: <strong>لا تضع أبداً أكثر من كُرة أو كُرتين في أي جولة واحدة.</strong> حينها، حتى لو خسرت عشر جولات متتالية — وهذا <em>سيحدث</em> أحياناً — سيبقى لديك أكثر من 80 كُرة وتستطيع مواصلة اللعب والتعلّم. أما الطفل الذي يراهن بـ 50 كُرة في كل جولة فيخرج من اللعبة بعد جولتين سيئتين.</p>
+</aside>
+<p><strong>إدارة المخاطر (Risk management) هي أهم جزء في التداول.</strong> المتداولون الجيدون يخطئون كثيراً؛ لكنهم يصمدون لأن خسائرهم <strong>صغيرة ومخطط لها</strong>.</p>
+<h3 id="h3-49">13.1 قاعدة الـ 1%</h3>
+<p>خاطر <strong>بنسبة مئوية صغيرة وثابتة من حسابك في كل صفقة</strong> — عادةً <strong>0.5%–2%</strong>، و<strong>1%</strong> هي قيمة افتراضية جيدة أثناء التعلّم.</p>
+<p>&quot;المخاطرة&quot; هنا تعني: <strong>كم ستخسر إذا ضُرب وقف الخسارة</strong> — وليس حجم الصفقة.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>المخاطرة لكل صفقة</th>
+<th>الحساب بعد 10 خسائر متتالية (البداية = 1,000)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1%</td>
+<td>≈ <strong>904</strong> (−9.6%)</td>
+</tr>
+<tr>
+<td>2%</td>
+<td>≈ 817 (−18.3%)</td>
+</tr>
+<tr>
+<td>5%</td>
+<td>≈ 599 (−40.1%)</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>≈ <strong>349</strong> (−65.1%)</td>
+</tr>
+</tbody>
+</table></div>
+<p>عشر خسائر متتالية تبدو أمراً نادراً، لكن عبر مئات الصفقات، سلاسل الخسائر الطويلة أمر <strong>طبيعي</strong>.</p>
+<h3 id="h3-50">13.2 تحديد حجم الصفقة — أكثر معادلة مفيدة في هذا الدليل</h3>
+<pre class="code ascii"><code>                      الحساب × نسبة المخاطرة %
+حجم الصفقة  =  ─────────────────────────────
+                  المسافة إلى وقف الخسارة × قيمة كل وحدة من المسافة
+</code></pre>
+<p>بكلمات بسيطة: <strong>حدّد أولاً كم من المال أنت مستعد لخسارته، ثم احسب كم يمكن أن يكون حجم الصفقة.</strong></p>
+<ul>
+<li><strong>مثال على التداول الفوري للعملات الرقمية:</strong> الحساب 1,000 USDT، والمخاطرة 1% = 10 USDT. الدخول 60,000، ووقف الخسارة 58,800 → المسافة 1,200 USDT لكل BTC. الحجم = 10 ÷ 1,200 = <strong>0.00833 BTC</strong>.</li>
+<li><strong>مثال على الفوركس:</strong> الحساب 1,000$، والمخاطرة 1% = 10$. وقف الخسارة على بُعد 30 نقطة. قيمة النقطة المطلوبة = 10 ÷ 30 = 0.333$/نقطة → 0.0333 لوت → نقرّبها <strong>للأسفل</strong> إلى <strong>0.03 لوت</strong> (لأن 0.01 لوت = 0.10$/نقطة على EURUSD).</li>
+</ul>
+<h3 id="h3-51">13.3 نسبة المخاطرة إلى العائد (R:R)</h3>
+<p>قارن بين ما <strong>تخاطر به</strong> (من الدخول → إلى وقف الخسارة) وما <strong>تهدف إلى كسبه</strong> (من الدخول → إلى الهدف).</p>
+<ul>
+<li>مخاطرة 30 نقطة، وهدف 60 نقطة → <strong>1:2</strong>.</li>
+<li>كثيراً ما يسمّي المتداولون مبلغ المخاطرة <strong>1R</strong>. الربح بـ 60 نقطة = <strong>+2R</strong>؛ والخسارة = <strong>−1R</strong>.</li>
+</ul>
+<p>نسبة R:R الجيدة تعني أنك لا تحتاج إلى الربح كثيراً:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>R:R</th>
+<th>نسبة الربح المطلوبة فقط لتحقيق التعادل (قبل التكاليف)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1:1</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>1:1.5</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>1:2</td>
+<td>33.3%</td>
+</tr>
+<tr>
+<td>1:3</td>
+<td>25%</td>
+</tr>
+</tbody>
+</table></div>
+<pre class="code ascii"><code>نسبة الربح اللازمة للتعادل = 1 ÷ (1 + العائد/المخاطرة)
+</code></pre>
+<h3 id="h3-52">13.4 التوقع الرياضي (Expectancy) — هل تربح الاستراتيجية في المتوسط؟</h3>
+<pre class="code ascii"><code>التوقع الرياضي (بوحدة R) = (نسبة الربح × متوسط الربح بـ R) − (نسبة الخسارة × متوسط الخسارة بـ R)
+</code></pre>
+<p>مثال: نسبة الربح 40%، ومتوسط الربح +2R، ومتوسط الخسارة −1R:
+<code>0.40 × 2 − 0.60 × 1 = 0.80 − 0.60 = +0.20R per trade</code> (أي +0.20R لكل صفقة).
+إذا خاطرت بـ 10$ في كل صفقة (1R = 10$) → حوالي <strong>+2$ لكل صفقة في المتوسط</strong>، <em>على مدى صفقات كثيرة</em>، <em>قبل التكاليف</em>.</p>
+<p>الاستراتيجية ذات التوقع الرياضي <strong>السالب</strong> ستخسر المال على المدى الطويل مهما بدت ذكية.</p>
+<h3 id="h3-53">13.5 التراجع (Drawdown) ولماذا تؤلم الخسائر أكثر مما تساعد المكاسب</h3>
+<p><strong>التراجع (Drawdown)</strong> = مقدار هبوط حسابك من أعلى نقطة وصل إليها.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>الخسارة</th>
+<th>المكسب اللازم للعودة إلى نقطة البداية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>−10%</td>
+<td>+11.1%</td>
+</tr>
+<tr>
+<td>−20%</td>
+<td>+25%</td>
+</tr>
+<tr>
+<td>−30%</td>
+<td>+42.9%</td>
+</tr>
+<tr>
+<td>−50%</td>
+<td><strong>+100%</strong></td>
+</tr>
+<tr>
+<td>−75%</td>
+<td>+300%</td>
+</tr>
+<tr>
+<td>−90%</td>
+<td>+900%</td>
+</tr>
+</tbody>
+</table></div>
+<div class="diagram"><pre class="mermaid">xychart-beta
+    title &quot;المكسب اللازم للتعافي من خسارة&quot;
+    x-axis [&quot;-10%&quot;, &quot;-20%&quot;, &quot;-30%&quot;, &quot;-50%&quot;, &quot;-75%&quot;, &quot;-90%&quot;]
+    y-axis &quot;المكسب اللازم (%)&quot; 0 --&gt; 950
+    bar [11.1, 25, 42.9, 100, 300, 900]
+</pre></div>
+<p>ولهذا فإن <strong>حماية حسابك تأتي قبل تنميته</strong>.</p>
+<h3 id="h3-54">13.6 قائمة تحقق المخاطر للمبتدئ</h3>
+<ul>
+<li class="task"><span class="box"></span>كل صفقة لها <strong>وقف خسارة</strong> يُحدَّد <strong>قبل</strong> الدخول.</li>
+<li class="task"><span class="box"></span>حجم الصفقة محسوب وفق <strong>قاعدة الـ 1%</strong>.</li>
+<li class="task"><span class="box"></span>نسبة R:R لا تقل عن <strong>1:1.5–1:2</strong> (في معظم الإعدادات).</li>
+<li class="task"><span class="box"></span><strong>حد خسارة يومي</strong> (مثلاً توقف عن التداول لبقية اليوم بعد −3%).</li>
+<li class="task"><span class="box"></span>لا تفتح عدة صفقات هي في الحقيقة <strong>الرهان نفسه</strong> (مثلاً شراء EURUSD + شراء GBPUSD + بيع USDCHF على المكشوف كلها تعني &quot;البيع على الدولار&quot; — وهذا هو <strong>الارتباط (Correlation)</strong>).</li>
+<li class="task"><span class="box"></span>اعرف <strong>رزنامة الأخبار</strong> (الأحداث الكبيرة قد تقفز فوق أوامر وقف الخسارة).</li>
+<li class="task"><span class="box"></span>لا تضف أبداً مالاً إلى صفقة خاسرة لمجرد &quot;تخفيض المتوسط&quot; دون خطة.</li>
+<li class="task"><span class="box"></span>لا تتداول إلا بمال <strong>تستطيع فعلاً تحمّل خسارته</strong>.</li>
+</ul>
+</section><section class="part" id="part-14"><h2><span class="part-badge">14</span><span>الحساب التجريبي / التداول الورقي مقابل المال الحقيقي</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>الحساب التجريبي (Demo Account) يشبه <strong>جهاز محاكاة الطيران</strong>. يمكنك أن تتحطم بقدر ما تريد وتتعلم أزرار التحكم. لكن قيادة طائرة حقيقية شعورها مختلف تمامًا — يداك ترتجفان. لذلك تتدرب في المحاكي أولًا، ثم تبدأ برحلات حقيقية قصيرة جدًا وحذرة.</p>
+</aside>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>🎮 تجريبي / ورقي</th>
+<th>💵 مال حقيقي</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>المال</td>
+<td>افتراضي</td>
+<td>حقيقي</td>
+</tr>
+<tr>
+<td>المشاعر</td>
+<td>تكاد تكون معدومة</td>
+<td>خوف، طمع، أمل، ندم</td>
+</tr>
+<tr>
+<td>التنفيذ</td>
+<td>غالبًا &quot;مثالي&quot;</td>
+<td>انزلاق سعري حقيقي، تنفيذ جزئي، إعادة تسعير (Requotes)</td>
+</tr>
+<tr>
+<td>التكاليف</td>
+<td>مبسّطة أحيانًا</td>
+<td>كل رسم حقيقي</td>
+</tr>
+<tr>
+<td>الهدف</td>
+<td>تعلّم المنصات، اختبار القواعد، بناء العادات</td>
+<td>اختبار قدرتك على اتباع القواعد تحت الضغط</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>الحساب التجريبي (Demo Account)</strong> — حساب لدى الوسيط بأموال افتراضية (تقدّمه Exness على MT5).</li>
+<li><strong>التداول الورقي (Paper Trading)</strong> — تسجيل الصفقات أو محاكاتها بدون مال حقيقي (التداول الورقي في TradingView، أو بوت التداول الخاص بك في &quot;وضع المحاكاة&quot;).</li>
+<li><strong>شبكة الاختبار (Testnet)</strong> — بيئة اختبار منفصلة لدى منصة التداول مخصّصة <strong>للمطوّرين</strong> (Binance Spot testnet، Binance Futures testnet). عملات مزيّفة، وواجهة برمجة تطبيقات (API) حقيقية. مثالية لبناء البوتات.</li>
+</ul>
+<h3 id="h3-55">تدرّج منطقي</h3>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;📚 تعلّم&lt;br/&gt;(هذا الدليل)&quot;] --&gt; B[&quot;🎮 تجريبي / ورقي&lt;br/&gt;50–100+ صفقة&lt;br/&gt;مع خطة مكتوبة&quot;]
+    B --&gt; C{&quot;نتائج إيجابية&lt;br/&gt;وتم اتباع القواعد؟&quot;}
+    C -- لا --&gt; A
+    C -- نعم --&gt; D[&quot;💵 مال حقيقي صغير جدًا&lt;br/&gt;(مبلغ تقبل خسارته)&quot;]
+    D --&gt; E{&quot;ما زلت منضبطًا&lt;br/&gt;لعدة أشهر؟&quot;}
+    E -- لا --&gt; B
+    E -- نعم --&gt; F[&quot;كبّر الحجم ببطء&lt;br/&gt;(إن حدث ذلك أصلًا)&quot;]
+</pre></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>ملاحظة</div><p>النجاح في الحساب التجريبي <strong>لا</strong> يثبت النجاح الحقيقي. لكن <strong>الفشل</strong> في الحساب التجريبي إشارة واضحة جدًا: إذا لم تستطع أن تنجح بمال مزيّف وبدون مشاعر، فالمال الحقيقي لن يصلح الأمر.</p>
+</aside>
+</section><section class="part" id="part-15"><h2><span class="part-badge">15</span><span>سيكولوجية التداول</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>دماغك ممتاز في الهروب من الأسود، لكنه سيئ في التداول. عندما تخسر، يصرخ: &quot;لا تقبل الخسارة، ربما يعود السعر!&quot; وعندما تربح، يصرخ: &quot;خذ الربح الآن قبل أن يختفي!&quot; وهذا <strong>عكس</strong> ما يحتاجه التداول الجيد تمامًا.</p>
+</aside>
+<h3 id="h3-56">الفخاخ العاطفية الرئيسية</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>الفخ</th>
+<th>بماذا تشعر</th>
+<th>ماذا يسبّب</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>الخوف</strong></td>
+<td>&quot;ماذا لو هبط أكثر؟&quot;</td>
+<td>إغلاق الصفقات الرابحة مبكرًا جدًا، وعدم الدخول في صفقات صالحة</td>
+</tr>
+<tr>
+<td><strong>الطمع</strong></td>
+<td>&quot;قد يتضاعف 10 مرات!&quot;</td>
+<td>صفقات أكبر من اللازم، بدون جني أرباح، ورافعة مالية مفرطة</td>
+</tr>
+<tr>
+<td><strong>الخوف من تفويت الفرصة (FOMO)</strong> (Fear Of Missing Out)</td>
+<td>&quot;الجميع يربحون، يجب أن أدخل الآن!&quot;</td>
+<td>الشراء في القمة بعد صعود ضخم</td>
+</tr>
+<tr>
+<td><strong>الأمل</strong></td>
+<td>&quot;سيعود…&quot;</td>
+<td>تحريك أوامر وقف الخسارة أو إزالتها، والاحتفاظ بالصفقات الخاسرة للأبد</td>
+</tr>
+<tr>
+<td><strong>تداول الانتقام (Revenge Trading)</strong></td>
+<td>&quot;سأسترجع خسارتي فورًا!&quot;</td>
+<td>صفقات كبيرة ومندفعة بعد خسارة ← خسائر أكبر</td>
+</tr>
+<tr>
+<td><strong>الثقة المفرطة</strong></td>
+<td>&quot;ربحت 5 مرات متتالية، أنا عبقري.&quot;</td>
+<td>زيادة الحجم قبيل سلسلة خسائر مباشرةً</td>
+</tr>
+<tr>
+<td><strong>النفور من الخسارة (Loss Aversion)</strong></td>
+<td>ألم الخسارة أقوى بنحو مرتين من متعة ربح مساوٍ لها</td>
+<td>قطع الصفقات الرابحة، والاحتفاظ بالخاسرة</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-57">عادات مفيدة</h3>
+<ol>
+<li><strong>اكتب خطة تداول</strong> قبل افتتاح السوق: ماذا ستتداول، وما القواعد، وما أقصى مخاطرة.</li>
+<li><strong>احتفظ بسجل التداول (Trading Journal)</strong>: كل صفقة، ولماذا دخلتها، ولقطة شاشة، والنتيجة، وبماذا شعرت. (مشروع برمجي أول رائع، انظر الجزء 24!)</li>
+<li><strong>فكّر في سلاسل من الصفقات، لا في صفقة واحدة.</strong> صفقة واحدة لا تعني شيئًا؛ 100 صفقة تُظهر أفضليتك.</li>
+<li><strong>ضع حدودًا</strong>: أقصى عدد صفقات في اليوم، وأقصى خسارة يومية، وابتعد عن الشاشة عند بلوغها.</li>
+<li><strong>تقبّل أن الخسائر جزء من تكلفة العمل</strong>، مثل متجر يدفع الإيجار.</li>
+<li><strong>أتمِت القواعد التي تكسرها</strong> — هذا سبب صادق يجعل الناس يبنون البوتات: البوت لا يصاب بالذعر. (لكن البوت أيضًا لا <em>يفكّر</em>، لذا يجب اختباره ومراقبته.)</li>
+</ol>
+</section><section class="part" id="part-16"><h2><span class="part-badge">16</span><span>أخطاء المبتدئين الشائعة والمخاطر</span></h2>
+<h3 id="h3-58">أخطاء التداول</h3>
+<ol>
+<li>❌ <strong>بدون وقف الخسارة (Stop-Loss)</strong> — &quot;سأراقبها بنفسي.&quot; ثم تغفو، أو تتجمّد.</li>
+<li>❌ <strong>المخاطرة بالكثير في كل صفقة</strong> — يوم سيئ واحد ينهي الحساب.</li>
+<li>❌ <strong>استخدام أقصى رافعة مالية (Leverage)</strong> لأن الوسيط يسمح بها.</li>
+<li>❌ <strong>الإفراط في التداول (Overtrading)</strong> — صفقات كثيرة جدًا، غالبًا بسبب الملل؛ فتتراكم التكاليف.</li>
+<li>❌ <strong>إبعاد وقف الخسارة أكثر</strong> كلما اقترب السعر منه.</li>
+<li>❌ <strong>التوسيط نحو الأسفل (Averaging Down)</strong> على الصفقات الخاسرة بدون خطة.</li>
+<li>❌ <strong>اللحاق بالسعر</strong> بعد شمعة ضخمة (FOMO).</li>
+<li>❌ <strong>التداول أثناء الأخبار الكبرى</strong> دون فهم أن الفارق السعري يتّسع وأن الأسعار تقفز.</li>
+<li>❌ <strong>القفز بين الاستراتيجيات</strong> — تغيير الطريقة بعد كل خسارة، فلا تعرف أبدًا إن كان أي شيء ينجح.</li>
+<li>❌ <strong>تجاهل التكاليف</strong> — الفارق السعري، والرسوم، ورسوم التبييت، والتمويل.</li>
+<li>❌ <strong>الثقة بمجموعات &quot;الإشارات&quot; أو المؤثّرين أو البوتات ذات &quot;الربح المضمون&quot;.</strong></li>
+<li>❌ <strong>تخطّي مرحلة الحساب التجريبي.</strong></li>
+</ol>
+<h3 id="h3-59">الاحتيال ومخاطر المنصات (خصوصًا في العملات الرقمية)</h3>
+<aside class="callout callout-caution"><div class="callout-title"><span class="callout-icon">🛑</span>انتبه</div>
+<ul>
+<li><strong>&quot;عوائد مضمونة&quot;</strong> أو &quot;5% يوميًا بدون مخاطرة&quot; ← احتيال دائمًا.</li>
+<li><strong>منصات تداول مزيّفة / تطبيقات مزيّفة</strong> وروابط تصيّد تسرق كلمة مرورك أو مفاتيح API. اكتب عنوان الموقع بنفسك دائمًا وفعّل <strong>2FA</strong> (المصادقة الثنائية).</li>
+<li>عملات <strong>الضخّ والتفريغ (Pump-and-Dump)</strong>: مجموعة ترفع سعر عملة صغيرة جدًا، ثم تبيعها للمتأخرين.</li>
+<li><strong>&quot;مديرو الحسابات&quot;</strong> الذين يراسلونك على Telegram/WhatsApp ويطلبون الوصول إلى حسابك أو إيداع أموال.</li>
+<li><strong>مخاطر منصة التداول</strong>: قد تجمّد المنصة عمليات السحب، أو تُخترق، أو تنهار (FTX، 2022). العملات المحفوظة على منصة تداول هي <strong>في حفظ المنصة (Custodial)</strong> — المنصة هي التي تتحكم بها.</li>
+<li><strong>الوسطاء غير المرخّصين</strong> قد يرفضون عمليات السحب.</li>
+<li><strong>مفاتيح API المسرّبة</strong> يمكن استخدامها للتداول في حسابك حتى يخسر. لا تمنح أي مفتاح صلاحية <strong>السحب</strong> أبدًا (الجزء 21).</li>
+</ul>
+</aside>
+</section><section class="part" id="part-17"><h2><span class="part-badge">17</span><span>حياة الصفقة</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>الصفقة تشبه الرحلة: <strong>تخطط</strong> إلى أين تذهب، و<strong>تتفقد</strong> الطقس، و<strong>تشتري</strong> التذكرة، و<strong>تسافر</strong>، وتراقب الطريق، ثم <strong>تعود إلى البيت</strong> — وبعدها تكتب في مذكراتك ما تعلّمته.</p>
+</aside>
+<div class="diagram"><pre class="mermaid">flowchart TD
+    I[&quot;💡 1. الفكرة&lt;br/&gt;'يبدو أن EURUSD&lt;br/&gt;يرتد من الدعم'&quot;] --&gt; A[&quot;🔍 2. التحليل&lt;br/&gt;الاتجاه، المستويات، المؤشرات،&lt;br/&gt;أجندة الأخبار&quot;]
+    A --&gt; P[&quot;📝 3. الخطة&lt;br/&gt;الدخول، وقف الخسارة، جني الأرباح،&lt;br/&gt;R:R، حجم الصفقة&quot;]
+    P --&gt; Q{&quot;هل تجتاز&lt;br/&gt;قواعدي؟&quot;}
+    Q -- لا --&gt; W[&quot;⏸️ لا صفقة&lt;br/&gt;(وهذا أيضًا قرار جيد)&quot;]
+    Q -- نعم --&gt; O[&quot;📤 4. الأمر&lt;br/&gt;سوق / محدد / إيقاف&lt;br/&gt;+ SL + TP مرفقان&quot;]
+    O --&gt; X[&quot;⚙️ 5. التنفيذ&lt;br/&gt;الوسيط / منصة التداول تنفّذه&quot;]
+    X --&gt; M[&quot;👀 6. المراقبة&lt;br/&gt;السعر، الهامش، الأخبار؛&lt;br/&gt;اتبع الخطة ولا تعبث بها&quot;]
+    M --&gt; C[&quot;🏁 7. الإغلاق&lt;br/&gt;بلوغ TP / بلوغ SL /&lt;br/&gt;خروج يدوي أو زمني&quot;]
+    C --&gt; R[&quot;📓 8. المراجعة&lt;br/&gt;السجل: النتيجة، الأخطاء،&lt;br/&gt;الإحصاءات&quot;]
+    R --&gt; I
+</pre></div>
+<h3 id="h3-60">ماذا يحدث خلف الكواليس عندما تضغط &quot;Buy&quot;</h3>
+<div class="diagram"><pre class="mermaid">sequenceDiagram
+    autonumber
+    actor T as المتداول
+    participant APP as التطبيق / MT5 / البوت
+    participant V as جهة التنفيذ (منصة تداول أو وسيط)
+    participant ME as محرك المطابقة / السيولة
+    T-&gt;&gt;APP: اضغط Buy بحجم 0.03 لوت EURUSD مع SL و TP
+    APP-&gt;&gt;V: إرسال الأمر (الرمز، الاتجاه، الحجم، النوع، SL، TP)
+    V-&gt;&gt;V: فحص الحساب: الهامش، الحدود، هل الرمز متاح للتداول؟
+    alt غير مقبول
+        V--&gt;&gt;APP: مرفوض (السبب)
+    else مقبول
+        V-&gt;&gt;ME: توجيه / مطابقة الأمر
+        ME--&gt;&gt;V: نُفّذ عند السعر X
+        V--&gt;&gt;APP: تقرير التنفيذ (سعر التنفيذ، الرسوم، رقم الصفقة)
+        APP--&gt;&gt;T: تظهر الصفقة في تبويب &quot;Trade&quot;
+    end
+    loop ما دامت الصفقة مفتوحة
+        V--&gt;&gt;APP: تحديثات السعر، الربح/الخسارة العائمة، الهامش
+    end
+    V-&gt;&gt;V: السعر يبلغ TP أو SL → إغلاق تلقائي
+    V--&gt;&gt;APP: أُغلقت الصفقة، الربح/الخسارة المحقّقة
+</pre></div>
+<ul>
+<li><strong>الربح/الخسارة العائمة (غير المحقّقة) (Floating P/L)</strong> — ربح أو خسارة صفقة مفتوحة؛ تتغير مع كل حركة سعر (Tick).</li>
+<li><strong>الربح/الخسارة المحقّقة (Realised P/L)</strong> — الربح أو الخسارة بعد إغلاق الصفقة؛ الآن أصبحت نهائية.</li>
+</ul>
+</section><section class="part" id="part-18"><h2><span class="part-badge">18</span><span>أمثلة عملية كاملة</span></h2>
+<aside class="callout callout-important"><div class="callout-title"><span class="callout-icon">📌</span>مهم</div><p>هذه الأمثلة <strong>لتعلّم الآلية فقط</strong>. الأسعار توضيحية ومبسّطة. وهي <strong>ليست</strong> توصيات تداول. الرسوم الحقيقية والفوارق السعرية والأحجام الدنيا تعتمد على نوع حسابك وتتغير مع الوقت.</p>
+</aside>
+<h3 id="h3-61">المثال 1 — الفوركس: صفقة شراء (Long) على EURUSD في Exness MT5 (حساب تجريبي)</h3>
+<p><strong>الوضع.</strong> لديك حساب <strong>تجريبي</strong> لدى Exness (من نوع Standard) فيه <strong>$1,000</strong> ورافعة مالية <strong>1:100</strong>. على الرسم البياني H4، كان EURUSD في اتجاه صاعد (قمم أعلى، قيعان أعلى)، ثم تراجع إلى منطقة مقاومة قديمة حول <strong>1.0830</strong> تبدو الآن كمنطقة دعم. وقد أُغلقت هناك للتو شمعة ابتلاعية صاعدة (Bullish Engulfing).</p>
+<p><strong>الخطوة 1 — اقرأ الأسعار.</strong>
+سعر البيع (Bid) <strong>1.08500</strong> / سعر الطلب (Ask) <strong>1.08510</strong> ← الفارق السعري = 0.00010 = <strong>1 نقطة (Pip)</strong>.
+صفقة الشراء تُفتح عند <strong>سعر الطلب (Ask)</strong> (1.08510) وستُغلق لاحقًا عند <strong>سعر البيع (Bid)</strong>.</p>
+<p><strong>الخطوة 2 — اختر وقف الخسارة (المكان الذي تصبح فيه الفكرة خاطئة).</strong>
+أسفل منطقة الدعم وأسفل أدنى نقطة للشمعة الابتلاعية: <strong>1.08210</strong>.
+المسافة = 1.08510 − 1.08210 = 0.00300 = <strong>30 نقطة</strong>.</p>
+<p><strong>الخطوة 3 — اختر جني الأرباح.</strong>
+قرب القمة الأخيرة: <strong>1.09110</strong>. المسافة = 0.00600 = <strong>60 نقطة</strong>.
+R:R = 30 : 60 = <strong>1:2</strong>.</p>
+<p><strong>الخطوة 4 — حدّد المخاطرة.</strong>
+1% من $1,000 = <strong>$10</strong> كحد أقصى للخسارة.</p>
+<p><strong>الخطوة 5 — احسب حجم الصفقة.</strong></p>
+<ul>
+<li>قيمة النقطة المطلوبة = $10 ÷ 30 نقطة = <strong>$0.333 لكل نقطة</strong>.</li>
+<li>على EURUSD، 0.01 لوت ≈ $0.10 لكل نقطة ← 0.0333 لوت.</li>
+<li>خطوة الحجم في MT5 هي 0.01 ← <strong>قرّب للأسفل</strong> إلى <strong>0.03 لوت</strong> (التقريب للأعلى سيجعلك تخاطر بأكثر من 1%).</li>
+<li>قيمة النقطة الفعلية = 0.03 × $10 = <strong>$0.30 لكل نقطة</strong>.</li>
+<li>المخاطرة الفعلية = 30 × $0.30 = <strong>$9.00</strong> (0.9%) ✅.</li>
+</ul>
+<p><strong>الخطوة 6 — افحص الهامش (الرافعة المالية).</strong></p>
+<ul>
+<li>0.03 لوت = 3,000 EUR. القيمة الاسمية ≈ 3,000 × 1.0851 = <strong>$3,255.30</strong>.</li>
+<li>الهامش عند 1:100 = 3,255.30 ÷ 100 = <strong>$32.55</strong> محجوزة.</li>
+<li>الهامش الحر ≈ $1,000 − $32.55 = <strong>$967.45</strong>. مستوى الهامش ≈ 1,000 ÷ 32.55 ≈ <strong>3,072%</strong> — آمن جدًا.</li>
+<li>لاحظ: <strong>كانت الرافعة 1:100 متاحة، لكن الصفقة تستخدم رافعة فعلية تقارب 3.3x فقط</strong> ($3,255 / $1,000). حجم الصفقة، وليس إعداد الرافعة، هو الذي حدّد المخاطرة.</li>
+</ul>
+<p><strong>الخطوة 7 — ضع الأمر في MT5.</strong>
+New Order ← الرمز <code>EURUSD</code> ← النوع <strong>Market Execution</strong> ← الحجم (Volume) <strong>0.03</strong> ← Stop Loss <strong>1.08210</strong> ← Take Profit <strong>1.09110</strong> ← <strong>Buy by Market</strong>.
+(أو استخدم <strong>Buy Limit</strong> عند سعر أدنى لانتظار دخول أفضل.)</p>
+<p><strong>الخطوة 8 — التنفيذ.</strong> نُفّذ الأمر عند <strong>1.08510</strong> (في سوق هادئ؛ أما في الأسواق السريعة فقد يحدث انزلاق سعري).</p>
+<p><strong>الخطوة 9 — المراقبة.</strong> تُظهر الصفقة ربحًا/خسارة عائمة. في البداية تُظهر حوالي <strong>−$0.30</strong> — وهذا هو الفارق السعري البالغ نقطة واحدة الذي دفعته. <strong>لا تُبعد وقف الخسارة أكثر</strong>. وإذا بقيت الصفقة مفتوحة عند التبييت اليومي، تُطبّق <strong>رسوم التبييت (Swap)</strong> (مبلغ صغير موجب أو سالب).</p>
+<p><strong>الخطوة 10 — الإغلاق: ثلاث نهايات محتملة.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>النتيجة</th>
+<th>سعر الإغلاق (Bid)</th>
+<th>النقاط</th>
+<th>الحصيلة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🎯 بلوغ جني الأرباح</td>
+<td>1.09110</td>
+<td>+60</td>
+<td><strong>+$18.00</strong> (+1.8%)</td>
+</tr>
+<tr>
+<td>🛑 بلوغ وقف الخسارة</td>
+<td>1.08210</td>
+<td>−30</td>
+<td><strong>−$9.00</strong> (−0.9%)، وربما أكثر قليلًا مع الانزلاق السعري</td>
+</tr>
+<tr>
+<td>✋ إغلاق يدوي</td>
+<td>1.08810</td>
+<td>+30</td>
+<td>+$9.00</td>
+</tr>
+</tbody>
+</table></div>
+<p>زائد أو ناقص أي رسوم تبييت. في حساب Standard كان الفارق السعري هو التكلفة الرئيسية؛ أما في حسابات Raw/Zero فسترى فارقًا سعريًا أصغر لكن مع <strong>عمولة</strong> على كل لوت.</p>
+<p><strong>الخطوة 11 — سجل التداول.</strong> اكتب: الإعداد، ولقطة الشاشة، والمخطّط مقابل الفعلي، والمشاعر، والنتيجة بوحدة R (+2R أو −1R).</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;الحساب $1,000&lt;br/&gt;المخاطرة 1% = $10&quot;] --&gt; B[&quot;مسافة SL&lt;br/&gt;30 نقطة&quot;] --&gt; C[&quot;$10 ÷ 30 = $0.33 للنقطة&lt;br/&gt;→ 0.03 لوت&quot;] --&gt; D[&quot;الهامش $32.55&lt;br/&gt;(1:100)&quot;] --&gt; E{&quot;النتيجة&quot;}
+    E --&gt; F[&quot;TP: +$18&quot;]
+    E --&gt; G[&quot;SL: −$9&quot;]
+</pre></div>
+<hr />
+<h3 id="h3-62">المثال 2 — العملات الرقمية: صفقة فورية على BTC/USDT في Binance مع خروج عبر OCO</h3>
+<p><strong>الوضع.</strong> لديك <strong>1,000 USDT</strong> في حساب التداول الفوري (Spot) على Binance (بدون رافعة مالية، وبدون بيع على المكشوف). على الرسم اليومي، BTC في اتجاه صاعد ويتراجع نحو منطقة دعم حول <strong>60,000</strong> صمدت مرتين من قبل.</p>
+<p><strong>الخطوة 1 — الخطة.</strong></p>
+<ul>
+<li>الدخول: <strong>Buy Limit عند 60,000</strong> (انتظر أن يأتي السعر إليك ← أنت <strong>صانع (Maker)</strong>).</li>
+<li>وقف الخسارة: <strong>58,800</strong> (−2%، أسفل منطقة الدعم).</li>
+<li>جني الأرباح: <strong>62,400</strong> (+4%).</li>
+<li>R:R = 1,200 : 2,400 = <strong>1:2</strong>.</li>
+</ul>
+<p><strong>الخطوة 2 — المخاطرة.</strong> 1% من 1,000 = <strong>10 USDT</strong>.</p>
+<p><strong>الخطوة 3 — حجم الصفقة.</strong></p>
+<ul>
+<li>المخاطرة لكل 1 BTC = 60,000 − 58,800 = 1,200 USDT.</li>
+<li>الحجم = 10 ÷ 1,200 = 0.0083333 BTC ← خطوة الحجم في المنصة 0.00001 ← <strong>0.00833 BTC</strong>.</li>
+<li>التكلفة = 0.00833 × 60,000 = <strong>499.80 USDT</strong> (وتبقى الـ ~500 USDT الأخرى في حسابك).</li>
+</ul>
+<p><strong>الخطوة 4 — ضع الأمر المحدد.</strong> Spot ← BTC/USDT ← <strong>Limit</strong> ← Buy ← السعر 60,000 ← الكمية 0.00833 ← Buy BTC.
+الأمر الآن <strong>ينتظر في دفتر الأوامر</strong>.</p>
+<p><strong>الخطوة 5 — التنفيذ.</strong> بعد يومين، ينخفض السعر إلى 59,950 ويُنفّذ أمرك عند <strong>60,000</strong> (الأمر المحدد لا يُنفّذ أبدًا بسعر أسوأ). الرسوم: 0.1% × 499.80 = <strong>≈0.50 USDT</strong>.</p>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>ملاحظة</div><p>في Binance، تُخصم رسوم الشراء مما تستلمه (قليل من BTC) إلا إذا دفعت الرسوم بعملة BNB. ولتبسيط الحساب هنا نحسب جميع الرسوم بـ USDT.</p>
+</aside>
+<p><strong>الخطوة 6 — أرفق أوامر الخروج بأمر OCO.</strong>
+أوامر التداول الفوري لا يمكنها حمل SL/TP مثل MT5، لذلك تضع <strong>أمر بيع OCO</strong> لكمية 0.00833 BTC:</p>
+<ul>
+<li><strong>Limit sell</strong> (جني الأرباح) عند <strong>62,400</strong>.</li>
+<li><strong>Stop-limit sell</strong>: سعر الإيقاف <strong>58,800</strong>، والسعر المحدد <strong>58,700</strong> (أقل قليلًا، لزيادة فرصة التنفيذ في هبوط سريع).
+عندما يُنفّذ أحدهما، تلغي المنصة الآخر.</li>
+</ul>
+<p><strong>الخطوة 7 — النهايات المحتملة.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>النتيجة</th>
+<th>قيمة البيع</th>
+<th>الربح/الخسارة الإجمالية</th>
+<th>الرسوم (شراء + بيع)</th>
+<th>الربح/الخسارة الصافية</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🎯 TP عند 62,400</td>
+<td>0.00833 × 62,400 = 519.79</td>
+<td>+19.99</td>
+<td>0.50 + 0.52 = 1.02</td>
+<td><strong>≈ +18.97 USDT</strong> (+1.9%)</td>
+</tr>
+<tr>
+<td>🛑 SL عند ≈58,800</td>
+<td>0.00833 × 58,800 = 489.80</td>
+<td>−10.00</td>
+<td>0.50 + 0.49 = 0.99</td>
+<td><strong>≈ −10.99 USDT</strong> (−1.1%)</td>
+</tr>
+</tbody>
+</table></div>
+<p>انظر إلى الرسوم: حوالي <strong>1 USDT لكل دورة كاملة (دخول وخروج)</strong>، أي ~10% من المخاطرة المخطّطة. بالنسبة لبوت يتداول مرات كثيرة في اليوم، هذا مهم جدًا.</p>
+<p><strong>الخطوة 8 — ما الذي قد يسوء؟</strong></p>
+<ul>
+<li>أمر الشراء المحدد <strong>لا يُنفّذ أبدًا</strong> (السعر لا ينخفض) ← لا صفقة، ولا خسارة. وهذا لا بأس به.</li>
+<li>انهيار <strong>يقفز فوق</strong> 58,700 ← قد <strong>لا يُنفّذ</strong> أمر stop-limit، وتبقى ممسكًا بـ BTC وهو يهبط. (أمر stop-<strong>market</strong> كان سيُنفّذ، لكن بسعر أسوأ.)</li>
+<li>بما أنه تداول فوري، لا يمكن تصفيتك ولا يمكنك خسارة أكثر من الـ 499.80 USDT التي أنفقتها.</li>
+</ul>
+<hr />
+<h3 id="h3-63">المثال 3 — لماذا الرافعة المالية خطيرة: صفقة بيع على المكشوف (Short) في العقود الآجلة الدائمة (Perpetual) على BTC</h3>
+<p><strong>الوضع.</strong> تضع <strong>100 USDT</strong> في <strong>USDⓈ-M Futures</strong> على Binance، بهامش معزول (Isolated Margin)، وتختار رافعة <strong>20x</strong>. تظن أن BTC سيهبط فتبيع على المكشوف (Short) عند <strong>60,000</strong>.</p>
+<p><strong>الخطوة 1 — الحجم.</strong> القيمة الاسمية = 100 × 20 = <strong>2,000 USDT</strong> ← 2,000 ÷ 60,000 = <strong>0.0333 BTC</strong> بيعًا على المكشوف.</p>
+<p><strong>الخطوة 2 — كيف تشعر مع كل حركة.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>سعر BTC</th>
+<th>الحركة</th>
+<th>الربح/الخسارة على بيع 0.0333 BTC</th>
+<th>الأثر على الـ 100 USDT الخاصة بك</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>57,000</td>
+<td>−5%</td>
+<td>+100 USDT</td>
+<td><strong>+100%</strong> 🤩</td>
+</tr>
+<tr>
+<td>59,400</td>
+<td>−1%</td>
+<td>+20 USDT</td>
+<td>+20%</td>
+</tr>
+<tr>
+<td>60,600</td>
+<td>+1%</td>
+<td>−20 USDT</td>
+<td>−20%</td>
+</tr>
+<tr>
+<td>~62,700</td>
+<td>≈ +4.5%</td>
+<td>≈ −90 USDT</td>
+<td><strong>تصفية</strong> 💥 (الباقي يذهب للرسوم / صندوق التأمين)</td>
+</tr>
+</tbody>
+</table></div>
+<p>تحدث التصفية <strong>قبل</strong> بلوغ الـ 5% كاملة (100 ÷ 2,000) لأن المنصة تحتاج إلى الإبقاء على <strong>هامش صيانة (Maintenance Margin)</strong>. سعر التصفية الدقيق يظهر في شاشة الأوامر على المنصة.</p>
+<p><strong>الخطوة 3 — التمويل.</strong> إذا كان معدل التمويل (Funding Rate) +0.01% (أصحاب الشراء يدفعون لأصحاب البيع)، فكل 8 ساعات <strong>تستلم</strong> 0.01% × 2,000 = 0.20 USDT. وإذا كان سالبًا، فأنت <strong>تدفع</strong>. وفي الأيام المتقلبة قد يكون التمويل أكبر بكثير.</p>
+<p><strong>الدرس.</strong> حركة يومية عادية لـ BTC بنحو ~4–5% تكفي لمحو صفقة برافعة 20x.</p>
+<p><strong>الفكرة نفسها، لكن بحجم محسوب وفق قاعدة الـ 1%:</strong> لنقل إن رصيدك الكامل في العقود الآجلة هو 1,000 USDT. تخاطر بـ 1% = 10 USDT وتضع وقف الخسارة عند <strong>60,600</strong> (600 USDT فوق سعر الدخول، أي 1%).</p>
+<ul>
+<li>الحجم = 10 ÷ 600 = <strong>0.0167 BTC</strong> ← القيمة الاسمية ≈ 1,000 USDT ← رافعة فعلية <strong>~1x فقط</strong>.</li>
+<li>إذا ضُرب وقف الخسارة، تخسر ≈ <strong>10 USDT + الرسوم</strong> — وليس الحساب كله.</li>
+<li>إعداد الرافعة يحدّد فقط مقدار الهامش المحجوز؛ أما <strong>وقف الخسارة وحجم الصفقة</strong> فيحدّدان المخاطرة.</li>
+</ul>
+<aside class="callout callout-caution"><div class="callout-title"><span class="callout-icon">🛑</span>انتبه</div><p>تسمح لك المنصة باختيار رافعة تصل إلى 100x وأكثر. <strong>كون المنصة تسمح بذلك لا يجعله تصرفًا عاقلًا.</strong> سلاسل التصفية (Liquidation Cascades) — أي إغلاق صفقات كثير من المتداولين قسريًا في وقت واحد — هي التي تسبّب الشموع الضخمة المفاجئة التي ستراها كثيرًا في العملات الرقمية.</p>
+</aside>
+</section><section class="part" id="part-19"><h2><span class="part-badge">19</span><span>البنية التحتية للعملات الرقمية مقابل الفوركس</span></h2>
+<p>هذا الجزء يتحدث عن <strong>كيف بُنيت هذه الأنظمة</strong> — وهو ضروري قبل أن تكتب برنامجًا يتواصل معها.</p>
+<h3 id="h3-64">19.1 الصورة الكبيرة</h3>
+<div class="diagram"><pre class="mermaid">flowchart TB
+    subgraph CRYPTO[&quot;🪙 العملات الرقمية (Binance / MEXC)&quot;]
+        direction TB
+        CU[&quot;تطبيقك / البوت الخاص بك&quot;] -- &quot;REST + WebSocket API&quot; --&gt; CX[&quot;خوادم منصة التداول&quot;]
+        CX --&gt; CME[&quot;دفتر أوامر مركزي&lt;br/&gt;ومحرك المطابقة&quot;]
+        CX --&gt; CW[&quot;محافظ منصة التداول&lt;br/&gt;(الحفظ)&quot;]
+        CW &lt;--&gt;|&quot;الإيداعات / السحوبات&quot;| BC[&quot;⛓️ شبكات البلوكتشين&lt;br/&gt;(Bitcoin, Ethereum, Tron...)&quot;]
+    end
+    subgraph FOREX[&quot;💱 الفوركس (Exness + MT5)&quot;]
+        direction TB
+        FU[&quot;تطبيقك / EA / Python&quot;] -- &quot;منصة MT5&lt;br/&gt;(MQL5 أو حزمة Python)&quot; --&gt; MTS[&quot;خادم التداول MT5&lt;br/&gt;(يديره الوسيط)&quot;]
+        MTS --&gt; DD[&quot;مكتب التعامل لدى الوسيط /&lt;br/&gt;إدارة المخاطر&quot;]
+        DD -- &quot;A-book: تمرير للسوق&quot; --&gt; LP[&quot;مزوّدو السيولة&lt;br/&gt;بنوك، شبكات ECN&quot;]
+        DD -. &quot;B-book: الاحتفاظ داخليًا&quot; .-&gt; DD
+        MTS --&gt; BANK[&quot;بنك / بطاقة / محفظة إلكترونية&lt;br/&gt;الإيداعات والسحوبات&quot;]
+    end
+</pre></div>
+<h3 id="h3-65">19.2 مقارنة جنبًا إلى جنب</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>الموضوع</th>
+<th>🪙 منصات العملات الرقمية</th>
+<th>💱 وسيط الفوركس + MT5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>بنية السوق</td>
+<td><strong>دفتر أوامر مركزي</strong> في كل منصة؛ ومنصات كثيرة بأسعار مختلفة قليلًا</td>
+<td><strong>لامركزي / خارج البورصة (OTC)</strong> (&quot;over the counter&quot;) — لا توجد بورصة مركزية واحدة؛ كل وسيط يبثّ أسعاره الخاصة</td>
+</tr>
+<tr>
+<td>ضد من تتداول</td>
+<td>مستخدمون آخرون (وصانعو السوق)</td>
+<td>الوسيط أو مزوّدو السيولة لديه</td>
+</tr>
+<tr>
+<td><strong>A-book / B-book</strong></td>
+<td>لا ينطبق</td>
+<td><strong>A-book</strong>: الوسيط يمرّر صفقتك إلى السوق. <strong>B-book</strong>: الوسيط يأخذ الطرف المقابل بنفسه (يربح عندما تخسر). كثير من الوسطاء يفعلون الأمرين.</td>
+</tr>
+<tr>
+<td>بيانات الأسعار</td>
+<td>عامة: كل صفقة ودفتر الأوامر الكامل عبر API</td>
+<td>تغذية الأسعار الخاصة بالوسيط داخل MT5</td>
+</tr>
+<tr>
+<td>ساعات العمل</td>
+<td>24/7</td>
+<td>24/5 للفوركس؛ مع احتمال <strong>فجوات</strong> نهاية الأسبوع</td>
+</tr>
+<tr>
+<td>الحفظ</td>
+<td>المنصة تحفظ عملاتك؛ ويمكنك سحبها إلى محفظتك الخاصة</td>
+<td>الوسيط يحفظ أموالك؛ وأنت تملك فقط حق المطالبة بها</td>
+</tr>
+<tr>
+<td>التسوية</td>
+<td>تغيير فوري في الرصيد الداخلي؛ والبلوكتشين للإيداعات/السحوبات</td>
+<td>داخلية لدى الوسيط؛ وتحويلات بنكية/محافظ إلكترونية</td>
+</tr>
+<tr>
+<td>الهوية</td>
+<td><strong>التحقق من الهوية (KYC)</strong> (Know Your Customer: التحقق من الوثائق) مطلوب في المنصات الكبرى</td>
+<td>التحقق من الهوية (KYC) مطلوب لدى الوسطاء</td>
+</tr>
+<tr>
+<td>الوصول البرمجي</td>
+<td><strong>واجهات REST/WebSocket</strong> مفتوحة مع مفاتيح API؛ وتوثيق عام؛ وشبكات اختبار</td>
+<td><strong>Expert Advisors بلغة MQL5</strong> داخل MT5؛ وحزمة <strong>Python</strong> رسمية؛ (واجهات Manager/Server من MetaQuotes مخصّصة للوسطاء، لا للعملاء)</td>
+</tr>
+<tr>
+<td>الرموز</td>
+<td><code>BTCUSDT</code>، <code>ETHUSDT</code>…</td>
+<td><code>EURUSD</code>، <code>XAUUSD</code>… (يضيف الوسطاء أحيانًا لواحق مثل <code>EURUSDm</code>)</td>
+</tr>
+<tr>
+<td>الوحدات</td>
+<td>كمية العملة مع خطوة حجم</td>
+<td>اللوتات (0.01 كحد أدنى عادةً)</td>
+</tr>
+<tr>
+<td>تكاليف خاصة</td>
+<td>رسوم صانع/آخذ (Maker/Taker)، التمويل، رسوم الشبكة</td>
+<td>الفارق السعري، العمولة، رسوم التبييت</td>
+</tr>
+<tr>
+<td>المراجحة (Arbitrage)</td>
+<td>توجد فروق أسعار بين المنصات (صغيرة وتنافسية)</td>
+<td>توجد فروق أسعار بين الوسطاء، لكن التداول عليها مخالف للشروط عادةً</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-66">19.3 ما هو &quot;السعر&quot; حقًا</h3>
+<ul>
+<li>في <strong>العملات الرقمية</strong>، سعر BTC على Binance هو حرفيًا آخر عملية مطابقة في دفتر أوامر Binance. وسعر MEXC مختلف قليلًا. وبوتات المراجحة تُبقي السعرين متقاربين.</li>
+<li>في <strong>الفوركس</strong>، لا يوجد سعر حيّ &quot;رسمي&quot; واحد. كل وسيط يبني تسعيره من مزوّدي السيولة لديه ويضيف فارقه السعري/هامشه. الرسم البياني في MT5 هو نسخة <strong>وسيطك</strong> من السعر.</li>
+</ul>
+</section><section class="part" id="part-20"><h2><span class="part-badge">20</span><span>بوتات التداول والأتمتة</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>بوت التداول هو <strong>روبوت يتبع وصفتك بالحرف</strong> — لا يتعب ولا يخاف ولا يطمع أبدًا. لكنه أيضًا ليس ذكيًا: إذا كانت الوصفة سيئة، فسيطبخ طعامًا سيئًا بسرعة كبيرة وبثبات تام. وإذا اشتعلت النار في المطبخ، فسيواصل الطبخ ما لم تعلّمه أن يتوقف.</p>
+</aside>
+<p><strong>بوت التداول (Trading Bot)</strong> هو برنامج <strong>يقرأ بيانات السوق، ويقرّر وفق قواعد، ويرسل الأوامر تلقائيًا</strong>. و<strong>الخوارزمية (Algorithm)</strong> هي مجموعة القواعد. و<strong>التداول الخوارزمي (Algorithmic Trading / Algo Trading)</strong> هو التداول باستخدام مثل هذه البرامج.</p>
+<h3 id="h3-67">20.1 أجزاء البوت</h3>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    D[&quot;📡 بيانات السوق&lt;br/&gt;الشموع، التحركات، دفتر الأوامر&lt;br/&gt;(REST + WebSocket)&quot;] --&gt; S[&quot;🧠 الاستراتيجية&lt;br/&gt;المؤشرات → الإشارات&quot;]
+    S --&gt; R[&quot;🛡️ مدير المخاطر&lt;br/&gt;حجم الصفقة، أقصى خسارة،&lt;br/&gt;زر الإيقاف الطارئ&quot;]
+    R --&gt; E[&quot;📤 التنفيذ&lt;br/&gt;إرسال / تعديل / إلغاء الأوامر&quot;]
+    E --&gt; V[&quot;🏛️ منصة التداول / الوسيط&quot;]
+    V -- &quot;التنفيذات، الأرصدة،&lt;br/&gt;تحديثات الأوامر&quot; --&gt; P[&quot;📒 المحفظة والحالة&lt;br/&gt;الصفقات المفتوحة، الربح/الخسارة&quot;]
+    P --&gt; R
+    P --&gt; L[&quot;📊 السجلات، التنبيهات،&lt;br/&gt;لوحة التحكم&quot;]
+</pre></div>
+<ol>
+<li><strong>تغذية البيانات (Data Feed)</strong> — تجلب الأسعار (التاريخية والحيّة).</li>
+<li><strong>الاستراتيجية (Strategy)</strong> — تحوّل البيانات إلى إشارات (&quot;ادخل شراء&quot;، &quot;اخرج&quot;).</li>
+<li><strong>مدير المخاطر (Risk Manager)</strong> — أهم قطعة: يمكنه <strong>رفض (Veto)</strong> أي صفقة (كبيرة جدًا، أو بُلغ حد الخسارة اليومية، أو صفقات مفتوحة كثيرة جدًا، أو سعر غير طبيعي).</li>
+<li><strong>محرك التنفيذ (Execution Engine)</strong> — يحوّل القرارات إلى أوامر حقيقية؛ ويتعامل مع إعادة المحاولة، والتنفيذ الجزئي، والأخطاء.</li>
+<li><strong>الحالة/المحفظة (State/Portfolio)</strong> — يعرف ما هي الصفقات والأوامر الموجودة فعلًا (أعد المزامنة مع المنصة دائمًا!).</li>
+<li><strong>المراقبة (Monitoring)</strong> — السجلات، والتنبيهات (Telegram/email)، ولوحات التحكم، و<strong>زر الإيقاف الطارئ (Kill Switch)</strong> لإيقاف كل شيء.</li>
+</ol>
+<h3 id="h3-68">20.2 أنواع البوتات</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>نوع البوت</th>
+<th>ماذا يفعل</th>
+<th>ملاحظات</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>بوت الإشارات / التنبيهات</strong></td>
+<td>يرسل لك إشعارًا فقط (&quot;RSI &lt; 30 على BTC&quot;)</td>
+<td>أكثر مشروع أول أمانًا — بدون أوامر</td>
+</tr>
+<tr>
+<td><strong>بوت تداول قائم على القواعد</strong></td>
+<td>يتبع استراتيجية (مثل تقاطع المتوسطات المتحركة EMA)</td>
+<td>يحتاج إلى اختبار رجعي + وحدة لإدارة المخاطر</td>
+</tr>
+<tr>
+<td><strong>بوت DCA</strong></td>
+<td>يشتري مبالغ ثابتة وفق جدول زمني</td>
+<td>بسيط وطويل الأمد</td>
+</tr>
+<tr>
+<td><strong>بوت الشبكة (Grid Bot)</strong></td>
+<td>سلّم من أوامر الشراء/البيع داخل نطاق سعري</td>
+<td>شائع في منصات العملات الرقمية؛ تضرّه الاتجاهات القوية</td>
+</tr>
+<tr>
+<td><strong>بوت صناعة السوق (Market-Making)</strong></td>
+<td>يضع أوامر شراء وأوامر بيع معًا ليربح الفارق السعري</td>
+<td>يحتاج إلى سرعة ورسوم منخفضة وإدارة مخاطر المخزون</td>
+</tr>
+<tr>
+<td><strong>بوت المراجحة (Arbitrage)</strong></td>
+<td>يستغل فروق الأسعار بين جهات التداول</td>
+<td>تنافسي جدًا؛ الرسوم وأوقات التحويل تقتل معظم الفرص</td>
+</tr>
+<tr>
+<td><strong>نسخ التداول (Copy-Trading)</strong></td>
+<td>ينسخ صفقات متداول آخر</td>
+<td>مخاطرتك تعتمد على شخص آخر</td>
+</tr>
+<tr>
+<td><strong>المستشار الخبير (Expert Advisor - EA)</strong></td>
+<td>بوت يعمل داخل MT5، مكتوب بلغة MQL5</td>
+<td>الطريقة المعتادة لأتمتة الفوركس على MT5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-69">20.3 من الفكرة إلى بوت حيّ</h3>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    I[&quot;الفكرة&lt;br/&gt;قواعد مكتوبة&quot;] --&gt; BT[&quot;الاختبار الرجعي&lt;br/&gt;على بيانات تاريخية&quot;]
+    BT --&gt; FW[&quot;الاختبار الأمامي /&lt;br/&gt;التداول الورقي&lt;br/&gt;على بيانات حيّة&quot;]
+    FW --&gt; TN[&quot;شبكة الاختبار / حساب تجريبي&lt;br/&gt;API حقيقي، مال مزيّف&quot;]
+    TN --&gt; SM[&quot;مال حقيقي صغير&lt;br/&gt;حدود صارمة&quot;]
+    SM --&gt; MON[&quot;المراقبة والمراجعة&lt;br/&gt;باستمرار&quot;]
+    BT -. &quot;نتائج سيئة&quot; .-&gt; I
+    FW -. &quot;لا يطابق الاختبار الرجعي&quot; .-&gt; I
+</pre></div>
+<ul>
+<li><strong>الاختبار الرجعي (Backtest)</strong> — تشغيل قواعدك على <strong>بيانات الماضي</strong> لترى كيف كان أداؤها سيكون.</li>
+<li><strong>الاختبار الأمامي (Forward Test) / التداول الورقي</strong> — تشغيلها على <strong>بيانات حيّة</strong> بدون مال حقيقي.</li>
+</ul>
+<h3 id="h3-70">20.4 فخاخ الاختبار الرجعي (مهمة جدًا لمن يبني البرامج)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>الفخ</th>
+<th>ماذا يعني</th>
+<th>كيف تتجنبه</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>الإفراط في المواءمة (Overfitting)</strong> (تفصيل المنحنى)</td>
+<td>ضبط الإعدادات حتى يبدو الماضي مثاليًا؛ ثم تفشل على البيانات الجديدة</td>
+<td>معاملات قليلة، واختبار على بيانات <strong>لم تُرَ من قبل</strong> (خارج العيّنة Out-of-Sample)، واختبار متدرّج للأمام (Walk-Forward)</td>
+</tr>
+<tr>
+<td><strong>تحيز النظر للمستقبل (Look-Ahead Bias)</strong></td>
+<td>استخدام معلومات لم تكن متاحة بعد (مثل استخدام سعر إغلاق اليوم للتداول عند افتتاح اليوم نفسه)</td>
+<td>استخدم فقط البيانات حتى الشمعة المغلقة السابقة</td>
+</tr>
+<tr>
+<td><strong>تحيز البقاء (Survivorship Bias)</strong></td>
+<td>اختبار العملات التي ما زالت موجودة فقط (العملات الميتة اختفت من القائمة)</td>
+<td>أدرج الأصول المشطوبة من الإدراج قدر الإمكان</td>
+</tr>
+<tr>
+<td><strong>تجاهل التكاليف</strong></td>
+<td>بدون رسوم، أو فارق سعري، أو انزلاق سعري، أو تمويل</td>
+<td>احسبها بتشاؤم</td>
+</tr>
+<tr>
+<td><strong>تنفيذ غير واقعي</strong></td>
+<td>افتراض أن كل أمر محدد سيُنفّذ</td>
+<td>ضع في الحسبان التنفيذ الجزئي أو عدم التنفيذ</td>
+</tr>
+<tr>
+<td><strong>صفقات قليلة جدًا</strong></td>
+<td>15 صفقة لا &quot;تثبت&quot; شيئًا</td>
+<td>مئات الصفقات، في ظروف سوق مختلفة</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-71">20.5 أشياء تعطّل البوتات الحيّة</h3>
+<ul>
+<li>انقطاع الإنترنت أو توقف الخادم، أو تعطّل الـ API، أو صيانة منصة التداول.</li>
+<li>تجاوز <strong>حد الطلبات (Rate Limit)</strong> ← تُحظر طلباتك (الجزء 21).</li>
+<li><strong>دقة (Precision)</strong> خاطئة (أرقام عشرية كثيرة جدًا) ← تُرفض الأوامر.</li>
+<li>البوت &quot;يظن&quot; أن لديه صفقة مفتوحة غير موجودة (الحالة غير متزامنة).</li>
+<li>أوامر مكرّرة بعد إعادة المحاولة.</li>
+<li>تقلب مفاجئ / انهيار خاطف (Flash Crash).</li>
+<li>خطأ برمجي يدور في حلقة ويضع مئات الأوامر.</li>
+</ul>
+<p>← ابنِ دائمًا: <strong>حدًا أقصى لحجم الصفقة، وحدًا أقصى لعدد الأوامر في الدقيقة، وحدًا للخسارة اليومية، وزر إيقاف طارئ</strong> — قبل كتابة أي كود للاستراتيجية.</p>
+</section><section class="part" id="part-21"><h2><span class="part-badge">21</span><span>واجهات API والاتصال بمنصات التداول والوسطاء</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>كأنني في العاشرة</div><p>الـ <strong>API</strong> مثل <strong>النادل</strong> في المطعم. برنامجك (الزبون) لا يدخل إلى المطبخ (خوادم منصة التداول). بل يعطي النادل طلبًا واضحًا من قائمة الطعام (&quot;أحضر لي سعر BTC&quot;، &quot;ضع هذا الأمر&quot;)، والنادل يعود إليه بالجواب. و<strong>مفتاح API</strong> هو بطاقة العضوية التي تثبت أن الطلب منك فعلًا.</p>
+</aside>
+<p><strong>واجهة برمجة التطبيقات (API)</strong> (Application Programming Interface) هي طريقة محدّدة تتحدث بها البرامج بعضها مع بعض.</p>
+<h3 id="h3-72">21.1 طريقتان للتواصل: REST و WebSocket</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>REST API</strong></th>
+<th><strong>WebSocket API</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>الأسلوب</td>
+<td>سؤال ← جواب (مثل إرسال الرسائل البريدية)</td>
+<td>خط هاتف مفتوح يبقى متصلًا</td>
+</tr>
+<tr>
+<td>يُستخدم لـ</td>
+<td>وضع الأوامر/إلغائها، والأرصدة، والشموع التاريخية</td>
+<td>الأسعار الحيّة، وتحديثات دفتر الأوامر، وتحديثات أوامرك وتنفيذاتها</td>
+</tr>
+<tr>
+<td>مثال</td>
+<td><code>GET /api/v3/klines?symbol=BTCUSDT&amp;interval=1h</code></td>
+<td>الاشتراك في <code>btcusdt@kline_1m</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="diagram"><pre class="mermaid">sequenceDiagram
+    participant Bot as البوت
+    participant REST as REST API لمنصة التداول
+    participant WS as WebSocket لمنصة التداول
+    Bot-&gt;&gt;REST: GET الشموع (السجل التاريخي)
+    REST--&gt;&gt;Bot: آخر 500 شمعة
+    Bot-&gt;&gt;WS: الاشتراك في الشموع الحيّة + تحديثات أوامري
+    WS--&gt;&gt;Bot: سعر جديد...
+    WS--&gt;&gt;Bot: سعر جديد...
+    Bot-&gt;&gt;REST: POST أمر (موقّع)
+    REST--&gt;&gt;Bot: الأمر مقبول، الرقم 12345
+    WS--&gt;&gt;Bot: الأمر 12345 FILLED
+</pre></div>
+<h3 id="h3-73">21.2 نقاط الوصول العامة مقابل الخاصة</h3>
+<ul>
+<li><strong>العامة</strong> — بيانات السوق التي يمكن لأي شخص قراءتها (الأسعار، الشموع، دفتر الأوامر). لا تحتاج إلى مفتاح.</li>
+<li><strong>الخاصة</strong> — حسابك (الأرصدة، الأوامر، التداول). تحتاج إلى <strong>مفتاح API</strong> و<strong>توقيع (Signature)</strong>.</li>
+</ul>
+<h3 id="h3-74">21.3 مفاتيح API والتوقيعات</h3>
+<p>عندما تنشئ مفتاح API على Binance أو MEXC تحصل على:</p>
+<ul>
+<li><strong>مفتاح API (API Key)</strong> — مثل اسم المستخدم؛ يُرسل في ترويسة الطلب (Header) (<code>X-MBX-APIKEY</code> في Binance، و<code>X-MEXC-APIKEY</code> في MEXC).</li>
+<li><strong>المفتاح السري (Secret Key)</strong> — مثل كلمة المرور؛ <strong>لا يُرسل أبدًا</strong>، ولا يُشارك أبدًا، ولا يُحفظ في git أبدًا. يُستخدم لإنشاء <strong>توقيع</strong>: وهو بصمة <strong>HMAC-SHA256</strong> لطلبك، تثبت أنه صادر منك وأنه لم يُعدَّل.</li>
+<li>تُضاف <strong>بصمة زمنية (Timestamp)</strong> حتى لا يمكن إعادة إرسال الطلبات القديمة.</li>
+</ul>
+<aside class="callout callout-caution"><div class="callout-title"><span class="callout-icon">🛑</span>انتبه</div><p><strong>قواعد أمان مفاتيح API</strong></p>
+<ol>
+<li>فعّل <strong>فقط</strong> الصلاحيات التي تحتاجها: <em>القراءة (Read)</em> و<em>التداول الفوري (Spot trading)</em>. <strong>لا تفعّل السحب (Withdrawals) أبدًا</strong> لأي بوت.</li>
+<li><strong>قيّد الوصول بعنوان IP</strong> (أضف عنوان IP الخاص بخادمك إلى القائمة البيضاء).</li>
+<li>خزّن الأسرار في <strong>متغيرات البيئة (Environment Variables)</strong> أو في مدير أسرار — لا تضعها أبدًا في الكود أو في مستودع عام.</li>
+<li>استخدم <strong>مفاتيح منفصلة</strong> لكل بوت/مشروع، واحذف المفاتيح التي لم تعد تستخدمها.</li>
+<li>ابدأ على <strong>شبكة الاختبار (Testnet)</strong>.</li>
+</ol>
+</aside>
+<h3 id="h3-75">21.4 حدود الطلبات وقواعد الدقة</h3>
+<ul>
+<li><strong>حد الطلبات (Rate Limit)</strong> — تحدّ منصات التداول من عدد الطلبات التي يمكنك إرسالها في الدقيقة (Binance تحسب &quot;وزن الطلب&quot; Request Weight). إذا تجاوزته تحصل على أخطاء (HTTP 429) أو حظر مؤقت (418). استخدم WebSocket للبيانات الحيّة بدلًا من الاستعلام المتكرر عبر REST باستمرار.</li>
+<li><strong>معلومات المنصة / المرشّحات (Exchange Info / Filters)</strong> — لكل رمز قواعد: أدنى كمية، وخطوة الحجم (Step Size)، وخطوة السعر (Tick Size)، وأدنى قيمة للأمر (&quot;القيمة الاسمية&quot; Notional). اقرأها من نقطة الوصول (Endpoint) الخاصة بمعلومات المنصة (exchange-info) وقرّب أوامرك وفقًا لها.</li>
+</ul>
+<h3 id="h3-76">21.5 أمثلة كود صغيرة (للقراءة فقط — لا شيء هنا يضع أمرًا حقيقيًا)</h3>
+<p><strong>Binance: شموع عامة باستخدام HTTP بسيط (Python)</strong></p>
+<pre class="code" data-lang="python"><code class="language-python">import requests
+
+r = requests.get(
+    &quot;https://api.binance.com/api/v3/klines&quot;,
+    params={&quot;symbol&quot;: &quot;BTCUSDT&quot;, &quot;interval&quot;: &quot;1h&quot;, &quot;limit&quot;: 5},
+    timeout=10,
+)
+for open_time, o, h, l, c, volume, *_ in r.json():
+    print(open_time, &quot;O&quot;, o, &quot;H&quot;, h, &quot;L&quot;, l, &quot;C&quot;, c)
+</code></pre>
+<p><strong>Binance / MEXC باستخدام مكتبة <code>ccxt</code> (واجهة واحدة لأكثر من 100 منصة تداول)</strong></p>
+<pre class="code" data-lang="python"><code class="language-python">import ccxt
+
+exchange = ccxt.binance()          # أو ccxt.mexc()
+exchange.load_markets()            # الرموز، الدقة، الحدود
+print(exchange.fetch_ticker(&quot;BTC/USDT&quot;)[&quot;last&quot;])
+candles = exchange.fetch_ohlcv(&quot;BTC/USDT&quot;, timeframe=&quot;4h&quot;, limit=100)
+
+# الاستدعاءات الخاصة تحتاج إلى مفاتيح (استخدم شبكة الاختبار / وضع sandbox أولًا):
+# exchange = ccxt.binance({&quot;apiKey&quot;: KEY, &quot;secret&quot;: SECRET})
+# exchange.set_sandbox_mode(True)
+# exchange.fetch_balance()
+</code></pre>
+<p><strong>MT5 باستخدام حزمة Python الرسمية (Windows، مع تثبيت منصة MT5 وتسجيل الدخول إليها)</strong></p>
+<pre class="code" data-lang="python"><code class="language-python">import MetaTrader5 as mt5
+
+mt5.initialize()                                   # يتصل بمنصة MT5 التي تعمل حاليًا
+print(mt5.account_info().balance)
+tick = mt5.symbol_info_tick(&quot;EURUSD&quot;)              # قد يحمل اسم الرمز لاحقة لدى وسيطك
+print(&quot;bid&quot;, tick.bid, &quot;ask&quot;, tick.ask)
+rates = mt5.copy_rates_from_pos(&quot;EURUSD&quot;, mt5.TIMEFRAME_H4, 0, 100)
+mt5.shutdown()
+</code></pre>
+<p><strong>توقيع طلب خاص يدويًا (كيف يعمل الأمر من الداخل)</strong></p>
+<pre class="code" data-lang="python"><code class="language-python">import hmac, hashlib, time, urllib.parse
+
+params = {&quot;symbol&quot;: &quot;BTCUSDT&quot;, &quot;timestamp&quot;: int(time.time() * 1000)}
+query = urllib.parse.urlencode(params)
+signature = hmac.new(SECRET.encode(), query.encode(), hashlib.sha256).hexdigest()
+# GET https://testnet.binance.vision/api/v3/openOrders?{query}&amp;signature={signature}
+# header: X-MBX-APIKEY: &lt;مفتاحك&gt;
+</code></pre>
+<h3 id="h3-77">21.6 ملخص خيارات الاتصال</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>جهة التداول</th>
+<th>بيانات السوق</th>
+<th>التداول</th>
+<th>بيئة الاختبار</th>
+<th>أدوات شائعة</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Binance</strong></td>
+<td>REST + WebSocket (عامة)</td>
+<td>REST + WebSocket API (موقّعة)</td>
+<td>شبكات اختبار للتداول الفوري والعقود الآجلة</td>
+<td><code>python-binance</code>، <code>ccxt</code>، الموصّلات الرسمية</td>
+</tr>
+<tr>
+<td><strong>MEXC</strong></td>
+<td>REST + WebSocket</td>
+<td>REST (موقّعة)؛ واجهة تداول العقود الآجلة خضعت لقيود على الوصول</td>
+<td>لا توجد شبكة اختبار عامة كاملة (اختبر بمبالغ صغيرة جدًا / نقطة وصول اختبار الأوامر order-test)</td>
+<td><code>ccxt</code>، حِزم SDK الرسمية</td>
+</tr>
+<tr>
+<td><strong>Exness عبر MT5</strong></td>
+<td>من المنصة (MQL5 / Python)</td>
+<td>EAs بلغة MQL5 أو <code>order_send</code> في Python</td>
+<td>الحسابات التجريبية لدى Exness</td>
+<td>MetaEditor، حزمة Python <code>MetaTrader5</code></td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>ملاحظة</div><p>تحتاج حزمة Python الخاصة بـ MT5 إلى أن تكون <strong>منصة MT5 المكتبية قيد التشغيل</strong> على الجهاز نفسه (Windows، أو Linux عبر Wine/آلة افتراضية). وهذا فرق معماري كبير عن منصات العملات الرقمية، التي يمكنك الاتصال بها من أي خادم عبر الإنترنت.</p>
+</aside>
+</section><section class="part" id="part-22"><h2><span class="part-badge">22</span><span>كيف يمكن لمشروعك المستقبلي أن يتصل بكل هذا</span></h2>
+<p>إليك كيف يمكن أن تتركّب القطع معًا، أيًا كان ما تقرّر بناءه.</p>
+<h3 id="h3-78">22.1 بنية مرجعية</h3>
+<div class="diagram"><pre class="mermaid">flowchart TB
+    subgraph UI[&quot;🖥️ الواجهة الأمامية (تطبيق ويب)&quot;]
+        DASH[&quot;لوحة التحكم: الأسعار، الرسوم البيانية،&lt;br/&gt;الصفقات، الربح/الخسارة، السجل&quot;]
+    end
+    subgraph CORE[&quot;⚙️ الواجهة الخلفية الخاصة بك&quot;]
+        API[&quot;API الواجهة الخلفية&quot;]
+        STRAT[&quot;محرك الاستراتيجية&quot;]
+        RISK[&quot;مدير المخاطر&lt;br/&gt;+ زر الإيقاف الطارئ&quot;]
+        EXEC[&quot;خدمة التنفيذ&quot;]
+        BTE[&quot;أداة الاختبار الرجعي&quot;]
+        DB[(&quot;قاعدة البيانات&lt;br/&gt;الشموع، الصفقات،&lt;br/&gt;السجل، السجلات التقنية&quot;)]
+        SEC[&quot;🔐 خزنة الأسرار&lt;br/&gt;مفاتيح API&quot;]
+    end
+    subgraph ADAPT[&quot;🔌 المحوّلات (واحد لكل جهة تداول)&quot;]
+        A1[&quot;محوّل Binance&lt;br/&gt;REST + WS&quot;]
+        A2[&quot;محوّل MEXC&lt;br/&gt;REST + WS&quot;]
+        A3[&quot;جسر MT5&lt;br/&gt;Python على آلة Windows افتراضية&lt;br/&gt;أو EA بلغة MQL5&quot;]
+    end
+    DASH &lt;--&gt; API
+    API &lt;--&gt; DB
+    API --&gt; STRAT --&gt; RISK --&gt; EXEC
+    BTE &lt;--&gt; DB
+    EXEC --&gt; A1 &amp; A2 &amp; A3
+    A1 &amp; A2 &amp; A3 -- &quot;الأسعار، التنفيذات، الأرصدة&quot; --&gt; DB
+    SEC -.-&gt; A1 &amp; A2 &amp; A3
+    A1 --&gt; BIN[&quot;Binance&quot;]
+    A2 --&gt; MEX[&quot;MEXC&quot;]
+    A3 --&gt; EXN[&quot;خادم Exness MT5&quot;]
+    API -- &quot;الأحداث&quot; --&gt; NOTIF[&quot;📣 التنبيهات&lt;br/&gt;Telegram / email&quot;]
+</pre></div>
+<p>أفكار التصميم الأساسية:</p>
+<ul>
+<li><strong>نمط المحوّل (Adapter Pattern)</strong> — كل جهة تداول لها محوّل (Adapter) خاص بها يترجم أمر &quot;ضع أمرًا&quot; الداخلي لديك إلى API تلك الجهة. بقية النظام لا يهمه إن كانت Binance أو MT5. (مكتبة <code>ccxt</code> تفعل هذا مسبقًا للعملات الرقمية.)</li>
+<li><strong>توحيد البيانات</strong> — حوّل الرموز (<code>BTC/USDT</code> مقابل <code>BTCUSDT</code> مقابل <code>EURUSDm</code>)، والأحجام (عملات مقابل لوتات)، والأوقات (دائمًا بتوقيت UTC) إلى صيغة داخلية واحدة.</li>
+<li><strong>منصة التداول هي مصدر الحقيقة</strong> — طابق قاعدة بياناتك دائمًا مع الأرصدة والأوامر الحقيقية.</li>
+<li><strong>مدير المخاطر يقع بين الاستراتيجية والتنفيذ</strong> — لا يمرّ أي أمر دون المرور به.</li>
+<li><strong>الأسرار لا تصل أبدًا إلى الواجهة الأمامية.</strong></li>
+</ul>
+<h3 id="h3-79">22.2 مشاريع ممكنة، من الأكثر أمانًا إلى الأكثر خطورة</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>المشروع</th>
+<th>هل يمسّ المال؟</th>
+<th>الصعوبة</th>
+<th>ماذا تتعلم</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>لوحة بيانات السوق</strong> (أسعار، رسوم بيانية، مؤشرات من واجهات Binance/MEXC العامة)</td>
+<td>❌ لا</td>
+<td>⭐</td>
+<td>واجهات API، WebSocket، الرسوم البيانية</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>سجل تداول / متتبّع محفظة</strong> (مفاتيح للقراءة فقط، استيراد الصفقات، إحصاءات: نسبة الربح، R، التراجع)</td>
+<td>❌ قراءة فقط</td>
+<td>⭐⭐</td>
+<td>الواجهات الخاصة، الإحصاء، واجهة المستخدم</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>بوت تنبيهات / إشارات</strong> (يرسل إشعارًا عند تحقق شروط، بدون تداول)</td>
+<td>❌ لا</td>
+<td>⭐⭐</td>
+<td>المؤشرات، الجدولة، الإشعارات</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>أداة اختبار رجعي</strong> (اختبار الاستراتيجيات على شموع تاريخية مع التكاليف)</td>
+<td>❌ لا</td>
+<td>⭐⭐⭐</td>
+<td>منطق الاستراتيجية، الإحصاء، فخاخ التحيز</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>بوت تداول ورقي</strong> (بيانات حيّة، أوامر محاكاة) / بوت على شبكة الاختبار</td>
+<td>❌ مال مزيّف</td>
+<td>⭐⭐⭐</td>
+<td>منطق التنفيذ، الحالة، وحدة المخاطر</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>بوت حيّ، بحجم صغير، وحدود صارمة</strong></td>
+<td>✅ نعم</td>
+<td>⭐⭐⭐⭐</td>
+<td>الموثوقية، المراقبة، التشغيل</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>منصة تداول متعددة المستخدمين</strong> (أموال/مفاتيح أشخاص آخرين)</td>
+<td>✅✅</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>الأمان، الامتثال، القانون، التوسّع</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-warning"><div class="callout-title"><span class="callout-icon">⚠️</span>تحذير</div><p>التعامل مع أموال أو مفاتيح API تخصّ <strong>أشخاصًا آخرين</strong>، أو تقديم &quot;إشارات&quot; تداول للعامة، أو إدارة الحسابات، قد يكون <strong>نشاطًا خاضعًا للتنظيم</strong> في كثير من الدول، ويحمّلك مسؤولية أمنية جدّية. احصل على استشارة قانونية قبل المشروع رقم 7.</p>
+</aside>
+</section><section class="part" id="part-23"><h2><span class="part-badge">23</span><span>قاموس المصطلحات</span></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>المصطلح</th>
+<th>المعنى البسيط</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>الاتجاه</strong> (Trend)</td>
+<td>الاتجاه العام للسعر</td>
+</tr>
+<tr>
+<td><strong>اتصال WebSocket</strong> (WebSocket)</td>
+<td>اتصال مفتوح دائمًا لنقل البيانات الحيّة</td>
+</tr>
+<tr>
+<td><strong>الاختبار الرجعي</strong> (Backtest)</td>
+<td>اختبار استراتيجية على بيانات الماضي</td>
+</tr>
+<tr>
+<td><strong>الاختراق</strong> (Breakout)</td>
+<td>عبور السعر لمستوى الدعم/المقاومة</td>
+</tr>
+<tr>
+<td><strong>الاختراق الكاذب</strong> (Fakeout)</td>
+<td>اختراق زائف</td>
+</tr>
+<tr>
+<td><strong>الارتباط</strong> (Correlation)</td>
+<td>عندما يميل أصلان إلى التحرك معًا</td>
+</tr>
+<tr>
+<td><strong>الإطار الزمني</strong> (Timeframe)</td>
+<td>المدة الزمنية التي تغطيها كل شمعة</td>
+</tr>
+<tr>
+<td><strong>الإغلاق القسري</strong> (Stop out)</td>
+<td>قيام الوسيط بإغلاق الصفقات قسريًا عندما يصبح مستوى الهامش منخفضًا جدًا</td>
+</tr>
+<tr>
+<td><strong>الإفراط في المواءمة</strong> (Overfitting)</td>
+<td>ضبط استراتيجية على بيانات الماضي بحيث تفشل على البيانات الجديدة</td>
+</tr>
+<tr>
+<td><strong>أمر OCO</strong> (OCO)</td>
+<td>أمران مرتبطان؛ تنفيذ أحدهما يلغي الآخر</td>
+</tr>
+<tr>
+<td><strong>أمر السوق</strong> (Market order)</td>
+<td>شراء/بيع الآن بأفضل سعر متاح</td>
+</tr>
+<tr>
+<td><strong>الأمر المحدد</strong> (Limit order)</td>
+<td>أمر بسعر محدد أو بسعر أفضل منه</td>
+</tr>
+<tr>
+<td><strong>الانزلاق السعري</strong> (Slippage)</td>
+<td>الحصول على سعر مختلف عن السعر المتوقع</td>
+</tr>
+<tr>
+<td><strong>البلوكتشين</strong> (Blockchain)</td>
+<td>سجل عام مشترك لمعاملات العملات الرقمية</td>
+</tr>
+<tr>
+<td><strong>بيانات OHLC</strong> (OHLC)</td>
+<td>الافتتاح، الأعلى، الأدنى، الإغلاق (Open, High, Low, Close)</td>
+</tr>
+<tr>
+<td><strong>البيع على المكشوف</strong> (Short)</td>
+<td>البيع للربح من هبوط السعر</td>
+</tr>
+<tr>
+<td><strong>التحقق من الهوية</strong> (KYC)</td>
+<td>التحقق من هويتك الشخصية</td>
+</tr>
+<tr>
+<td><strong>التداول الخوارزمي</strong> (Algorithmic trading)</td>
+<td>التداول باستخدام برنامج حاسوبي يتبع قواعد محددة</td>
+</tr>
+<tr>
+<td><strong>التداول الفوري</strong> (Spot)</td>
+<td>شراء/بيع الأصل الحقيقي مع التسليم الفوري</td>
+</tr>
+<tr>
+<td><strong>التراجع</strong> (Drawdown)</td>
+<td>الهبوط من أعلى قمة وصل إليها الحساب</td>
+</tr>
+<tr>
+<td><strong>التصفية</strong> (Liquidation)</td>
+<td>الإغلاق القسري لصفقة برافعة مالية عندما ينفد الهامش</td>
+</tr>
+<tr>
+<td><strong>التقلب</strong> (Volatility)</td>
+<td>مقدار وسرعة تحرّك السعر</td>
+</tr>
+<tr>
+<td><strong>التنفيذ</strong> (Execution / Fill)</td>
+<td>لحظة حدوث الأمر فعليًا</td>
+</tr>
+<tr>
+<td><strong>التوقع الرياضي</strong> (Expectancy)</td>
+<td>متوسط النتيجة لكل صفقة عبر عدد كبير من الصفقات</td>
+</tr>
+<tr>
+<td><strong>جني الأرباح</strong> (Take-profit, TP)</td>
+<td>أمر يغلق الصفقة عند ربح مستهدف</td>
+</tr>
+<tr>
+<td><strong>حجم التداول</strong> (Volume)</td>
+<td>الكمية المتداولة خلال فترة زمنية</td>
+</tr>
+<tr>
+<td><strong>حد الطلبات</strong> (Rate limit)</td>
+<td>أقصى عدد من طلبات API المسموح بها خلال فترة زمنية</td>
+</tr>
+<tr>
+<td><strong>الحساب التجريبي</strong> (Demo account)</td>
+<td>حساب تدريب بأموال افتراضية</td>
+</tr>
+<tr>
+<td><strong>الحفظ</strong> (Custody)</td>
+<td>من يحتفظ بأصولك فعليًا</td>
+</tr>
+<tr>
+<td><strong>حقوق الملكية</strong> (Equity)</td>
+<td>الرصيد ± الربح/الخسارة المفتوحة</td>
+</tr>
+<tr>
+<td><strong>خطوة السعر</strong> (Tick size)</td>
+<td>أصغر تغيّر ممكن في السعر</td>
+</tr>
+<tr>
+<td><strong>الخوف من تفويت الفرصة</strong> (FOMO)</td>
+<td>الخوف من أن تفوتك الفرصة</td>
+</tr>
+<tr>
+<td><strong>الدعم</strong> (Support)</td>
+<td>منطقة سعرية يميل الهبوط إلى التوقف عندها</td>
+</tr>
+<tr>
+<td><strong>دفتر الأوامر</strong> (Order book)</td>
+<td>قائمة حيّة بأوامر الشراء والبيع المنتظرة</td>
+</tr>
+<tr>
+<td><strong>الرافعة المالية</strong> (Leverage)</td>
+<td>التحكم في صفقة أكبر من أموالك</td>
+</tr>
+<tr>
+<td><strong>رسوم التبييت</strong> (Swap)</td>
+<td>رسم أو رصيد يُحتسب ليلًا مقابل إبقاء صفقات الفوركس/CFD مفتوحة</td>
+</tr>
+<tr>
+<td><strong>الرصيد</strong> (Balance)</td>
+<td>أموال الحساب دون احتساب الصفقات المفتوحة</td>
+</tr>
+<tr>
+<td><strong>الزوج</strong> (Pair)</td>
+<td>أصلان يُسعَّر أحدهما مقابل الآخر</td>
+</tr>
+<tr>
+<td><strong>سعر البيع</strong> (Bid)</td>
+<td>أعلى سعر يدفعه المشتري؛ هنا <strong>تبيع</strong> أنت</td>
+</tr>
+<tr>
+<td><strong>سعر الطلب</strong> (Ask / Offer)</td>
+<td>أدنى سعر يقبله البائع؛ هنا <strong>تشتري</strong> أنت</td>
+</tr>
+<tr>
+<td><strong>السيولة</strong> (Liquidity)</td>
+<td>مدى سهولة تداول شيء ما دون تحريك سعره</td>
+</tr>
+<tr>
+<td><strong>شبكة الاختبار</strong> (Testnet)</td>
+<td>بيئة اختبار لدى منصة التداول بأموال مزيّفة</td>
+</tr>
+<tr>
+<td><strong>الشراء</strong> (Long)</td>
+<td>الشراء للربح من صعود السعر</td>
+</tr>
+<tr>
+<td><strong>الشراء الدوري بمبلغ ثابت</strong> (DCA)</td>
+<td>شراء مبالغ ثابتة بانتظام</td>
+</tr>
+<tr>
+<td><strong>الشمعة اليابانية</strong> (Candlestick)</td>
+<td>عمود في الرسم البياني يُظهر سعر الافتتاح والأعلى والأدنى والإغلاق</td>
+</tr>
+<tr>
+<td><strong>صاعد</strong> (Bullish)</td>
+<td>توقّع صعود الأسعار / إظهار أسعار تصعد</td>
+</tr>
+<tr>
+<td><strong>صانع السوق</strong> (Market maker)</td>
+<td>شركة تعرض أسعار شراء وبيع باستمرار</td>
+</tr>
+<tr>
+<td><strong>صانع/آخذ</strong> (Maker / Taker)</td>
+<td>يضيف السيولة (ينتظر في الدفتر) / يسحبها (يُنفَّذ فورًا)</td>
+</tr>
+<tr>
+<td><strong>الصفقة المفتوحة / المركز</strong> (Position)</td>
+<td>صفقة مفتوحة تحتفظ بها حاليًا</td>
+</tr>
+<tr>
+<td><strong>العقود الآجلة</strong> (Futures)</td>
+<td>عقد للتداول بسعر محدد في المستقبل؛ &quot;الدائمة&quot; (perpetual) = بلا تاريخ انتهاء</td>
+</tr>
+<tr>
+<td><strong>عقود الفروقات</strong> (CFD)</td>
+<td>عقد يدفع لك فرق السعر؛ أنت لا تملك الأصل نفسه</td>
+</tr>
+<tr>
+<td><strong>العملات البديلة</strong> (Altcoin)</td>
+<td>أي عملة رقمية غير البيتكوين</td>
+</tr>
+<tr>
+<td><strong>العملة الأساسية</strong> (Base currency)</td>
+<td>الأصل الأول في الزوج (EUR في EURUSD)</td>
+</tr>
+<tr>
+<td><strong>عملة التسعير</strong> (Quote currency)</td>
+<td>الأصل الثاني في الزوج (USD في EURUSD)</td>
+</tr>
+<tr>
+<td><strong>العملة المستقرة</strong> (Stablecoin)</td>
+<td>عملة رقمية مصمّمة لتبقى عند قيمة ثابتة (مثل 1 USD)</td>
+</tr>
+<tr>
+<td><strong>العمولة</strong> (Commission)</td>
+<td>رسم ثابت لكل صفقة/لوت</td>
+</tr>
+<tr>
+<td><strong>الفارق السعري (السبريد)</strong> (Spread)</td>
+<td>سعر الطلب (Ask) − سعر البيع (Bid)</td>
+</tr>
+<tr>
+<td><strong>القيمة الاسمية</strong> (Notional value)</td>
+<td>القيمة الكاملة للصفقة</td>
+</tr>
+<tr>
+<td><strong>لغة MQL5</strong> (MQL5)</td>
+<td>لغة برمجة لروبوتات MT5 ومؤشراته</td>
+</tr>
+<tr>
+<td><strong>اللوت</strong> (Lot)</td>
+<td>وحدة حجم الصفقة في الفوركس (1 لوت = 100,000 وحدة)</td>
+</tr>
+<tr>
+<td><strong>متوسط المدى الحقيقي</strong> (ATR)</td>
+<td>مؤشر يقيس متوسط مدى الشمعة (التقلب)</td>
+</tr>
+<tr>
+<td><strong>المستشار الخبير</strong> (EA - Expert Advisor)</td>
+<td>روبوت تداول يعمل داخل MetaTrader</td>
+</tr>
+<tr>
+<td><strong>المشتق المالي</strong> (Derivative)</td>
+<td>عقد تأتي قيمته من سعر أصل آخر</td>
+</tr>
+<tr>
+<td><strong>مضاعف R</strong> (R / R-multiple)</td>
+<td>النتيجة مقيسة بوحدات المخاطرة التي تحمّلتها</td>
+</tr>
+<tr>
+<td><strong>معدل التمويل</strong> (Funding rate)</td>
+<td>دفعة دورية بين أصحاب صفقات الشراء وأصحاب صفقات البيع في العقود الآجلة الدائمة</td>
+</tr>
+<tr>
+<td><strong>المقاومة</strong> (Resistance)</td>
+<td>منطقة سعرية يميل الصعود إلى التوقف عندها</td>
+</tr>
+<tr>
+<td><strong>منصة تداول</strong> (Exchange)</td>
+<td>منصة تطابق بين المشترين والبائعين (مثل Binance)</td>
+</tr>
+<tr>
+<td><strong>المؤشر</strong> (Indicator)</td>
+<td>معادلة تُطبَّق على السعر للمساعدة في قراءة الرسم البياني</td>
+</tr>
+<tr>
+<td><strong>مؤشر القوة النسبية</strong> (RSI)</td>
+<td>مؤشر زخم يتراوح من 0 إلى 100</td>
+</tr>
+<tr>
+<td><strong>نداء الهامش</strong> (Margin call)</td>
+<td>تحذير بأن الهامش يوشك على النفاد</td>
+</tr>
+<tr>
+<td><strong>نسبة المخاطرة إلى العائد</strong> (Risk-to-reward, R:R)</td>
+<td>الخسارة المخطّطة مقابل الربح المخطّط</td>
+</tr>
+<tr>
+<td><strong>النقطة</strong> (Pip)</td>
+<td>خطوة سعرية صغيرة معيارية في الفوركس (0.0001 لمعظم الأزواج)</td>
+</tr>
+<tr>
+<td><strong>هابط</strong> (Bearish)</td>
+<td>توقّع هبوط الأسعار / إظهار أسعار تهبط</td>
+</tr>
+<tr>
+<td><strong>الهامش</strong> (Margin)</td>
+<td>مال محجوز كتأمين لصفقة برافعة مالية</td>
+</tr>
+<tr>
+<td><strong>واجهة برمجة التطبيقات</strong> (API)</td>
+<td>طريقة تتحدث بها البرامج مع منصة ما</td>
+</tr>
+<tr>
+<td><strong>الوسيط</strong> (Broker)</td>
+<td>شركة تمنحك الوصول إلى الأسواق (مثل Exness)</td>
+</tr>
+<tr>
+<td><strong>وقف الخسارة</strong> (Stop-loss, SL)</td>
+<td>أمر يغلق الصفقة للحدّ من الخسارة</td>
+</tr>
+<tr>
+<td><strong>الوقف المتحرك</strong> (Trailing stop)</td>
+<td>وقف خسارة يتبع السعر عندما يتحرك لصالحك</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="part" id="part-24"><h2><span class="part-badge">24</span><span>ماذا أتعلّم بعد ذلك؟</span></h2>
+<h3 id="h3-80">24.1 خارطة طريق للتعلّم</h3>
+<div class="diagram"><pre class="mermaid">flowchart TD
+    subgraph S1[&quot;المرحلة 1 — الفهم (الأسابيع 1–4)&quot;]
+        A1[&quot;أعد قراءة الأجزاء 1–13&quot;] --&gt; A2[&quot;افتح حسابًا تجريبيًا على Exness MT5&lt;br/&gt;+ شبكة اختبار Binance&quot;] --&gt; A3[&quot;جرّب كل أنواع الأوامر&lt;br/&gt;على الحساب التجريبي: سوق، محدد،&lt;br/&gt;إيقاف، SL، TP، OCO&quot;]
+    end
+    subgraph S2[&quot;المرحلة 2 — التدريب (الأسابيع 4–12)&quot;]
+        B1[&quot;اختر سوقًا واحدًا فقط&lt;br/&gt;(مثل EURUSD أو BTCUSDT)&quot;] --&gt; B2[&quot;اختر استراتيجية بسيطة واحدة فقط&lt;br/&gt;واكتب قواعد دقيقة&quot;] --&gt; B3[&quot;50–100 صفقة تجريبية&lt;br/&gt;+ سجّل كل صفقة&quot;]
+    end
+    subgraph S3[&quot;المرحلة 3 — البناء (بالتوازي)&quot;]
+        C1[&quot;اجلب الشموع عبر API&quot;] --&gt; C2[&quot;احسب المؤشرات&quot;] --&gt; C3[&quot;اختبار رجعي مع التكاليف&quot;] --&gt; C4[&quot;بوت ورقي / على شبكة الاختبار&lt;br/&gt;مع مدير المخاطر&quot;]
+    end
+    S1 --&gt; S2
+    S1 --&gt; S3
+</pre></div>
+<h3 id="h3-81">24.2 مواضيع تدرسها بعد ذلك (بهذا الترتيب)</h3>
+<ol>
+<li><strong>أساسيات الإحصاء</strong> — المتوسطات، والانحراف المعياري، ونسبة الربح، والتوقع الرياضي، وحجم العيّنة. (اللغة الصادقة للتداول.)</li>
+<li><strong>تحديد حجم الصفقة والمخاطرة</strong> — تدرّب على المعادلة حتى تصبح تلقائية.</li>
+<li><strong>البنية الدقيقة للسوق (Market Microstructure)</strong> — دفاتر الأوامر، وصانع/آخذ، والانزلاق السعري، وكيف تعمل محركات المطابقة.</li>
+<li><strong>منصة رسوم بيانية واحدة بعمق</strong> — MT5 أو TradingView.</li>
+<li><strong>Python للبيانات</strong> — <code>pandas</code> للشموع، و<code>ccxt</code> لمنصات التداول، و<code>MetaTrader5</code> لـ MT5، ورسم المخططات البيانية.</li>
+<li><strong>الاختبار الرجعي بالطريقة الصحيحة</strong> — أُطر عمل مثل <code>backtesting.py</code> و<code>vectorbt</code> و<code>backtrader</code>، أو أداة Strategy Tester في MT5؛ وتعلّم الاختبار المتدرّج للأمام (Walk-Forward) والاختبار خارج العيّنة (Out-of-Sample).</li>
+<li><strong>توثيق واجهات API لمنصات التداول</strong> — اقرأ توثيق Spot API في Binance (المعلومات العامة، والمرشّحات، وحدود الطلبات، وتدفقات بيانات المستخدم).</li>
+<li><strong>هندسة الأمان</strong> — إدارة الأسرار، وصلاحيات المفاتيح، والقائمة البيضاء لعناوين IP، والتدقيق.</li>
+<li><strong>أساسيات الاقتصاد الكلي للفوركس</strong> — أسعار الفائدة، والتضخم، والبنوك المركزية، والأجندة الاقتصادية.</li>
+<li><strong>أساسيات العملات الرقمية</strong> — المحافظ، وشبكات البلوكتشين، والعملات المستقرة، ومخاطر الحفظ.</li>
+</ol>
+<h3 id="h3-82">24.3 اختيار مشروعك — دليل لاتخاذ القرار</h3>
+<div class="diagram"><pre class="mermaid">flowchart TD
+    Q1{&quot;ما الذي تريده أكثر&lt;br/&gt;الآن؟&quot;}
+    Q1 -- &quot;فهم الأسواق بشكل أفضل&quot; --&gt; P1[&quot;📊 لوحة بيانات السوق&lt;br/&gt;+ عارض المؤشرات&quot;]
+    Q1 -- &quot;تحسين تداولي الشخصي&quot; --&gt; P2[&quot;📓 تطبيق ويب لسجل التداول&lt;br/&gt;والتحليلات&quot;]
+    Q1 -- &quot;أتمتة فكرة&quot; --&gt; Q2{&quot;هل اختبرت الفكرة&lt;br/&gt;على أكثر من 100 صفقة؟&quot;}
+    Q2 -- لا --&gt; P3[&quot;🧪 أداة الاختبار الرجعي أولًا&quot;]
+    Q2 -- نعم --&gt; P4[&quot;🤖 بوت ورقي / على شبكة الاختبار&lt;br/&gt;مع مدير المخاطر&quot;]
+    Q1 -- &quot;بناء منتج للآخرين&quot; --&gt; P5[&quot;🏗️ منصة&lt;br/&gt;(ابدأ بالمشاريع 1–4 كوحدات؛&lt;br/&gt;وتحقّق من المتطلبات القانونية)&quot;]
+</pre></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>إذا كنت تريد أن…</th>
+<th>ابنِ أولًا</th>
+<th>لماذا</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>تتعلّم واجهات API بدون أي مخاطرة</td>
+<td><strong>لوحة بيانات السوق</strong> (بيانات Binance + MEXC العامة)</td>
+<td>بدون مفاتيح، ونتائج مرئية فورية، وطبقة بيانات قابلة لإعادة الاستخدام</td>
+</tr>
+<tr>
+<td>تصبح متداولًا أفضل</td>
+<td><strong>سجل التداول</strong> (استيراد من Binance/MEXC عبر مفاتيح للقراءة فقط، وإدخال يدوي لـ MT5)</td>
+<td>يُظهر إحصاءاتك الحقيقية؛ وهو الأداة التي يحتاجها معظم المتداولين فعلًا</td>
+</tr>
+<tr>
+<td>تؤتمت</td>
+<td><strong>أداة اختبار رجعي ← بوت ورقي</strong></td>
+<td>يثبت صلاحية الاستراتيجية قبل أن يدخل المال في الموضوع</td>
+</tr>
+<tr>
+<td>تبني مشروعًا تجاريًا</td>
+<td><strong>منصة مكوّنة من وحدات</strong></td>
+<td>كل وحدة مما سبق تصبح ميزة؛ ابدأ صغيرًا</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-83">24.4 مسار بداية مقترح</h3>
+<aside class="callout callout-tip"><div class="callout-title"><span class="callout-icon">💡</span>نصيحة</div><p>مسار يناسب من يقول &quot;لا أعرف بعد ماذا سأبني&quot;:</p>
+<ol>
+<li><strong>طبقة البيانات</strong> — خدمة صغيرة تنزّل الشموع وتخزّنها من Binance وMEXC (الواجهات العامة) ومن MT5 (حزمة Python على حساب تجريبي).</li>
+<li><strong>لوحة التحكم</strong> — اعرض الرسوم البيانية وبعض المؤشرات في تطبيق ويب.</li>
+<li><strong>سجل التداول</strong> — سجّل الصفقات التجريبية مع الدخول وSL وTP والحجم ومضاعف R؛ واحسب نسبة الربح والتوقع الرياضي والتراجع.</li>
+<li><strong>أداة الاختبار الرجعي</strong> — أعد استخدام طبقة البيانات؛ وأدرج الرسوم والفارق السعري والانزلاق السعري.</li>
+<li><strong>البوت الورقي</strong> — أعد استخدام كود الاستراتيجية من أداة الاختبار الرجعي؛ وأضف مدير المخاطر وزر الإيقاف الطارئ؛ وشغّله على شبكة اختبار Binance / حساب Exness التجريبي.</li>
+</ol>
+<p>كل خطوة مفيدة بحد ذاتها، ولا تحتاج أي منها إلى مال حقيقي، ومعًا تصبح الأساس لـ <strong>أي</strong> مشروع تختاره — بوت، أو منصة، أو تطبيق ويب.</p>
+</aside>
+<h3 id="h3-84">24.5 تذكيرات أخيرة</h3>
+<ul>
+<li><strong>البقاء أولًا، والربح ثانيًا.</strong> مخاطرة صغيرة في كل صفقة، ووقف خسارة دائمًا.</li>
+<li><strong>القواعد المكتوبة &gt; المشاعر.</strong> إذا لم تستطع كتابتها، فلن تستطيع اختبارها ولا أتمتتها.</li>
+<li><strong>التكاليف حقيقية.</strong> أدرج دائمًا الفارق السعري والرسوم ورسوم التبييت والتمويل.</li>
+<li><strong>الحساب التجريبي وشبكة الاختبار مجانيان.</strong> استخدمهما لمدة أطول بكثير مما تشعر أنه ضروري.</li>
+<li><strong>كن متشكّكًا</strong> في أي شيء يعد بربح سهل أو مضمون — بما في ذلك نتائج اختباراتك الرجعية أنت.</li>
+</ul>
+<hr />
+<p><em>أُعدّ هذا الدليل ليكون مرجعًا تعليميًا طويل الأمد. ميزات المنصات والرسوم وحدود الرافعة المالية واللوائح التنظيمية تتغير كثيرًا — راجع دائمًا التوثيق الرسمي لـ Binance وMEXC وMetaTrader 5 وExness للاطلاع على التفاصيل الحالية.</em></p>
+</section>
+  </main>
+</div>
+<button class="btn" id="toTop" aria-label="العودة للأعلى">↑ العودة للأعلى</button>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const root = document.documentElement;
+const saved = (() => { try { return localStorage.getItem('guide-theme'); } catch (e) { return null; } })();
+if (saved) root.dataset.theme = saved;
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+const blocks = [...document.querySelectorAll('pre.mermaid')];
+blocks.forEach(b => b.dataset.src = b.textContent);
+let renderGen = 0;
+async function renderDiagrams() {
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'loose', theme: 'base',
+    fontFamily: css('--font'),
+    themeVariables: {
+      darkMode: isDark(), fontSize: '15px',
+      primaryColor: css('--accent-soft'), primaryBorderColor: css('--accent'), primaryTextColor: css('--heading'),
+      secondaryColor: css('--tip-bg'), tertiaryColor: css('--surface'), lineColor: css('--muted'),
+      textColor: css('--text'), mainBkg: css('--accent-soft'), clusterBkg: css('--surface'), clusterBorder: css('--border'),
+      edgeLabelBackground: css('--surface'), noteBkgColor: css('--warning-bg'), noteTextColor: css('--text'),
+      actorBkg: css('--accent-soft'), actorBorder: css('--accent'), actorTextColor: css('--heading'), signalColor: css('--text'), signalTextColor: css('--text'),
+      labelBoxBkgColor: css('--surface'), labelTextColor: css('--text'), loopTextColor: css('--text'),
+      xyChart: { plotColorPalette: css('--accent'), backgroundColor: 'transparent', titleColor: css('--heading'),
+                 xAxisLabelColor: css('--text'), yAxisLabelColor: css('--text'), xAxisTitleColor: css('--text'), yAxisTitleColor: css('--text'),
+                 xAxisLineColor: css('--muted'), yAxisLineColor: css('--muted'), xAxisTickColor: css('--muted'), yAxisTickColor: css('--muted') },
+      git0: css('--accent'), cScale0: css('--accent-soft'), cScale1: css('--tip-bg'), cScale2: css('--kid-bg'), cScale3: css('--important-bg'), cScale4: css('--warning-bg'),
+      sectionBkgColor: css('--accent-soft'), altSectionBkgColor: css('--surface-2'), taskBkgColor: css('--accent'), taskBorderColor: css('--accent'),
+      taskTextColor: '#ffffff', taskTextOutsideColor: css('--text'), gridColor: css('--border'), todayLineColor: 'transparent'
+    },
+    flowchart: { htmlLabels: true, curve: 'basis' },
+    gantt: { axisFormat: '%H:%M' }
+  });
+  // render one by one with explicit ids (mermaid's default ids are timestamps and can collide)
+  const gen = ++renderGen;
+  for (const [i, b] of blocks.entries()) {
+    try {
+      const { svg } = await mermaid.render(`dg-${gen}-${i}`, b.dataset.src);
+      if (gen !== renderGen) return;
+      b.innerHTML = svg; b.dataset.processed = 'true';
+    } catch (e) { console.error('diagram', i, e); b.textContent = b.dataset.src; }
+  }
+}
+renderDiagrams();
+document.getElementById('themeBtn').addEventListener('click', () => {
+  root.dataset.theme = isDark() ? 'light' : 'dark';
+  try { localStorage.setItem('guide-theme', root.dataset.theme); } catch (e) {}
+  renderDiagrams();
+});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (!root.dataset.theme) renderDiagrams(); });
+const toc = document.querySelector('nav.toc');
+document.getElementById('menuBtn').addEventListener('click', () => toc.classList.toggle('open'));
+toc.addEventListener('click', e => { if (e.target.closest('a')) toc.classList.remove('open'); });
+const links = new Map([...toc.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { links.forEach(a => a.classList.remove('active')); const a = links.get(en.target.id); if (a) { a.classList.add('active'); a.scrollIntoView({block: 'nearest'}); } } });
+}, { rootMargin: '-80px 0px -70% 0px' });
+document.querySelectorAll('section.part').forEach(s => obs.observe(s));
+const bar = document.getElementById('progress'), top = document.getElementById('toTop');
+addEventListener('scroll', () => {
+  const h = document.documentElement; const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  bar.style.width = (p * 100).toFixed(2) + '%'; top.classList.toggle('show', h.scrollTop > 900);
+}, { passive: true });
+top.addEventListener('click', () => scrollTo({ top: 0 }));
+</script>
+</body>
+</html>

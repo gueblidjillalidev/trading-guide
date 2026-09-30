@@ -1,0 +1,2800 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trading Learning Guide</title>
+<meta name="description" content="Forex &amp; Crypto from zero — explained simply, for future builders">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>:root{--font:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif}
+:root{
+  --bg:#f6f7fb; --bg-soft:#eef1f8; --surface:#ffffff; --surface-2:#f8fafc; --border:#e3e7ef;
+  --text:#172033; --muted:#5b6478; --heading:#0c1426; --accent:#4f46e5; --accent-2:#0ea5e9;
+  --accent-soft:#eef0ff; --up:#16a34a; --down:#dc2626; --up-soft:#dcfce7; --down-soft:#fee2e2;
+  --code-bg:#0f172a; --code-text:#e2e8f0; --shadow:0 1px 2px rgba(16,24,40,.05),0 4px 16px rgba(16,24,40,.06);
+  --tip:#0ea5e9; --tip-bg:#e8f6fd; --note:#6366f1; --note-bg:#eef0ff; --warning:#d97706; --warning-bg:#fff5e6;
+  --caution:#dc2626; --caution-bg:#fdecec; --important:#7c3aed; --important-bg:#f3edff; --kid:#10b981; --kid-bg:#e7f8f1;
+  --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1020; --bg-soft:#0f1629; --surface:#121a2f; --surface-2:#172038; --border:#243049;
+    --text:#d8deea; --muted:#95a0b8; --heading:#f3f6fc; --accent:#8b8cff; --accent-2:#38bdf8;
+    --accent-soft:#1c2246; --up:#22c55e; --down:#f05252; --up-soft:#0f2a1c; --down-soft:#2e1216;
+    --code-bg:#0a0f1d; --code-text:#e2e8f0; --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+    --tip:#38bdf8; --tip-bg:#0d2231; --note:#8b8cff; --note-bg:#1a1d3d; --warning:#f59e0b; --warning-bg:#2a1f0b;
+    --caution:#f05252; --caution-bg:#2c1214; --important:#a78bfa; --important-bg:#221a3a; --kid:#34d399; --kid-bg:#0e2a22;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1020; --bg-soft:#0f1629; --surface:#121a2f; --surface-2:#172038; --border:#243049;
+  --text:#d8deea; --muted:#95a0b8; --heading:#f3f6fc; --accent:#8b8cff; --accent-2:#38bdf8;
+  --accent-soft:#1c2246; --up:#22c55e; --down:#f05252; --up-soft:#0f2a1c; --down-soft:#2e1216;
+  --code-bg:#0a0f1d; --code-text:#e2e8f0; --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  --tip:#38bdf8; --tip-bg:#0d2231; --note:#8b8cff; --note-bg:#1a1d3d; --warning:#f59e0b; --warning-bg:#2a1f0b;
+  --caution:#f05252; --caution-bg:#2c1214; --important:#a78bfa; --important-bg:#221a3a; --kid:#34d399; --kid-bg:#0e2a22;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+#progress{position:fixed;inset-inline-start:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:60}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:10px 20px;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.topbar .brand{font-weight:800;color:var(--heading);display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .spacer{flex:1}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);
+  padding:6px 12px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:32px;max-width:1280px;margin:0 auto;padding:24px 20px 80px}
+nav.toc{position:sticky;top:72px;align-self:start;max-height:calc(100vh - 90px);overflow:auto;padding:16px;border:1px solid var(--border);
+  border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+nav.toc h4{margin:4px 8px 10px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc a{display:flex;gap:10px;align-items:baseline;padding:6px 8px;border-radius:10px;color:var(--text);font-size:14px;line-height:1.35}
+nav.toc a:hover{background:var(--bg-soft);text-decoration:none}
+nav.toc a.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+nav.toc .n{flex:0 0 24px;font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px;font-weight:700}
+nav.toc a.active .n{color:var(--accent)}
+main{min-width:0}
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:44px 40px;margin-bottom:28px;color:#fff;
+  background:radial-gradient(1200px 400px at 10% -20%,rgba(255,255,255,.18),transparent 60%),linear-gradient(135deg,#4338ca 0%,#2563eb 50%,#0891b2 100%);box-shadow:var(--shadow)}
+.hero h1{margin:0 0 10px;font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:-.02em;color:#fff}
+.hero p.sub{margin:0;font-size:clamp(16px,2.2vw,19px);opacity:.92;max-width:720px}
+.hero .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:5px 12px;border-radius:999px;font-size:13.5px;font-weight:600}
+.hero svg.deco{position:absolute;inset-inline-end:-20px;bottom:-10px;width:360px;opacity:.28;pointer-events:none}
+.intro{margin-bottom:28px}
+section.part{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:30px 36px;margin-bottom:26px}
+section.part > h2{display:flex;align-items:center;gap:14px;margin:0 0 18px;font-size:clamp(22px,3vw,28px);line-height:1.25;color:var(--heading);letter-spacing:-.01em}
+.part-badge{flex:0 0 auto;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:14px;font-size:18px;font-weight:800;color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+h3{margin:30px 0 10px;font-size:20px;color:var(--heading);line-height:1.35}
+h4{margin:22px 0 8px;font-size:17px;color:var(--heading)}
+p{margin:10px 0}
+strong{color:var(--heading)}
+ul,ol{padding-inline-start:24px} li{margin:4px 0}
+li.task{list-style:none;margin-inline-start:-22px;display:flex;gap:10px;align-items:flex-start}
+li.task .box{flex:0 0 18px;height:18px;margin-top:5px;border:2px solid var(--accent);border-radius:5px;display:inline-grid;place-items:center;font-size:12px;color:var(--accent)}
+hr{border:0;height:1px;background:var(--border);margin:28px 0}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.88em;background:var(--bg-soft);border:1px solid var(--border);padding:1px 6px;border-radius:6px;direction:ltr;unicode-bidi:isolate}
+pre.code{position:relative;direction:ltr;text-align:left;background:var(--code-bg);color:var(--code-text);border-radius:14px;padding:18px 20px;overflow:auto;
+  font-size:13.5px;line-height:1.55;margin:16px 0;border:1px solid var(--border)}
+pre.code code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
+pre.code[data-lang]::before{content:attr(data-lang);position:absolute;top:8px;right:12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#94a3b8}
+pre.ascii{background:var(--surface-2);color:var(--text)}
+.table-wrap{overflow-x:auto;margin:16px 0;border:1px solid var(--border);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{background:var(--bg-soft);color:var(--heading);font-weight:700;text-align:start;padding:10px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:9px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr:nth-child(even){background:var(--surface-2)}
+tbody tr:hover{background:var(--accent-soft)}
+.callout{--c:var(--note);--cb:var(--note-bg);position:relative;background:var(--cb);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);
+  border-inline-start:5px solid var(--c);border-radius:14px;padding:14px 18px;margin:18px 0}
+.callout-title{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--c);font-size:14px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.callout-icon{font-size:18px}
+.callout > p:first-of-type{margin-top:4px}
+.callout p:last-child,.callout ul:last-child,.callout ol:last-child{margin-bottom:2px}
+.callout-tip{--c:var(--tip);--cb:var(--tip-bg)} .callout-note{--c:var(--note);--cb:var(--note-bg)}
+.callout-warning{--c:var(--warning);--cb:var(--warning-bg)} .callout-caution{--c:var(--caution);--cb:var(--caution-bg)}
+.callout-important{--c:var(--important);--cb:var(--important-bg)}
+.callout-kid{--c:var(--kid);--cb:var(--kid-bg);font-size:17px}
+.callout-kid .callout-title{text-transform:none;letter-spacing:0;font-size:15px}
+.diagram{direction:ltr;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:16px;margin:18px 0;overflow-x:auto;text-align:center}
+.diagram pre.mermaid{margin:0;background:none;font-family:var(--font);white-space:pre}
+.diagram pre.mermaid[data-processed]{white-space:normal}
+.diagram svg{max-width:100%;height:auto}
+figure.svg-figure{margin:20px 0;padding:16px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;text-align:center}
+figure.svg-figure svg{width:100%;max-width:680px;height:auto}
+figure.svg-figure figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.svg-text{fill:var(--text);font-family:var(--font)} .svg-muted{fill:var(--muted);font-family:var(--font)}
+.svg-up{fill:var(--up);font-family:var(--font)} .svg-guide{stroke:var(--muted);stroke-dasharray:3 3;stroke-width:1}
+.body-up{fill:var(--up)} .body-down{fill:var(--down)} .wick-up{stroke:var(--up)} .wick-down{stroke:var(--down)}
+.line-up{stroke:var(--up)} .line-down{stroke:var(--down)} .line-neutral{stroke:var(--accent)}
+.dot-up{fill:var(--up)} .dot-down{fill:var(--down)} .arrow-up{stroke:var(--up)}
+.svg-panel{fill:var(--surface);stroke:var(--border)}
+.svg-res{stroke:var(--down)} .svg-sup{stroke:var(--up)}
+.zone-res{fill:var(--down);opacity:.14} .zone-sup{fill:var(--up);opacity:.14}
+.svg-res-t{fill:var(--down);font-family:var(--font)} .svg-sup-t{fill:var(--up);font-family:var(--font)}
+footer{color:var(--muted);font-size:14px;text-align:center;margin-top:30px}
+#toTop{position:fixed;inset-inline-end:20px;bottom:20px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+#toTop.show{opacity:1;pointer-events:auto}
+[dir="rtl"] body,[dir="rtl"]{font-size:17px}
+[dir="rtl"] .hero{background:radial-gradient(1200px 400px at 90% -20%,rgba(255,255,255,.18),transparent 60%),linear-gradient(225deg,#4338ca 0%,#2563eb 50%,#0891b2 100%)}
+[dir="rtl"] .callout-title,[dir="rtl"] th{letter-spacing:0}
+@media (max-width: 980px){
+  .layout{grid-template-columns:1fr;padding:16px 16px 60px}
+  #menuBtn{display:inline-flex}
+  nav.toc{position:fixed;top:56px;inset-inline-start:12px;inset-inline-end:12px;max-height:70vh;z-index:55;display:none}
+  nav.toc.open{display:block}
+  section.part{padding:22px 18px}
+  .hero{padding:32px 22px}
+  .hero svg.deco{width:220px}
+}
+@media (max-width: 520px){
+  .topbar .brand span.t{display:none}
+  body{font-size:16px}
+  section.part > h2{gap:10px} .part-badge{width:36px;height:36px;font-size:15px;border-radius:11px}
+}
+@media print{
+  .topbar,nav.toc,#toTop,#progress{display:none} .layout{display:block} section.part{box-shadow:none;break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="topbar">
+  <button class="btn" id="menuBtn" aria-label="Contents">☰ Contents</button>
+  <div class="brand">📘 <span class="t">Trading Learning Guide</span></div>
+  <div class="spacer"></div>
+  <a class="btn" href="TRADING_GUIDE_AR.html">🌐 العربية</a>
+  <button class="btn" id="themeBtn" aria-label="Theme">◐ Theme</button>
+</header>
+<div class="layout">
+  <nav class="toc" aria-label="Contents"><h4>Contents</h4><ol><li><a href="#s0"><span class="n">•</span><span>🧭 How to use this guide</span></a></li><li><a href="#part-1"><span class="n">1</span><span>What trading actually is</span></a></li><li><a href="#part-2"><span class="n">2</span><span>Markets, assets, pairs and prices</span></a></li><li><a href="#part-3"><span class="n">3</span><span>Forex vs Crypto</span></a></li><li><a href="#part-4"><span class="n">4</span><span>Exchanges vs brokers (and spot vs derivatives)</span></a></li><li><a href="#part-5"><span class="n">5</span><span>Your accounts: Binance, MEXC, MT5 and Exness</span></a></li><li><a href="#part-6"><span class="n">6</span><span>Charts and candlesticks</span></a></li><li><a href="#part-7"><span class="n">7</span><span>Long vs Short</span></a></li><li><a href="#part-8"><span class="n">8</span><span>Order types</span></a></li><li><a href="#part-9"><span class="n">9</span><span>Spread, fees, leverage, margin, liquidity and volatility</span></a></li><li><a href="#part-10"><span class="n">10</span><span>Technical analysis fundamentals</span></a></li><li><a href="#part-11"><span class="n">11</span><span>Indicators and signals</span></a></li><li><a href="#part-12"><span class="n">12</span><span>Basic trading strategies</span></a></li><li><a href="#part-13"><span class="n">13</span><span>Risk management</span></a></li><li><a href="#part-14"><span class="n">14</span><span>Demo / paper trading vs real money</span></a></li><li><a href="#part-15"><span class="n">15</span><span>Trading psychology</span></a></li><li><a href="#part-16"><span class="n">16</span><span>Common beginner mistakes and risks</span></a></li><li><a href="#part-17"><span class="n">17</span><span>The life of a trade</span></a></li><li><a href="#part-18"><span class="n">18</span><span>Complete practical examples</span></a></li><li><a href="#part-19"><span class="n">19</span><span>Crypto vs Forex infrastructure</span></a></li><li><a href="#part-20"><span class="n">20</span><span>Trading bots and automation</span></a></li><li><a href="#part-21"><span class="n">21</span><span>APIs and exchange/broker connections</span></a></li><li><a href="#part-22"><span class="n">22</span><span>How your future project could connect to all this</span></a></li><li><a href="#part-23"><span class="n">23</span><span>Glossary</span></a></li><li><a href="#part-24"><span class="n">24</span><span>What should I learn next?</span></a></li></ol></nav>
+  <main>
+    <div class="hero"><svg class="deco" viewBox="0 0 360 200" aria-hidden="true">
+<g stroke="#fff" stroke-width="3"><line x1="30" y1="120" x2="30" y2="180"/><line x1="70" y1="100" x2="70" y2="170"/><line x1="110" y1="110" x2="110" y2="160"/>
+<line x1="150" y1="70" x2="150" y2="140"/><line x1="190" y1="80" x2="190" y2="130"/><line x1="230" y1="40" x2="230" y2="110"/><line x1="270" y1="50" x2="270" y2="100"/><line x1="310" y1="10" x2="310" y2="80"/></g>
+<g fill="#fff"><rect x="20" y="130" width="20" height="40" rx="3"/><rect x="60" y="110" width="20" height="45" rx="3"/><rect x="100" y="120" width="20" height="25" rx="3" opacity=".5"/>
+<rect x="140" y="80" width="20" height="45" rx="3"/><rect x="180" y="90" width="20" height="25" rx="3" opacity=".5"/><rect x="220" y="50" width="20" height="45" rx="3"/>
+<rect x="260" y="60" width="20" height="25" rx="3" opacity=".5"/><rect x="300" y="20" width="20" height="45" rx="3"/></g></svg><h1>📘 Trading Learning Guide</h1><p class="sub">Forex &amp; Crypto from zero — explained simply, for future builders</p><div class="pills"><span class="pill">24 parts</span><span class="pill">3 worked examples</span><span class="pill">Education only — not financial advice</span></div></div>
+    <div class="intro">
+<aside class="callout callout-important"><div class="callout-title"><span class="callout-icon">📌</span>Important</div><p><strong>This guide is for learning only.</strong> It explains how trading works so you can understand the systems before you build software around them. It is <strong>not</strong> financial advice and it does not tell you what to buy or sell. Most beginners who trade with real money lose money. For example, brokers that offer CFDs must publish warnings like <em>&quot;70% of retail client accounts lose money when trading CFDs&quot;</em> (the exact number changes by broker and over time).</p>
+</aside>
+</div>
+    <section class="part" id="s0"><h2><span>🧭 How to use this guide</span></h2>
+<ul>
+<li>Read it <strong>in order</strong> the first time. Each part builds on the one before it.</li>
+<li>New words appear in <strong>bold</strong> and are explained right away. There is also a full <strong>Glossary</strong> near the end.</li>
+<li>Every part has a <strong>🧒 &quot;Like I'm 10&quot;</strong> box with a simple picture in words, followed by the more precise explanation.</li>
+<li>The three <strong>complete examples</strong> (Part 18) put everything together with real-looking numbers.</li>
+<li>The last parts (19–24) are for <strong>you as a builder</strong>: how exchanges, brokers, APIs and bots fit together.</li>
+</ul>
+<h3 id="h3-2">Table of contents</h3>
+<ol>
+<li><a href="#part-1">What trading actually is</a></li>
+<li><a href="#part-2">Markets, assets, pairs and prices</a></li>
+<li><a href="#part-3">Forex vs Crypto</a></li>
+<li><a href="#part-4">Exchanges vs brokers (and spot vs derivatives)</a></li>
+<li><a href="#part-5">Your accounts: Binance, MEXC, MT5 and Exness</a></li>
+<li><a href="#part-6">Charts and candlesticks</a></li>
+<li><a href="#part-7">Long vs Short</a></li>
+<li><a href="#part-8">Order types</a></li>
+<li><a href="#part-9">Spread, fees, leverage, margin, liquidity and volatility</a></li>
+<li><a href="#part-10">Technical analysis fundamentals</a></li>
+<li><a href="#part-11">Indicators and signals</a></li>
+<li><a href="#part-12">Basic trading strategies</a></li>
+<li><a href="#part-13">Risk management</a></li>
+<li><a href="#part-14">Demo / paper trading vs real money</a></li>
+<li><a href="#part-15">Trading psychology</a></li>
+<li><a href="#part-16">Common beginner mistakes and risks</a></li>
+<li><a href="#part-17">The life of a trade</a></li>
+<li><a href="#part-18">Complete practical examples</a></li>
+<li><a href="#part-19">Crypto vs Forex infrastructure</a></li>
+<li><a href="#part-20">Trading bots and automation</a></li>
+<li><a href="#part-21">APIs and exchange/broker connections</a></li>
+<li><a href="#part-22">How your future project could connect to all this</a></li>
+<li><a href="#part-23">Glossary</a></li>
+<li><a href="#part-24">What should I learn next?</a></li>
+</ol>
+</section><section class="part" id="part-1"><h2><span class="part-badge">1</span><span>What trading actually is</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>Imagine you collect football stickers. On Monday, a rare sticker is worth 2 normal stickers. You trade for it. On Friday, everybody wants that rare sticker and now it is worth 5 normal stickers. You trade it away and you now have 5 stickers instead of 2. You didn't make a sticker — you just <strong>bought when it was cheap and sold when it was expensive</strong>. That is trading.</p>
+</aside>
+<p><strong>Trading</strong> means <strong>buying and selling things of value (called <em>assets</em>) to make a profit from their price changes.</strong></p>
+<p>A <strong>price</strong> is simply what people agree to pay for something <em>right now</em>. Prices move all the time because the number of people who want to buy and the number who want to sell keep changing.</p>
+<h3 id="h3-3">Why do prices move? Supply and demand</h3>
+<ul>
+<li><strong>Demand</strong> = how many people want to buy.</li>
+<li><strong>Supply</strong> = how many people want to sell.</li>
+</ul>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;More buyers than sellers&lt;br/&gt;(high demand)&quot;] --&gt; B[&quot;Buyers compete&lt;br/&gt;and offer more&quot;] --&gt; C[&quot;📈 Price goes UP&quot;]
+    D[&quot;More sellers than buyers&lt;br/&gt;(high supply)&quot;] --&gt; E[&quot;Sellers compete&lt;br/&gt;and accept less&quot;] --&gt; F[&quot;📉 Price goes DOWN&quot;]
+</pre></div>
+<p>What makes people want to buy or sell? News (a central bank changes interest rates), company or project results, fear, excitement, big players moving money, and other traders reacting to all of that.</p>
+<h3 id="h3-4">Where does a trader's profit come from?</h3>
+<p>A trader makes money only from the <strong>difference between the price they enter at and the price they exit at</strong>, minus <strong>costs</strong> (fees).</p>
+<pre class="code ascii"><code>Profit = (Exit price − Entry price) × Quantity − Costs      ← when you BUY first
+</code></pre>
+<p>Nobody pays you just for &quot;taking part&quot;. For short-term trading, one trader's gain is often another trader's loss, and the platforms collect fees from both sides. That is one reason it is hard to win consistently.</p>
+<h3 id="h3-5">Trading vs investing</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>🏃 <strong>Trading</strong></th>
+<th>🌳 <strong>Investing</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time</td>
+<td>Minutes to weeks</td>
+<td>Months to decades</td>
+</tr>
+<tr>
+<td>Goal</td>
+<td>Profit from price <strong>moves</strong></td>
+<td>Grow wealth as the asset <strong>grows</strong> (and earn dividends/interest)</td>
+</tr>
+<tr>
+<td>Ownership</td>
+<td>Often you <strong>don't own</strong> the asset (you trade a contract about its price)</td>
+<td>Usually you <strong>own</strong> the asset</td>
+</tr>
+<tr>
+<td>Tools</td>
+<td>Charts, orders, leverage</td>
+<td>Research, patience, diversification</td>
+</tr>
+<tr>
+<td>Activity</td>
+<td>High (many decisions)</td>
+<td>Low (few decisions)</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>Note</div><p><strong>Speculation</strong> is the word for &quot;betting on which direction a price will move&quot;. Most trading is speculation. It is not the same as gambling in a casino, but without an <strong>edge</strong> (a real, tested advantage) and <strong>risk control</strong>, it can behave a lot like gambling.</p>
+</aside>
+<h3 id="h3-6">Who is in the market?</h3>
+<ul>
+<li><strong>Institutions</strong> — banks, hedge funds, pension funds, market makers. They trade huge amounts and do most of the volume.</li>
+<li><strong>Retail traders</strong> — individuals like you, trading from an app or a platform.</li>
+<li><strong>Market makers</strong> — companies that always offer to buy <em>and</em> sell, earning the small difference between the two prices.</li>
+<li><strong>Bots/algorithms</strong> — computer programs that trade automatically. A big share of all orders today come from algorithms.</li>
+</ul>
+</section><section class="part" id="part-2"><h2><span class="part-badge">2</span><span>Markets, assets, pairs and prices</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>A <strong>market</strong> is like a giant playground swap-meet. An <strong>asset</strong> is the thing being swapped (stickers, marbles). A <strong>pair</strong> is saying &quot;how many marbles for one sticker?&quot; — you always compare one thing <em>against</em> another.</p>
+</aside>
+<h3 id="h3-7">Key words</h3>
+<ul>
+<li><strong>Market</strong> — a place (today, almost always digital) where buyers and sellers meet. Examples: the forex market, the crypto market, the stock market.</li>
+<li><strong>Asset</strong> — anything with a price that can be traded: currencies, cryptocurrencies, company shares, gold, oil…</li>
+<li><strong>Instrument / symbol</strong> — the specific thing you trade on a platform, e.g. <code>EURUSD</code> or <code>BTCUSDT</code>.</li>
+<li><strong>Ticker</strong> — the short code of an asset: <code>BTC</code> (Bitcoin), <code>ETH</code> (Ether), <code>EUR</code> (euro), <code>USD</code> (US dollar), <code>XAU</code> (gold).</li>
+</ul>
+<h3 id="h3-8">Pairs: base and quote</h3>
+<p>In forex and crypto you almost always trade a <strong>pair</strong>: one asset priced in another.</p>
+<pre class="code ascii"><code>      EUR / USD = 1.0850
+      ───   ───
+       │     └── QUOTE currency: what you pay with
+       └──────── BASE currency: what you are buying/selling
+
+ &quot;1 euro costs 1.0850 US dollars&quot;
+</code></pre>
+<pre class="code ascii"><code>      BTC / USDT = 60,000
+       │      └── QUOTE: USDT (a &quot;stablecoin&quot; meant to be worth 1 US dollar)
+       └───────── BASE:  Bitcoin
+
+ &quot;1 bitcoin costs 60,000 USDT&quot;
+</code></pre>
+<ul>
+<li>If you <strong>buy</strong> <code>EURUSD</code> you are buying euros <strong>and</strong> paying with dollars.</li>
+<li>If you <strong>sell</strong> <code>EURUSD</code> you are selling euros <strong>and</strong> receiving dollars.</li>
+</ul>
+<p>A <strong>stablecoin</strong> is a crypto token designed to keep a fixed value, usually 1 USD (examples: USDT, USDC). Crypto exchanges use them as &quot;digital dollars&quot;.</p>
+<h3 id="h3-9">Two prices, not one: bid and ask</h3>
+<p>When you look closely, there are always <strong>two</strong> prices:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Price</th>
+<th>Meaning</th>
+<th>Who uses it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bid</strong></td>
+<td>The highest price someone is willing to <strong>pay</strong> right now</td>
+<td><strong>You sell</strong> at the bid</td>
+</tr>
+<tr>
+<td><strong>Ask</strong> (or <strong>offer</strong>)</td>
+<td>The lowest price someone is willing to <strong>sell</strong> at right now</td>
+<td><strong>You buy</strong> at the ask</td>
+</tr>
+</tbody>
+</table></div>
+<p>The ask is always a bit higher than the bid. The gap is the <strong>spread</strong> (Part 9).</p>
+<pre class="code ascii"><code>   Bid 1.08500  |  Ask 1.08510      →  Spread = 0.00010 = 1 pip
+   (you sell)       (you buy)
+</code></pre>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>A shop buys your old games for $8 and sells the same games for $10. The shop's &quot;bid&quot; is $8, its &quot;ask&quot; is $10. If you buy and instantly sell back, you lose $2. That $2 is the spread.</p>
+</aside>
+<h3 id="h3-10">Small units: pips, points and ticks</h3>
+<ul>
+<li><strong>Pip</strong> (&quot;percentage in point&quot;) — the standard small move in forex. For most pairs it is the <strong>4th decimal</strong> (0.0001). For pairs with the Japanese yen, it is the <strong>2nd decimal</strong> (0.01).
+<ul>
+<li><code>EURUSD</code> from 1.0850 → 1.0851 = <strong>+1 pip</strong>.</li>
+<li><code>USDJPY</code> from 150.20 → 150.21 = <strong>+1 pip</strong>.</li>
+</ul>
+</li>
+<li><strong>Pipette / point</strong> — one-tenth of a pip (the 5th decimal). MT5 often shows prices with 5 decimals and calls the smallest step a <strong>point</strong>. So 10 points = 1 pip.</li>
+<li><strong>Tick / tick size</strong> — the smallest price step an instrument can move. In crypto, each pair has its own tick size (e.g. 0.01 USDT for BTCUSDT).</li>
+</ul>
+<h3 id="h3-11">Quantity: lots (forex) and units (crypto)</h3>
+<ul>
+<li><strong>Forex</strong> is traded in <strong>lots</strong>:</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Lot name</th>
+<th>Size</th>
+<th>Units of base currency</th>
+<th>Value of 1 pip on EURUSD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard lot</td>
+<td>1.00</td>
+<td>100,000</td>
+<td>≈ $10</td>
+</tr>
+<tr>
+<td>Mini lot</td>
+<td>0.10</td>
+<td>10,000</td>
+<td>≈ $1</td>
+</tr>
+<tr>
+<td>Micro lot</td>
+<td>0.01</td>
+<td>1,000</td>
+<td>≈ $0.10</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Crypto</strong> is traded in <strong>units of the coin</strong>, often small fractions: 0.00125 BTC is a normal order. Each exchange has a <strong>minimum order size</strong> and a <strong>step size</strong> (how many decimals are allowed).</li>
+</ul>
+<h3 id="h3-12">Types of assets you'll see</h3>
+<div class="diagram"><pre class="mermaid">mindmap
+  root((Tradable assets))
+    Forex
+      Major pairs: EURUSD, GBPUSD, USDJPY
+      Minor pairs: EURGBP, AUDJPY
+      Exotic pairs: USDTRY, EURZAR
+    Crypto
+      Bitcoin BTC
+      Ether ETH
+      Altcoins: SOL, XRP...
+      Stablecoins: USDT, USDC
+    Commodities
+      Gold XAUUSD
+      Oil
+    Indices
+      US500, US30, DE40
+    Stocks
+      Apple, Tesla...
+</pre></div>
+<ul>
+<li><strong>Major forex pairs</strong> contain the US dollar and another big currency. They are the most traded, cheapest and &quot;calmest&quot;.</li>
+<li><strong>Exotic pairs</strong> involve smaller economies: bigger spreads and sudden jumps.</li>
+<li><strong>Altcoins</strong> = any crypto that isn't Bitcoin. Many are small, very <strong>volatile</strong> (they jump around a lot) and some go to zero.</li>
+</ul>
+</section><section class="part" id="part-3"><h2><span class="part-badge">3</span><span>Forex vs Crypto</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p><strong>Forex</strong> is trading the money of countries — like swapping euros for dollars before a holiday, but doing it to profit from tiny changes. <strong>Crypto</strong> is trading digital coins that live on the internet — younger, wilder, open all night and all weekend.</p>
+</aside>
+<p><strong>Forex</strong> (FX, &quot;foreign exchange&quot;) is the market for exchanging national currencies. It is the biggest financial market in the world — trillions of dollars change hands every day. <strong>Crypto</strong> (cryptocurrency) is digital money recorded on a <strong>blockchain</strong> (a shared public record that many computers keep in sync).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>💱 Forex</th>
+<th>🪙 Crypto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What is traded</td>
+<td>Currencies of countries (EUR, USD, JPY…)</td>
+<td>Digital coins/tokens (BTC, ETH, SOL…)</td>
+</tr>
+<tr>
+<td>Opening hours</td>
+<td>24 hours, <strong>5 days</strong> a week (closed at weekends)</td>
+<td><strong>24/7/365</strong></td>
+</tr>
+<tr>
+<td>Typical daily move of a major</td>
+<td>~0.3%–1% (EURUSD)</td>
+<td>~2%–5% for BTC, often much more for altcoins</td>
+</tr>
+<tr>
+<td>Who sets the price</td>
+<td>Big banks and liquidity providers; your <strong>broker</strong> shows you a price</td>
+<td>Buyers and sellers on each <strong>exchange's order book</strong></td>
+</tr>
+<tr>
+<td>Where you trade</td>
+<td>Through a <strong>broker</strong> (e.g. Exness) using a platform (e.g. MT5)</td>
+<td>On an <strong>exchange</strong> (e.g. Binance, MEXC)</td>
+</tr>
+<tr>
+<td>Do you own the asset?</td>
+<td>Usually <strong>no</strong> — retail forex is mostly CFDs (contracts on the price)</td>
+<td>On <strong>spot</strong> you <strong>own</strong> the coins and can withdraw them; on futures you don't</td>
+</tr>
+<tr>
+<td>Leverage</td>
+<td>Often high (1:30 in strictly regulated regions, up to 1:500+ offshore)</td>
+<td>Spot: none. Futures: up to 100x+ on some exchanges</td>
+</tr>
+<tr>
+<td>What moves price</td>
+<td>Interest rates, inflation, economic data, politics</td>
+<td>Adoption, regulation news, big holders (&quot;whales&quot;), hype, overall risk mood</td>
+</tr>
+<tr>
+<td>Regulation</td>
+<td>Mature, but varies by country and by broker entity</td>
+<td>Younger; rules differ a lot by country and change often</td>
+</tr>
+<tr>
+<td>Special costs</td>
+<td>Spread, commission, <strong>swap</strong> (overnight fee)</td>
+<td>Trading fees (maker/taker), <strong>funding rate</strong> on perpetual futures, withdrawal/network fees</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-13">Forex trading sessions</h3>
+<p>Forex is open 24/5 because the trading day &quot;travels&quot; around the world. Activity is highest when two big sessions overlap.</p>
+<div class="diagram"><pre class="mermaid">gantt
+    title Forex sessions (approximate, UTC, changes with daylight saving)
+    dateFormat HH:mm
+    axisFormat %H:%M
+    section Sydney
+    Sydney   :00:00, 6h
+    section Tokyo
+    Tokyo    :00:00, 9h
+    section London
+    London   :07:00, 9h
+    section New York
+    New York :12:00, 9h
+</pre></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>Note</div><p>The <strong>London–New York overlap</strong> (roughly 12:00–16:00 UTC) is usually the busiest, most <strong>liquid</strong> time for forex. The Sydney session actually begins the evening before (≈21:00–22:00 UTC); the chart simplifies this.</p>
+</aside>
+</section><section class="part" id="part-4"><h2><span class="part-badge">4</span><span>Exchanges vs brokers (and spot vs derivatives)</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>An <strong>exchange</strong> is a big open market square: sellers put up signs with their prices, buyers put up signs with theirs, and the square just matches them. A <strong>broker</strong> is a shopkeeper: you don't see the other people — you buy from and sell to the shop, and the shop deals with the big market behind the scenes.</p>
+</aside>
+<h3 id="h3-14">Exchange</h3>
+<p>An <strong>exchange</strong> is a platform that <strong>matches buyers and sellers</strong>. Everybody's orders go into an <strong>order book</strong> — a live list of all waiting buy and sell orders — and a <strong>matching engine</strong> pairs them.</p>
+<pre class="code ascii"><code>                ORDER BOOK  BTC/USDT
+      ┌──────────────── SELL orders (asks) ────────────────┐
+      │   60,030.00   0.80 BTC                              │
+      │   60,020.00   1.20 BTC                              │
+      │   60,010.00   0.45 BTC   ← best ask (lowest seller) │
+      ├───────────────────── spread ────────────────────────┤
+      │   60,000.00   0.60 BTC   ← best bid (highest buyer) │
+      │   59,990.00   2.10 BTC                              │
+      │   59,980.00   0.95 BTC                              │
+      └──────────────── BUY orders (bids) ─────────────────┘
+</code></pre>
+<p>Binance and MEXC are <strong>crypto exchanges</strong>. They make money mostly from <strong>trading fees</strong>.</p>
+<h3 id="h3-15">Broker</h3>
+<p>A <strong>broker</strong> is a company that gives you <strong>access</strong> to markets. In retail forex, the broker usually shows you a price and becomes the other side of your trade (or passes it to bigger partners called <strong>liquidity providers</strong>). Exness is a <strong>forex/CFD broker</strong>. Brokers make money from <strong>spreads</strong>, <strong>commissions</strong> and <strong>swaps</strong> — and some also profit when clients lose (see &quot;B-book&quot; in Part 19).</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    subgraph EX[&quot;🏛️ Exchange model (Binance, MEXC)&quot;]
+        U1[&quot;You&quot;] --&gt; OB[&quot;Order book +&lt;br/&gt;matching engine&quot;]
+        U2[&quot;Other traders&quot;] --&gt; OB
+        U3[&quot;Market makers&quot;] --&gt; OB
+    end
+    subgraph BR[&quot;🏪 Broker model (Exness)&quot;]
+        V1[&quot;You (MT5)&quot;] --&gt; B[&quot;Broker&quot;]
+        B --&gt; LP[&quot;Liquidity providers&lt;br/&gt;(banks, big firms)&quot;]
+        B -.-&gt; INT[&quot;...or the broker keeps&lt;br/&gt;the other side itself&quot;]
+    end
+</pre></div>
+<h3 id="h3-16">Spot vs derivatives</h3>
+<p>This is one of the most important ideas in the whole guide.</p>
+<ul>
+<li><strong>Spot</strong> — you <strong>really buy the asset</strong> and pay the full price. Buy 0.01 BTC on Binance Spot and you own 0.01 BTC. You can hold it or withdraw it to your own wallet. You can only lose what you paid.</li>
+<li><strong>Derivative</strong> — a <strong>contract whose value depends on (is &quot;derived&quot; from) the price</strong> of something else. You don't own the thing; you own a promise about its price.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Derivative</th>
+<th>What it is</th>
+<th>Where you'll meet it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CFD</strong> (Contract for Difference)</td>
+<td>You and the broker agree to exchange the <strong>difference</strong> in price between when you open and close.</td>
+<td>Exness / MT5: EURUSD, gold, indices, even BTC CFDs</td>
+</tr>
+<tr>
+<td><strong>Futures</strong></td>
+<td>A contract to buy/sell at a set price on a future date.</td>
+<td>Regulated futures exchanges; crypto &quot;delivery futures&quot;</td>
+</tr>
+<tr>
+<td><strong>Perpetual futures (&quot;perps&quot;)</strong></td>
+<td>Crypto futures with <strong>no expiry date</strong>. A <strong>funding rate</strong> paid between longs and shorts keeps its price close to spot.</td>
+<td>Binance Futures, MEXC Futures</td>
+</tr>
+<tr>
+<td><strong>Options</strong></td>
+<td>The <strong>right, but not the obligation</strong>, to buy/sell at a price.</td>
+<td>More advanced; skip for now</td>
+</tr>
+</tbody>
+</table></div>
+<p>Derivatives make two things easy: <strong>short selling</strong> (profiting when the price falls — Part 7) and <strong>leverage</strong> (trading more than your money — Part 9). Both are powerful and dangerous.</p>
+<aside class="callout callout-warning"><div class="callout-title"><span class="callout-icon">⚠️</span>Warning</div><p>With spot, the worst case is that your coin goes to zero. With leveraged derivatives, you can lose your entire deposit <strong>in minutes</strong>, sometimes from a single sudden move.</p>
+</aside>
+</section><section class="part" id="part-5"><h2><span class="part-badge">5</span><span>Your accounts: Binance, MEXC, MT5 and Exness</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>Binance and MEXC are two big <strong>crypto markets</strong>. Exness is a <strong>shop (broker)</strong> for forex and other things. MT5 is <strong>not a shop at all</strong> — it is the <strong>cash register / control panel</strong> app that lots of shops (including Exness) let you use.</p>
+</aside>
+<div class="diagram"><pre class="mermaid">flowchart TB
+    YOU([&quot;🧑 You&quot;])
+    YOU --&gt; BIN[&quot;🟡 Binance&lt;br/&gt;Crypto exchange&quot;]
+    YOU --&gt; MEX[&quot;🔵 MEXC&lt;br/&gt;Crypto exchange&quot;]
+    YOU --&gt; EXN[&quot;🟢 Exness&lt;br/&gt;Forex &amp; CFD broker&quot;]
+    EXN --&gt; MT5[&quot;🖥️ MetaTrader 5&lt;br/&gt;Trading platform software&quot;]
+    BIN --&gt; BS[&quot;Spot&quot;] &amp; BF[&quot;Futures (USDⓈ-M, COIN-M)&quot;] &amp; BT[&quot;Testnet for developers&quot;]
+    MEX --&gt; MS[&quot;Spot (many new tokens)&quot;] &amp; MF[&quot;Futures&quot;]
+    MT5 --&gt; F1[&quot;Forex pairs&quot;] &amp; F2[&quot;Gold / metals&quot;] &amp; F3[&quot;Indices, stocks, crypto CFDs&quot;]
+</pre></div>
+<h3 id="h3-17">🟡 Binance</h3>
+<ul>
+<li>The <strong>largest crypto exchange</strong> by trading volume.</li>
+<li>Products: <strong>Spot</strong>, <strong>Margin</strong>, <strong>Futures</strong> (USDⓈ-M = settled in stablecoins, COIN-M = settled in the coin), plus savings, &quot;Earn&quot;, etc.</li>
+<li>Spot trading fee: base rate around <strong>0.1%</strong> per trade (lower with BNB or VIP levels — check the current fee page).</li>
+<li>Very well documented <strong>API</strong> (Part 21) and a <strong>testnet</strong> (a fake-money version for developers): Spot testnet at <code>testnet.binance.vision</code>.</li>
+<li>Availability and allowed products depend on your <strong>country</strong>.</li>
+</ul>
+<h3 id="h3-18">🔵 MEXC</h3>
+<ul>
+<li>A crypto exchange known for listing <strong>many new and small tokens</strong> early (more choice, but many of these tokens are very risky or illiquid).</li>
+<li>Spot and Futures, typically <strong>low fees</strong> (promotional 0%-maker offers appear often — check current rates).</li>
+<li>Its Spot API (v3) is <strong>very similar to Binance's</strong>, which makes it easy for code to support both. Futures API access for placing orders has had restrictions at times — always read the current documentation.</li>
+</ul>
+<h3 id="h3-19">🖥️ MetaTrader 5 (MT5)</h3>
+<ul>
+<li><strong>Software</strong>, made by MetaQuotes, that <strong>brokers give to their clients</strong>. It is not a broker and doesn't hold your money.</li>
+<li>You log in with an account number, password and <strong>server</strong> given by your broker (for example, an Exness server).</li>
+<li>Features: charts, 21 timeframes, many built-in indicators, one-click trading, <strong>Expert Advisors (EAs)</strong> = trading robots written in the <strong>MQL5</strong> language, and a <strong>Strategy Tester</strong> for backtesting.</li>
+<li>Available on Windows, Mac, web, Android and iOS. There is an official <strong>Python package</strong> (<code>MetaTrader5</code>) that talks to the desktop terminal (Windows).</li>
+</ul>
+<h3 id="h3-20">🟢 Exness</h3>
+<ul>
+<li>A <strong>broker</strong> offering forex, metals (gold/silver), energies, indices, stocks and crypto <strong>as CFDs</strong>.</li>
+<li>You trade through <strong>MT4, MT5</strong> or Exness's own web terminal/app.</li>
+<li>Several account types (e.g. Standard, Pro, Raw Spread, Zero) that differ in <strong>spread vs commission</strong>.</li>
+<li>Offers <strong>very high leverage</strong> in some regions — which is a risk, not a gift.</li>
+<li>Free <strong>demo accounts</strong> with virtual money: perfect for learning MT5.</li>
+<li>Regulation depends on <strong>which Exness entity</strong> your account belongs to — check it in your account.</li>
+</ul>
+<h3 id="h3-21">Which one does what?</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Binance</th>
+<th>MEXC</th>
+<th>Exness (+MT5)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Exchange</td>
+<td>Exchange</td>
+<td>Broker (+ platform)</td>
+</tr>
+<tr>
+<td>Main use</td>
+<td>Crypto spot &amp; futures</td>
+<td>Crypto spot &amp; futures, new tokens</td>
+<td>Forex, gold, indices (CFDs)</td>
+</tr>
+<tr>
+<td>Do you own coins on spot?</td>
+<td>✅ Yes</td>
+<td>✅ Yes</td>
+<td>❌ No (CFDs)</td>
+</tr>
+<tr>
+<td>Can you withdraw crypto to a wallet?</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌ (you withdraw money, not coins)</td>
+</tr>
+<tr>
+<td>Open at weekends?</td>
+<td>✅ 24/7</td>
+<td>✅ 24/7</td>
+<td>Forex ❌ (crypto CFDs ✅)</td>
+</tr>
+<tr>
+<td>Demo / test money</td>
+<td>Testnet (API)</td>
+<td>Limited</td>
+<td>✅ Demo accounts</td>
+</tr>
+<tr>
+<td>Programming access</td>
+<td>REST + WebSocket API</td>
+<td>REST + WebSocket API</td>
+<td>MQL5 EAs, Python MT5 package</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="part" id="part-6"><h2><span class="part-badge">6</span><span>Charts and candlesticks</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>A price chart is like a diary of the price. Each <strong>candle</strong> is one page of the diary: it tells you where the price <strong>started</strong>, where it <strong>ended</strong>, and the <strong>highest</strong> and <strong>lowest</strong> places it visited during that time.</p>
+</aside>
+<h3 id="h3-22">Chart types</h3>
+<ul>
+<li><strong>Line chart</strong> — joins the closing prices with a line. Simple, hides detail.</li>
+<li><strong>Bar chart (OHLC)</strong> — each period is a vertical bar with small ticks for open and close.</li>
+<li><strong>Candlestick chart</strong> — the most popular. Same information as a bar, but easier to read.</li>
+</ul>
+<h3 id="h3-23">Anatomy of a candle</h3>
+<p>Every candle shows 4 prices for one time period — <strong>OHLC</strong>:</p>
+<ul>
+<li><strong>O</strong>pen — the first price of the period</li>
+<li><strong>H</strong>igh — the highest price reached</li>
+<li><strong>L</strong>ow — the lowest price reached</li>
+<li><strong>C</strong>lose — the last price of the period</li>
+</ul>
+<figure class="svg-figure"><svg viewBox="0 0 680 350" role="img" aria-label="The four prices inside every candle." direction="ltr" xmlns="http://www.w3.org/2000/svg"><line x1="170" y1="40" x2="170" y2="300" class="wick-up" stroke-width="3"/><rect x="130" y="100" width="80" height="130" rx="4" class="body-up"/><line x1="174" y1="40" x2="226" y2="40" class="svg-guide"/><text x="230" y="44" class="svg-text" text-anchor="start" font-size="13" font-weight="600">High</text><line x1="174" y1="100" x2="226" y2="100" class="svg-guide"/><text x="230" y="104" class="svg-text" text-anchor="start" font-size="13" font-weight="600">Close</text><line x1="174" y1="230" x2="226" y2="230" class="svg-guide"/><text x="230" y="234" class="svg-text" text-anchor="start" font-size="13" font-weight="600">Open</text><line x1="174" y1="300" x2="226" y2="300" class="svg-guide"/><text x="230" y="304" class="svg-text" text-anchor="start" font-size="13" font-weight="600">Low</text><text x="110" y="74.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">Upper wick</text><text x="110" y="169.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">Body</text><text x="110" y="269.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">Lower wick</text><text x="170" y="332" class="svg-text" text-anchor="middle" font-size="14" font-weight="700">Bullish candle (price went up)</text><line x1="500" y1="40" x2="500" y2="300" class="wick-down" stroke-width="3"/><rect x="460" y="100" width="80" height="130" rx="4" class="body-down"/><line x1="504" y1="40" x2="556" y2="40" class="svg-guide"/><text x="560" y="44" class="svg-text" text-anchor="start" font-size="13" font-weight="600">High</text><line x1="504" y1="230" x2="556" y2="230" class="svg-guide"/><text x="560" y="234" class="svg-text" text-anchor="start" font-size="13" font-weight="600">Close</text><line x1="504" y1="100" x2="556" y2="100" class="svg-guide"/><text x="560" y="104" class="svg-text" text-anchor="start" font-size="13" font-weight="600">Open</text><line x1="504" y1="300" x2="556" y2="300" class="svg-guide"/><text x="560" y="304" class="svg-text" text-anchor="start" font-size="13" font-weight="600">Low</text><text x="440" y="74.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">Upper wick</text><text x="440" y="169.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">Body</text><text x="440" y="269.0" class="svg-muted" text-anchor="end" font-size="12" font-weight="400">Lower wick</text><text x="500" y="332" class="svg-text" text-anchor="middle" font-size="14" font-weight="700">Bearish candle (price went down)</text></svg><figcaption>The four prices inside every candle.</figcaption></figure>
+<ul>
+<li><strong>Body</strong> — the thick part between open and close. A <strong>big body</strong> = strong move in one direction.</li>
+<li><strong>Wicks (shadows)</strong> — the thin lines. A <strong>long wick</strong> means price went there but was <strong>pushed back</strong> — a sign of rejection.</li>
+<li><strong>Green / bullish candle</strong> — close is higher than open. <strong>Bullish</strong> = rising (a bull attacks by pushing its horns up).</li>
+<li><strong>Red / bearish candle</strong> — close is lower than open. <strong>Bearish</strong> = falling (a bear swipes its paws down).</li>
+</ul>
+<h3 id="h3-24">Timeframes</h3>
+<p>A <strong>timeframe</strong> is how much time each candle represents: 1 minute (M1), 5 minutes (M5), 15 minutes (M15), 1 hour (H1), 4 hours (H4), 1 day (D1), 1 week (W1)…</p>
+<p>The <strong>same market looks completely different</strong> on different timeframes: a strong rise on M5 might be a tiny bump on D1. Beginners usually do better starting with <strong>higher timeframes</strong> (H4, D1): fewer, slower, less noisy decisions.</p>
+<h3 id="h3-25">A few common candle patterns</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>What it looks like</th>
+<th>What people <em>think</em> it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Doji</strong></td>
+<td>Open ≈ close, tiny body, wicks both sides</td>
+<td>Indecision: buyers and sellers are balanced</td>
+</tr>
+<tr>
+<td><strong>Hammer</strong></td>
+<td>Small body at the top, long lower wick</td>
+<td>Sellers pushed down, buyers pushed back up → possible bounce</td>
+</tr>
+<tr>
+<td><strong>Shooting star</strong></td>
+<td>Small body at the bottom, long upper wick</td>
+<td>Buyers pushed up, sellers pushed back down → possible drop</td>
+</tr>
+<tr>
+<td><strong>Bullish engulfing</strong></td>
+<td>A green body that completely covers the previous red body</td>
+<td>Buyers took over</td>
+</tr>
+<tr>
+<td><strong>Bearish engulfing</strong></td>
+<td>A red body that completely covers the previous green body</td>
+<td>Sellers took over</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="svg-figure"><svg viewBox="0 0 680 245" role="img" aria-label="Common candle patterns. They are hints, not promises." direction="ltr" xmlns="http://www.w3.org/2000/svg"><line x1="60" y1="60" x2="60" y2="180" class="wick-down" stroke-width="2"/><rect x="49.0" y="120" width="22" height="2" rx="2" class="body-down"/><text x="60" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Doji</text><line x1="190" y1="72" x2="190" y2="190" class="wick-up" stroke-width="2"/><rect x="179.0" y="78" width="22" height="12" rx="2" class="body-up"/><text x="190" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Hammer</text><line x1="320" y1="50" x2="320" y2="170" class="wick-down" stroke-width="2"/><rect x="309.0" y="150" width="22" height="14" rx="2" class="body-down"/><text x="320" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Shooting star</text><line x1="444" y1="92" x2="444" y2="150" class="wick-down" stroke-width="2"/><rect x="435.0" y="100" width="18" height="40" rx="2" class="body-down"/><line x1="476" y1="80" x2="476" y2="156" class="wick-up" stroke-width="2"/><rect x="463.0" y="90" width="26" height="56" rx="2" class="body-up"/><text x="460" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Bullish engulfing</text><line x1="604" y1="90" x2="604" y2="148" class="wick-up" stroke-width="2"/><rect x="595.0" y="100" width="18" height="40" rx="2" class="body-up"/><line x1="636" y1="84" x2="636" y2="160" class="wick-down" stroke-width="2"/><rect x="623.0" y="94" width="26" height="56" rx="2" class="body-down"/><text x="620" y="225" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Bearish engulfing</text></svg><figcaption>Common candle patterns. They are hints, not promises.</figcaption></figure>
+<aside class="callout callout-warning"><div class="callout-title"><span class="callout-icon">⚠️</span>Warning</div><p>Patterns are <strong>hints, not promises</strong>. On their own they are wrong very often. They mean much more when they appear at an important place on the chart (like support or resistance — Part 10).</p>
+</aside>
+<h3 id="h3-26">Volume</h3>
+<p><strong>Volume</strong> is how much was traded in a period, usually shown as bars under the chart. A price move with <strong>high volume</strong> has more &quot;people behind it&quot; than the same move on low volume.</p>
+</section><section class="part" id="part-7"><h2><span class="part-badge">7</span><span>Long vs Short</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div>
+<ul>
+<li><strong>Going long</strong> = &quot;I think this toy will get more popular.&quot; You buy it now, sell it later for more.</li>
+<li><strong>Going short</strong> = &quot;I think this toy will get less popular.&quot; You <strong>borrow</strong> one from a friend, sell it now for $10, then when it drops to $6 you buy one back, return it to your friend, and keep the $4.</li>
+</ul>
+</aside>
+<ul>
+<li><strong>Long (buy)</strong> — you profit when the price <strong>rises</strong>.</li>
+<li><strong>Short (sell)</strong> — you profit when the price <strong>falls</strong>.</li>
+</ul>
+<figure class="svg-figure"><svg viewBox="0 0 680 250" role="img" aria-label="Long and short are mirror images of each other." direction="ltr" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah-up" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="dot-up"/></marker></defs><rect x="10" y="10" width="320" height="230" rx="14" class="svg-panel"/><text x="170" y="38" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">LONG — profit when price rises</text><polyline points="40,200 90,180 130,190 180,140 220,150 290,80" class="line-up" fill="none" stroke-width="3"/><circle cx="40" cy="200" r="6" class="dot-up"/><circle cx="290" cy="80" r="6" class="dot-down"/><text x="40" y="222" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Buy ①</text><text x="290" y="68" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Sell ②</text><line x1="305" y1="198" x2="305" y2="84" class="arrow-up" stroke-width="2" marker-end="url(#ah-up)"/><text x="300" y="145" class="svg-up" text-anchor="end" font-size="12" font-weight="700">Profit</text><rect x="350" y="10" width="320" height="230" rx="14" class="svg-panel"/><text x="510" y="38" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">SHORT — profit when price falls</text><polyline points="380,80 430,100 470,90 520,140 560,130 630,200" class="line-down" fill="none" stroke-width="3"/><circle cx="380" cy="80" r="6" class="dot-down"/><circle cx="630" cy="200" r="6" class="dot-up"/><text x="380" y="68" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Sell ①</text><text x="630" y="222" class="svg-text" text-anchor="middle" font-size="12" font-weight="600">Buy back ②</text><line x1="648" y1="84" x2="648" y2="196" class="arrow-up" stroke-width="2" marker-end="url(#ah-up)"/><text x="642" y="145" class="svg-up" text-anchor="end" font-size="12" font-weight="700">Profit</text></svg><figcaption>Long and short are mirror images of each other.</figcaption></figure>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>📈 Long</th>
+<th>📉 Short</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening action</td>
+<td><strong>Buy</strong></td>
+<td><strong>Sell</strong></td>
+</tr>
+<tr>
+<td>Closing action</td>
+<td><strong>Sell</strong></td>
+<td><strong>Buy</strong> back</td>
+</tr>
+<tr>
+<td>You win if price…</td>
+<td>Goes <strong>up</strong></td>
+<td>Goes <strong>down</strong></td>
+</tr>
+<tr>
+<td>Opens at…</td>
+<td>Ask price</td>
+<td>Bid price</td>
+</tr>
+<tr>
+<td>Maximum possible loss (no leverage)</td>
+<td>What you paid (price can go to 0)</td>
+<td><strong>Unlimited in theory</strong> (price can keep rising)</td>
+</tr>
+<tr>
+<td>Formula</td>
+<td>(Exit − Entry) × Size</td>
+<td>(Entry − Exit) × Size</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-27">Where can you short?</h3>
+<ul>
+<li><strong>Forex / CFDs on MT5 (Exness):</strong> yes, just press <strong>Sell</strong>. Every forex trade is really a long on one currency and a short on the other — selling <code>EURUSD</code> = short euro, long dollar.</li>
+<li><strong>Crypto spot (Binance/MEXC):</strong> you can only sell coins you <strong>already own</strong>. Selling your BTC is &quot;exiting&quot;, not shorting.</li>
+<li><strong>Crypto futures/margin:</strong> yes, you can open a short.</li>
+</ul>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>Note</div><p>In MT5, &quot;Buy&quot; opens a long and &quot;Sell&quot; opens a short. To close, you don't press the opposite button — you <strong>close the position</strong> (the platform then does the opposite trade for you).</p>
+</aside>
+</section><section class="part" id="part-8"><h2><span class="part-badge">8</span><span>Order types</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>An <strong>order</strong> is an instruction to the market.</p>
+<ul>
+<li><strong>Market order</strong>: &quot;Give me one now, whatever it costs!&quot;</li>
+<li><strong>Limit order</strong>: &quot;I'll only buy if it's $5 or cheaper.&quot;</li>
+<li><strong>Stop order</strong>: &quot;If it reaches $8, then buy/sell it for me.&quot; (a trigger)</li>
+<li><strong>Stop-loss</strong>: &quot;If things go badly, get me out at this point.&quot;</li>
+<li><strong>Take-profit</strong>: &quot;If things go well, cash out at this point.&quot;</li>
+</ul>
+</aside>
+<p>An <strong>order</strong> is your instruction to buy or sell. A <strong>position</strong> is what you hold <strong>after</strong> an order is filled. A <strong>fill</strong> (or <strong>execution</strong>) means the order actually happened.</p>
+<h3 id="h3-28">The main order types</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Order</th>
+<th>What it does</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Market</strong></td>
+<td>Buy/sell <strong>immediately</strong> at the best price available</td>
+<td>Always fills (if there is liquidity)</td>
+<td>Price not guaranteed → <strong>slippage</strong></td>
+</tr>
+<tr>
+<td><strong>Limit</strong></td>
+<td>Buy at <strong>this price or lower</strong> / sell at <strong>this price or higher</strong></td>
+<td>Price guaranteed or better</td>
+<td>Might <strong>never fill</strong></td>
+</tr>
+<tr>
+<td><strong>Stop (stop-market)</strong></td>
+<td>When price <strong>touches the stop price</strong>, send a market order</td>
+<td>Enter breakouts, exit losses automatically</td>
+<td>Can fill <strong>worse</strong> than the stop price in fast markets</td>
+</tr>
+<tr>
+<td><strong>Stop-limit</strong></td>
+<td>When price touches the stop, place a <strong>limit</strong> order</td>
+<td>Controls worst price</td>
+<td>Might <strong>not fill</strong> at all if price jumps past</td>
+</tr>
+<tr>
+<td><strong>Stop-Loss (SL)</strong></td>
+<td>A stop order that <strong>closes</strong> your position to limit the loss</td>
+<td>Protects your account</td>
+<td>Can be hit by a short spike (&quot;stop hunt&quot;), slippage in gaps</td>
+</tr>
+<tr>
+<td><strong>Take-Profit (TP)</strong></td>
+<td>A limit order that <strong>closes</strong> your position at your target</td>
+<td>Locks in profit without watching</td>
+<td>Price may reverse just before it</td>
+</tr>
+<tr>
+<td><strong>Trailing stop</strong></td>
+<td>A stop-loss that <strong>follows</strong> price at a set distance as it moves in your favour</td>
+<td>Lets winners run</td>
+<td>Can close on normal wiggles if too tight</td>
+</tr>
+<tr>
+<td><strong>OCO</strong> (One-Cancels-the-Other)</td>
+<td>Two orders linked: when one fills, the other is cancelled</td>
+<td>Place TP and SL together on spot exchanges</td>
+<td>Slightly more complex</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-29">Where do you place them? (picture for a LONG trade)</h3>
+<pre class="code ascii"><code>Price
+  ▲
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  Take-Profit (sell limit)      ← exit with profit
+  │
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  Buy STOP (enter if price breaks UP through here)
+  │
+  │  ●  current price
+  │
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  Buy LIMIT (enter if price dips DOWN to here)
+  │
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  Stop-Loss (sell stop)        ← exit with small loss
+  └──────────────────────────────────────▶ time
+</code></pre>
+<p>In MT5 the pending orders are named exactly: <strong>Buy Limit, Sell Limit, Buy Stop, Sell Stop, Buy Stop Limit, Sell Stop Limit</strong>.</p>
+<ul>
+<li><strong>Buy Limit</strong> — below current price (buy the dip).</li>
+<li><strong>Sell Limit</strong> — above current price (sell the rally).</li>
+<li><strong>Buy Stop</strong> — above current price (buy the breakout).</li>
+<li><strong>Sell Stop</strong> — below current price (sell the breakdown).</li>
+</ul>
+<h3 id="h3-30">How an order moves through the system</h3>
+<div class="diagram"><pre class="mermaid">stateDiagram-v2
+    [*] --&gt; New: you send the order
+    New --&gt; Rejected: not enough money / invalid price
+    New --&gt; Open: waiting in order book (limit/stop)
+    New --&gt; Filled: market order matched
+    Open --&gt; PartiallyFilled: some of it matched
+    PartiallyFilled --&gt; Filled: rest matched
+    Open --&gt; Canceled: you cancel it
+    Open --&gt; Expired: time limit reached
+    Filled --&gt; [*]
+    Canceled --&gt; [*]
+    Rejected --&gt; [*]
+    Expired --&gt; [*]
+</pre></div>
+<h3 id="h3-31">Extra words you'll see on exchanges</h3>
+<ul>
+<li><strong>Maker</strong> — your order <strong>adds</strong> liquidity by waiting in the book (usually a limit order). Makers often pay <strong>lower</strong> fees.</li>
+<li><strong>Taker</strong> — your order <strong>takes</strong> liquidity by matching immediately (market orders, or limits that match at once). Takers pay <strong>higher</strong> fees.</li>
+<li><strong>Time in force</strong> — how long an order stays alive:
+<ul>
+<li><strong>GTC</strong> (Good-Til-Canceled) — until filled or you cancel.</li>
+<li><strong>IOC</strong> (Immediate-Or-Cancel) — fill what you can now, cancel the rest.</li>
+<li><strong>FOK</strong> (Fill-Or-Kill) — fill everything now or nothing.</li>
+</ul>
+</li>
+<li><strong>Post-only</strong> — &quot;only accept my limit order if it will be a maker&quot; (never a taker).</li>
+<li><strong>Reduce-only</strong> (futures) — the order can only make your position smaller, never open a new one. Very useful for bots.</li>
+</ul>
+</section><section class="part" id="part-9"><h2><span class="part-badge">9</span><span>Spread, fees, leverage, margin, liquidity and volatility</span></h2>
+<p>These six words decide <strong>how much trading costs you</strong> and <strong>how fast you can lose</strong>. Learn them well.</p>
+<h3 id="h3-32">9.1 Spread</h3>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>The spread is the &quot;shop's cut&quot; — the gap between the buying price and the selling price. You start every trade slightly losing because of it.</p>
+</aside>
+<p><strong>Spread = Ask − Bid.</strong></p>
+<ul>
+<li>EURUSD bid 1.08500 / ask 1.08510 → spread <strong>1.0 pip</strong>.</li>
+<li>On a 0.10 lot trade (≈$1 per pip) that costs about <strong>$1</strong> to enter.</li>
+<li>Spreads are <strong>small</strong> for popular pairs (EURUSD) and <strong>big</strong> for exotic pairs, small altcoins, and during news or at the daily rollover (around 21:00–22:00 UTC).</li>
+</ul>
+<h3 id="h3-33">9.2 Fees and other costs</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Cost</th>
+<th>Where</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Spread</strong></td>
+<td>Everywhere, especially brokers</td>
+<td>Built into the price</td>
+</tr>
+<tr>
+<td><strong>Commission</strong></td>
+<td>Brokers (raw/zero-spread accounts)</td>
+<td>Fixed amount per lot, e.g. a few dollars per lot per side</td>
+</tr>
+<tr>
+<td><strong>Trading fee (maker/taker)</strong></td>
+<td>Crypto exchanges</td>
+<td>% of trade value, e.g. 0.1% of $500 = $0.50</td>
+</tr>
+<tr>
+<td><strong>Swap / rollover</strong></td>
+<td>Forex/CFDs held <strong>past the daily rollover</strong></td>
+<td>Interest difference between the two currencies; can be paid <strong>or</strong> received. Some accounts are &quot;swap-free&quot;.</td>
+</tr>
+<tr>
+<td><strong>Funding rate</strong></td>
+<td>Crypto perpetual futures</td>
+<td>Every few hours (often every 8h) longs pay shorts or shorts pay longs. E.g. 0.01% on $2,000 = $0.20 per funding.</td>
+</tr>
+<tr>
+<td><strong>Withdrawal / network fee</strong></td>
+<td>Crypto withdrawals</td>
+<td>Fee to send coins on the blockchain</td>
+</tr>
+<tr>
+<td><strong>Slippage</strong></td>
+<td>Everywhere</td>
+<td>Getting a worse price than expected (not a fee, but a real cost)</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>Note</div><p>Costs look tiny per trade, but a bot that trades 20 times a day pays them 20 times a day. <strong>Many strategies that look profitable on paper become losers after costs.</strong></p>
+</aside>
+<h3 id="h3-34">9.3 Leverage</h3>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>Leverage is like a <strong>magnifying glass</strong> for money. Put $10 under a 10x glass and it <em>looks</em> like $100. If the price moves a little in your favour, your win is 10x bigger. If it moves a little against you, your loss is 10x bigger — and the glass can burn your $10 to nothing.</p>
+</aside>
+<p><strong>Leverage</strong> lets you control a position <strong>bigger than your own money</strong>. It is written as a ratio (1:100) or a multiplier (100x).</p>
+<pre class="code ascii"><code>Position size (notional) = Your margin × Leverage
+    $100 × 10  = $1,000 position
+    $100 × 100 = $10,000 position
+</code></pre>
+<p>The <strong>notional value</strong> is the full size of the position in money.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Price move against you</th>
+<th>1x (no leverage)</th>
+<th>10x</th>
+<th>50x</th>
+<th>100x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>−1%</td>
+<td>−1% of your money</td>
+<td><strong>−10%</strong></td>
+<td><strong>−50%</strong></td>
+<td><strong>−100% 💥</strong></td>
+</tr>
+<tr>
+<td>−2%</td>
+<td>−2%</td>
+<td>−20%</td>
+<td>−100% 💥</td>
+<td>💥</td>
+</tr>
+<tr>
+<td>−5%</td>
+<td>−5%</td>
+<td>−50%</td>
+<td>💥</td>
+<td>💥</td>
+</tr>
+<tr>
+<td>−10%</td>
+<td>−10%</td>
+<td><strong>−100% 💥</strong></td>
+<td>💥</td>
+<td>💥</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-caution"><div class="callout-title"><span class="callout-icon">🛑</span>Caution</div><p>Leverage <strong>doesn't change the market</strong>. It changes <strong>how much each move matters to you</strong>. The key to safety is <strong>position size</strong> and a <strong>stop-loss</strong> — not the leverage number displayed in your account. (Example 1 in Part 18 shows how a trader with 1:100 leverage available can still risk only 1%.)</p>
+</aside>
+<h3 id="h3-35">9.4 Margin</h3>
+<p><strong>Margin</strong> is the money the platform <strong>locks</strong> as a deposit while your leveraged position is open.</p>
+<pre class="code ascii"><code>Required margin = Notional value ÷ Leverage
+   EURUSD 0.10 lot = 10,000 EUR ≈ $10,850 notional
+   at 1:100 → margin ≈ $108.50
+</code></pre>
+<p>Words you'll see in MT5:</p>
+<ul>
+<li><strong>Balance</strong> — money in the account, not counting open trades.</li>
+<li><strong>Equity</strong> — balance <strong>+/−</strong> profit/loss of open trades. (&quot;What you'd have if you closed everything now.&quot;)</li>
+<li><strong>Used margin</strong> — money locked by open positions.</li>
+<li><strong>Free margin</strong> — equity − used margin (what's left to open new trades or absorb losses).</li>
+<li><strong>Margin level</strong> — <code>Equity ÷ Used margin × 100%</code>.</li>
+<li><strong>Margin call</strong> — a warning when margin level falls to a threshold (varies by broker).</li>
+<li><strong>Stop out</strong> — the broker <strong>automatically closes</strong> your positions when margin level falls to a lower threshold, to stop your account going negative.</li>
+</ul>
+<p>In crypto futures the same idea is called <strong>liquidation</strong>: if your losses eat your margin down to the <strong>maintenance margin</strong>, the exchange force-closes your position and you lose that margin.</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Open leveraged trade&quot;] --&gt; B{&quot;Price moves&lt;br/&gt;against you&quot;}
+    B --&gt; C[&quot;Equity falls&quot;]
+    C --&gt; D[&quot;Margin level drops&quot;]
+    D --&gt; E[&quot;⚠️ Margin call&lt;br/&gt;(warning)&quot;]
+    E --&gt; F[&quot;🛑 Stop out / Liquidation&lt;br/&gt;positions force-closed&quot;]
+    F --&gt; G[&quot;Loss is locked in&quot;]
+</pre></div>
+<p><strong>Cross vs isolated margin</strong> (crypto futures):</p>
+<ul>
+<li><strong>Isolated</strong> — each position has its own margin. If it's liquidated, only that margin is lost.</li>
+<li><strong>Cross</strong> — all your futures balance backs all positions. One bad position can drain everything.</li>
+</ul>
+<h3 id="h3-36">9.5 Liquidity</h3>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>Liquidity is how <strong>easy</strong> it is to swap something quickly at a fair price. Popular stickers — lots of kids want them — easy to swap. A weird sticker nobody wants — you might wait days or have to accept a bad deal.</p>
+</aside>
+<ul>
+<li><strong>High liquidity</strong> (EURUSD, BTC/USDT): tight spreads, big orders fill without moving price much.</li>
+<li><strong>Low liquidity</strong> (exotic pairs, tiny altcoins): wide spreads, <strong>slippage</strong>, and sometimes you <strong>can't exit</strong> when you want.</li>
+</ul>
+<p><strong>Slippage</strong> = the difference between the price you expected and the price you got. It happens with market and stop orders when the book is thin or price moves fast.</p>
+<p><strong>Order book depth</strong> = how much volume is waiting at each price. Deep book = high liquidity.</p>
+<h3 id="h3-37">9.6 Volatility</h3>
+<p><strong>Volatility</strong> is <strong>how much and how fast</strong> a price moves.</p>
+<ul>
+<li>High volatility = big swings = bigger possible wins <strong>and</strong> losses, stops hit more often.</li>
+<li>Low volatility = calm, small moves.</li>
+<li>Volatility jumps around <strong>news</strong> (e.g. US jobs report, central bank decisions), market opens, and in crypto around big announcements or liquidations.</li>
+<li>A common way to measure it is the <strong>ATR</strong> indicator (Part 11).</li>
+</ul>
+<div class="diagram"><pre class="mermaid">xychart-beta
+    title &quot;Typical daily range (illustrative %)&quot;
+    x-axis [&quot;EURUSD&quot;, &quot;GBPUSD&quot;, &quot;Gold&quot;, &quot;BTC&quot;, &quot;ETH&quot;, &quot;Small altcoin&quot;]
+    y-axis &quot;Daily move %&quot; 0 --&gt; 16
+    bar [0.5, 0.7, 1.2, 3, 4, 12]
+</pre></div>
+</section><section class="part" id="part-10"><h2><span class="part-badge">10</span><span>Technical analysis fundamentals</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>Technical analysis is like looking at <strong>footprints in the sand</strong> to guess where someone is walking. You can't be sure, but if the footprints keep going up the beach, they're <em>probably</em> still going up.</p>
+</aside>
+<p>There are three ways traders try to understand prices:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Analysis</th>
+<th>Looks at</th>
+<th>Example question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fundamental analysis</strong></td>
+<td>The &quot;real world&quot;: economy, interest rates, company or project news</td>
+<td>&quot;Will the central bank raise rates?&quot;</td>
+</tr>
+<tr>
+<td><strong>Sentiment analysis</strong></td>
+<td>What the crowd feels</td>
+<td>&quot;Is everyone extremely greedy right now?&quot;</td>
+</tr>
+<tr>
+<td><strong>Technical analysis (TA)</strong></td>
+<td>The <strong>chart</strong>: price, volume, patterns</td>
+<td>&quot;Is price near a level where it bounced before?&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<p>TA is the most popular for short-term trading and for <strong>bots</strong>, because price data is easy to get and easy for a computer to process.</p>
+<p>The core beliefs of TA:</p>
+<ol>
+<li>Price already reflects much of the known information.</li>
+<li>Prices tend to move in <strong>trends</strong>.</li>
+<li>Human behaviour (fear, greed) repeats, so some patterns repeat.</li>
+</ol>
+<p>None of these is guaranteed. TA gives <strong>probabilities</strong>, never certainties.</p>
+<h3 id="h3-38">10.1 Trends and market structure</h3>
+<ul>
+<li><strong>Uptrend</strong> — price makes <strong>Higher Highs (HH)</strong> and <strong>Higher Lows (HL)</strong>. Like climbing stairs.</li>
+<li><strong>Downtrend</strong> — <strong>Lower Highs (LH)</strong> and <strong>Lower Lows (LL)</strong>. Like walking down stairs.</li>
+<li><strong>Range / sideways</strong> — price bounces between a floor and a ceiling.</li>
+</ul>
+<figure class="svg-figure"><svg viewBox="0 0 680 240" role="img" aria-label="Market structure: stairs up, stairs down, or a corridor." direction="ltr" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="220" height="220" rx="14" class="svg-panel"/><text x="120" y="36" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">Uptrend</text><polyline points="40,190 80,140 110,165 150,105 180,130 220,70" class="line-up" fill="none" stroke-width="3"/><text x="80" y="130" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HH</text><text x="110" y="185" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HL</text><text x="150" y="95" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HH</text><text x="180" y="150" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HL</text><text x="220" y="60" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">HH</text><rect x="240" y="10" width="220" height="220" rx="14" class="svg-panel"/><text x="350" y="36" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">Downtrend</text><polyline points="270,60 310,115 340,90 380,150 410,125 450,190" class="line-down" fill="none" stroke-width="3"/><text x="310" y="135" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LL</text><text x="340" y="80" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LH</text><text x="380" y="170" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LL</text><text x="410" y="115" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LH</text><text x="450" y="210" class="svg-muted" text-anchor="middle" font-size="11" font-weight="700">LL</text><rect x="470" y="10" width="200" height="220" rx="14" class="svg-panel"/><text x="570" y="36" class="svg-text" text-anchor="middle" font-size="13" font-weight="700">Range</text><line x1="485" y1="75" x2="655" y2="75" class="svg-res" stroke-width="2" stroke-dasharray="6 4"/><line x1="485" y1="180" x2="655" y2="180" class="svg-sup" stroke-width="2" stroke-dasharray="6 4"/><text x="655" y="68" class="svg-muted" text-anchor="end" font-size="11" font-weight="400">ceiling</text><text x="655" y="197" class="svg-muted" text-anchor="end" font-size="11" font-weight="400">floor</text><polyline points="490,170 520,80 550,176 580,82 610,174 645,84" class="line-neutral" fill="none" stroke-width="3"/></svg><figcaption>Market structure: stairs up, stairs down, or a corridor.</figcaption></figure>
+<p>&quot;<strong>The trend is your friend</strong>&quot; — many strategies only trade <strong>in the direction</strong> of the bigger trend.</p>
+<h3 id="h3-39">10.2 Support and resistance</h3>
+<ul>
+<li><strong>Support</strong> — a price area where falling prices tend to <strong>stop and bounce</strong>, because buyers show up there. A <strong>floor</strong>.</li>
+<li><strong>Resistance</strong> — a price area where rising prices tend to <strong>stop and turn down</strong>, because sellers show up there. A <strong>ceiling</strong>.</li>
+<li>They are <strong>zones</strong>, not exact lines.</li>
+<li>When a resistance is clearly broken, it often becomes new support (<strong>role reversal</strong>), and vice versa.</li>
+<li><strong>Round numbers</strong> (1.1000 in EURUSD, 60,000 in BTC) often act as support/resistance because many people put orders there.</li>
+</ul>
+<figure class="svg-figure"><svg viewBox="0 0 680 300" role="img" aria-label="Price bouncing between support and resistance, then breaking out." direction="ltr" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="680" height="300" rx="14" class="svg-panel"/><rect x="20" y="137.8" width="640" height="14" class="zone-res"/><rect x="20" y="224.2" width="640" height="14" class="zone-sup"/><text x="28" y="130.8" class="svg-res-t" text-anchor="start" font-size="12" font-weight="700">Resistance (ceiling)</text><text x="654" y="255.2" class="svg-sup-t" text-anchor="end" font-size="12" font-weight="700">Support (floor)</text><line x1="40" y1="164.0" x2="40" y2="186.4" class="wick-down" stroke-width="2"/><rect x="35.0" y="170.4" width="10" height="9.599999999999994" rx="2" class="body-down"/><line x1="56" y1="170.4" x2="56" y2="207.20000000000002" class="wick-down" stroke-width="2"/><rect x="51.0" y="180.0" width="10" height="19.200000000000017" rx="2" class="body-down"/><line x1="72" y1="186.4" x2="72" y2="228.0" class="wick-down" stroke-width="2"/><rect x="67.0" y="199.20000000000002" width="10" height="19.19999999999999" rx="2" class="body-down"/><line x1="88" y1="210.4" x2="88" y2="242.4" class="wick-down" stroke-width="2"/><rect x="83.0" y="218.4" width="10" height="12.799999999999983" rx="2" class="body-down"/><line x1="104" y1="210.4" x2="104" y2="244.0" class="wick-up" stroke-width="2"/><rect x="99.0" y="221.6" width="10" height="9.599999999999994" rx="2" class="body-up"/><line x1="120" y1="196.0" x2="120" y2="228.0" class="wick-up" stroke-width="2"/><rect x="115.0" y="202.4" width="10" height="19.19999999999999" rx="2" class="body-up"/><line x1="136" y1="173.6" x2="136" y2="210.4" class="wick-up" stroke-width="2"/><rect x="131.0" y="183.20000000000002" width="10" height="19.19999999999999" rx="2" class="body-up"/><line x1="152" y1="151.2" x2="152" y2="192.79999999999998" class="wick-up" stroke-width="2"/><rect x="147.0" y="164.0" width="10" height="19.200000000000017" rx="2" class="body-up"/><line x1="168" y1="143.2" x2="168" y2="175.2" class="wick-up" stroke-width="2"/><rect x="163.0" y="151.2" width="10" height="12.800000000000011" rx="2" class="body-up"/><line x1="184" y1="140.0" x2="184" y2="173.6" class="wick-down" stroke-width="2"/><rect x="179.0" y="151.2" width="10" height="9.600000000000023" rx="2" class="body-down"/><line x1="200" y1="154.4" x2="200" y2="186.4" class="wick-down" stroke-width="2"/><rect x="195.0" y="160.8" width="10" height="19.19999999999999" rx="2" class="body-down"/><line x1="216" y1="170.4" x2="216" y2="207.20000000000002" class="wick-down" stroke-width="2"/><rect x="211.0" y="180.0" width="10" height="19.200000000000017" rx="2" class="body-down"/><line x1="232" y1="186.4" x2="232" y2="224.8" class="wick-down" stroke-width="2"/><rect x="227.0" y="199.20000000000002" width="10" height="16.0" rx="2" class="body-down"/><line x1="248" y1="207.20000000000002" x2="248" y2="239.2" class="wick-down" stroke-width="2"/><rect x="243.0" y="215.20000000000002" width="10" height="12.799999999999983" rx="2" class="body-down"/><line x1="264" y1="207.20000000000002" x2="264" y2="240.8" class="wick-up" stroke-width="2"/><rect x="259.0" y="218.4" width="10" height="9.599999999999994" rx="2" class="body-up"/><line x1="280" y1="192.79999999999998" x2="280" y2="224.8" class="wick-up" stroke-width="2"/><rect x="275.0" y="199.20000000000002" width="10" height="19.19999999999999" rx="2" class="body-up"/><line x1="296" y1="170.4" x2="296" y2="207.20000000000002" class="wick-up" stroke-width="2"/><rect x="291.0" y="180.0" width="10" height="19.200000000000017" rx="2" class="body-up"/><line x1="312" y1="148.0" x2="312" y2="189.6" class="wick-up" stroke-width="2"/><rect x="307.0" y="160.8" width="10" height="19.19999999999999" rx="2" class="body-up"/><line x1="328" y1="140.0" x2="328" y2="172.0" class="wick-up" stroke-width="2"/><rect x="323.0" y="148.0" width="10" height="12.800000000000011" rx="2" class="body-up"/><line x1="344" y1="136.8" x2="344" y2="170.4" class="wick-down" stroke-width="2"/><rect x="339.0" y="148.0" width="10" height="9.599999999999994" rx="2" class="body-down"/><line x1="360" y1="151.2" x2="360" y2="183.20000000000002" class="wick-down" stroke-width="2"/><rect x="355.0" y="157.6" width="10" height="19.200000000000017" rx="2" class="body-down"/><line x1="376" y1="167.2" x2="376" y2="200.79999999999998" class="wick-down" stroke-width="2"/><rect x="371.0" y="176.8" width="10" height="15.999999999999972" rx="2" class="body-down"/><line x1="392" y1="180.0" x2="392" y2="221.6" class="wick-down" stroke-width="2"/><rect x="387.0" y="192.79999999999998" width="10" height="19.200000000000017" rx="2" class="body-down"/><line x1="408" y1="204.0" x2="408" y2="236.0" class="wick-down" stroke-width="2"/><rect x="403.0" y="212.0" width="10" height="12.800000000000011" rx="2" class="body-down"/><line x1="424" y1="200.79999999999998" x2="424" y2="237.6" class="wick-up" stroke-width="2"/><rect x="419.0" y="212.0" width="10" height="12.800000000000011" rx="2" class="body-up"/><line x1="440" y1="183.20000000000002" x2="440" y2="218.4" class="wick-up" stroke-width="2"/><rect x="435.0" y="189.6" width="10" height="22.400000000000006" rx="2" class="body-up"/><line x1="456" y1="157.6" x2="456" y2="197.6" class="wick-up" stroke-width="2"/><rect x="451.0" y="167.2" width="10" height="22.400000000000006" rx="2" class="body-up"/><line x1="472" y1="132.0" x2="472" y2="176.8" class="wick-up" stroke-width="2"/><rect x="467.0" y="144.8" width="10" height="22.399999999999977" rx="2" class="body-up"/><line x1="488" y1="108.0" x2="488" y2="156.0" class="wick-up" stroke-width="2"/><rect x="483.0" y="116.0" width="10" height="28.80000000000001" rx="2" class="body-up"/><line x1="504" y1="76.0" x2="504" y2="128.8" class="wick-up" stroke-width="2"/><rect x="499.0" y="87.2" width="10" height="28.799999999999997" rx="2" class="body-up"/><line x1="520" y1="71.2" x2="520" y2="93.6" class="wick-up" stroke-width="2"/><rect x="515.0" y="77.6" width="10" height="9.600000000000009" rx="2" class="body-up"/><line x1="536" y1="68.0" x2="536" y2="98.4" class="wick-down" stroke-width="2"/><rect x="531.0" y="77.6" width="10" height="12.800000000000011" rx="2" class="body-down"/><line x1="552" y1="77.6" x2="552" y2="116.0" class="wick-down" stroke-width="2"/><rect x="547.0" y="90.4" width="10" height="15.999999999999986" rx="2" class="body-down"/><line x1="568" y1="98.4" x2="568" y2="127.2" class="wick-down" stroke-width="2"/><rect x="563.0" y="106.39999999999999" width="10" height="9.600000000000009" rx="2" class="body-down"/><line x1="584" y1="92.0" x2="584" y2="128.8" class="wick-up" stroke-width="2"/><rect x="579.0" y="103.2" width="10" height="12.799999999999997" rx="2" class="body-up"/><line x1="600" y1="74.4" x2="600" y2="109.60000000000001" class="wick-up" stroke-width="2"/><rect x="595.0" y="80.80000000000001" width="10" height="22.39999999999999" rx="2" class="body-up"/><line x1="616" y1="48.8" x2="616" y2="88.8" class="wick-up" stroke-width="2"/><rect x="611.0" y="58.4" width="10" height="22.400000000000013" rx="2" class="body-up"/><line x1="632" y1="26.4" x2="632" y2="68.0" class="wick-up" stroke-width="2"/><rect x="627.0" y="39.2" width="10" height="19.199999999999996" rx="2" class="body-up"/><text x="88" y="273.2" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↑ bounce</text><text x="248" y="273.2" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↑ bounce</text><text x="408" y="273.2" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↑ bounce</text><text x="168" y="114.80000000000001" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↓ rejection</text><text x="328" y="114.80000000000001" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">↓ rejection</text><text x="504" y="52.0" class="svg-up" text-anchor="middle" font-size="13" font-weight="700">Breakout!</text><text x="568" y="190.8" class="svg-muted" text-anchor="middle" font-size="11" font-weight="400">old resistance → new support</text></svg><figcaption>Price bouncing between support and resistance, then breaking out.</figcaption></figure>
+<h3 id="h3-40">10.3 Breakouts and fakeouts</h3>
+<ul>
+<li><strong>Breakout</strong> — price moves <strong>through</strong> support or resistance with strength (often with high volume).</li>
+<li><strong>Fakeout (false breakout)</strong> — price pokes through, then quickly comes back. Very common. Many traders wait for a <strong>candle close</strong> beyond the level, or a <strong>retest</strong> of the level, before trusting a breakout.</li>
+</ul>
+<h3 id="h3-41">10.4 Trendlines and channels</h3>
+<p>A <strong>trendline</strong> connects 2+ swing lows in an uptrend (or swing highs in a downtrend). A <strong>channel</strong> adds a parallel line on the other side. They help you see the &quot;slope&quot; of a trend.</p>
+<h3 id="h3-42">10.5 Multi-timeframe analysis</h3>
+<p>Look at the <strong>big picture first</strong>, then zoom in:</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;📅 Daily (D1)&lt;br/&gt;What is the main trend?&quot;] --&gt; B[&quot;🕓 4-Hour (H4)&lt;br/&gt;Where are the key levels?&quot;] --&gt; C[&quot;🕐 1-Hour (H1)&lt;br/&gt;Is there a clean entry signal?&quot;]
+</pre></div>
+</section><section class="part" id="part-11"><h2><span class="part-badge">11</span><span>Indicators and signals</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>Indicators are like the gauges in a car dashboard: speed, fuel, temperature. They're calculated from the price, so they help you <em>read</em> the car — but they don't drive it, and they can't see the road ahead.</p>
+</aside>
+<p>An <strong>indicator</strong> is a <strong>math formula applied to price (and/or volume)</strong> that produces a line or bars on the chart.</p>
+<ul>
+<li><strong>Lagging indicators</strong> confirm what already happened (moving averages). Reliable but late.</li>
+<li><strong>Leading indicators / oscillators</strong> try to show momentum changes early (RSI). Early but often wrong.</li>
+</ul>
+<p>A <strong>signal</strong> is a specific rule that says &quot;act now&quot;, e.g. <em>&quot;RSI crossed back above 30&quot;</em>. A <strong>confirmation</strong> is a second, independent clue that agrees with the first.</p>
+<h3 id="h3-43">The essential indicators</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>What it measures</th>
+<th>Common settings</th>
+<th>Typical way it's read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMA</strong> — Simple Moving Average</td>
+<td>Average closing price of the last N candles</td>
+<td>20, 50, 200</td>
+<td>Price above the 200 SMA → long-term uptrend</td>
+</tr>
+<tr>
+<td><strong>EMA</strong> — Exponential Moving Average</td>
+<td>Like SMA but recent prices count more (reacts faster)</td>
+<td>9, 21, 50</td>
+<td>Fast EMA crossing above slow EMA → possible uptrend start</td>
+</tr>
+<tr>
+<td><strong>RSI</strong> — Relative Strength Index</td>
+<td>Speed of recent gains vs losses, scale 0–100</td>
+<td>14</td>
+<td>&gt; 70 &quot;overbought&quot;, &lt; 30 &quot;oversold&quot;</td>
+</tr>
+<tr>
+<td><strong>MACD</strong></td>
+<td>Difference between two EMAs + a signal line</td>
+<td>12, 26, 9</td>
+<td>MACD line crossing above signal line → bullish momentum</td>
+</tr>
+<tr>
+<td><strong>Bollinger Bands</strong></td>
+<td>A moving average with bands 2 standard deviations away</td>
+<td>20, 2</td>
+<td>Bands squeeze = low volatility (often before a big move)</td>
+</tr>
+<tr>
+<td><strong>ATR</strong> — Average True Range</td>
+<td>Average size of a candle's range → volatility</td>
+<td>14</td>
+<td>Used to place stops: e.g. SL = 1.5 × ATR away</td>
+</tr>
+<tr>
+<td><strong>Volume</strong></td>
+<td>How much is traded</td>
+<td>—</td>
+<td>Breakouts with rising volume are more convincing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-44">How a moving average works (tiny example)</h3>
+<p>Last 5 closing prices: 10, 11, 12, 13, 14 → <strong>5-period SMA</strong> = (10+11+12+13+14) ÷ 5 = <strong>12</strong>.
+Next candle closes at 15 → drop the oldest (10), add 15 → (11+12+13+14+15) ÷ 5 = <strong>13</strong>.
+The average &quot;moves&quot; with each new candle — that's why it's called a <em>moving</em> average.</p>
+<h3 id="h3-45">A classic signal: moving average crossover</h3>
+<div class="diagram"><pre class="mermaid">flowchart TD
+    A[&quot;Calculate fast EMA (e.g. 20)&lt;br/&gt;and slow EMA (e.g. 50)&quot;] --&gt; B{&quot;Fast crossed&lt;br/&gt;ABOVE slow?&quot;}
+    B -- Yes --&gt; C[&quot;📈 'Golden cross' style signal&lt;br/&gt;→ consider long&quot;]
+    B -- No --&gt; D{&quot;Fast crossed&lt;br/&gt;BELOW slow?&quot;}
+    D -- Yes --&gt; E[&quot;📉 'Death cross' style signal&lt;br/&gt;→ consider short / exit long&quot;]
+    D -- No --&gt; F[&quot;⏸️ No signal — do nothing&quot;]
+</pre></div>
+<h3 id="h3-46">Important truths about indicators</h3>
+<aside class="callout callout-warning"><div class="callout-title"><span class="callout-icon">⚠️</span>Warning</div>
+<ul>
+<li>Indicators are <strong>built from price</strong>. They can't know anything price doesn't already know.</li>
+<li><strong>&quot;Overbought&quot; does not mean &quot;about to fall&quot;.</strong> In a strong uptrend RSI can stay above 70 for weeks.</li>
+<li>Adding more indicators usually <strong>doesn't</strong> add more information — many say the same thing. 2–3 well-understood tools beat 10 confusing ones.</li>
+<li>Every setting (14, 20, 50…) is a choice. If you try hundreds of settings on old data, one will look amazing by pure luck (<strong>overfitting</strong>, Part 20).</li>
+</ul>
+</aside>
+</section><section class="part" id="part-12"><h2><span class="part-badge">12</span><span>Basic trading strategies</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>A strategy is a <strong>recipe</strong>. It says exactly: <em>when</em> to start cooking (entry), <em>how much</em> to cook (size), <em>when it's done</em> (take-profit), and <em>when to throw it away</em> (stop-loss). Without a recipe, you're just throwing things in a pan.</p>
+</aside>
+<p>A <strong>trading strategy</strong> is a <strong>complete set of rules</strong>:</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    M[&quot;1️⃣ Market &amp; timeframe&lt;br/&gt;what and when to watch&quot;] --&gt; S[&quot;2️⃣ Setup&lt;br/&gt;conditions to look for&quot;]
+    S --&gt; E[&quot;3️⃣ Entry&lt;br/&gt;exact trigger&quot;]
+    E --&gt; R[&quot;4️⃣ Risk&lt;br/&gt;stop-loss &amp; position size&quot;]
+    R --&gt; X[&quot;5️⃣ Exit&lt;br/&gt;take-profit / trailing / time&quot;]
+    X --&gt; J[&quot;6️⃣ Review&lt;br/&gt;journal &amp; statistics&quot;]
+</pre></div>
+<p>If a rule is not written down precisely, it isn't a strategy yet. <strong>Precise rules are also exactly what a bot needs</strong> — this is the bridge to your future project.</p>
+<h3 id="h3-47">Trading styles (by holding time)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Holding time</th>
+<th>Timeframes</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scalping</strong></td>
+<td>Seconds–minutes</td>
+<td>M1–M5</td>
+<td>Costs matter enormously; very stressful; mostly for experts/bots with low fees</td>
+</tr>
+<tr>
+<td><strong>Day trading</strong></td>
+<td>Minutes–hours, closed same day</td>
+<td>M5–H1</td>
+<td>No overnight swap, needs lots of screen time</td>
+</tr>
+<tr>
+<td><strong>Swing trading</strong></td>
+<td>Days–weeks</td>
+<td>H4–D1</td>
+<td>Fewer decisions; often most suitable for beginners learning</td>
+</tr>
+<tr>
+<td><strong>Position trading</strong></td>
+<td>Weeks–months</td>
+<td>D1–W1</td>
+<td>Close to investing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-48">Five basic strategy families</h3>
+<p><strong>1. Trend following</strong> — &quot;Ride the wave.&quot;</p>
+<ul>
+<li>Idea: find a trend and trade in its direction.</li>
+<li>Example rules: <em>Only go long when price is above the 200 SMA. Enter when the 20 EMA crosses above the 50 EMA. Stop-loss below the last swing low. Exit when the 20 EMA crosses back below the 50 EMA.</em></li>
+<li>Strength: catches big moves. Weakness: many small losses in sideways markets.</li>
+</ul>
+<p><strong>2. Range trading (support &amp; resistance)</strong> — &quot;Buy the floor, sell the ceiling.&quot;</p>
+<ul>
+<li>Idea: in a sideways market, buy near support, sell near resistance.</li>
+<li>Stop-loss just outside the range. Weakness: when the range finally breaks, it can break hard.</li>
+</ul>
+<p><strong>3. Breakout trading</strong> — &quot;Jump on when it escapes.&quot;</p>
+<ul>
+<li>Idea: when price breaks out of a range or pattern with strong volume, trade in the breakout direction.</li>
+<li>Often uses Buy Stop / Sell Stop orders. Weakness: fakeouts.</li>
+</ul>
+<p><strong>4. Mean reversion</strong> — &quot;What goes too far tends to come back.&quot;</p>
+<ul>
+<li>Idea: when price stretches far from its average (e.g. outside a Bollinger Band, RSI &lt; 30), bet on a return to the average.</li>
+<li>Weakness: in a strong trend, &quot;too far&quot; can go much further.</li>
+</ul>
+<p><strong>5. Dollar-Cost Averaging (DCA)</strong> — technically <strong>investing</strong>, not trading.</p>
+<ul>
+<li>Buy a fixed amount at regular times (e.g. $50 every week) regardless of price.</li>
+<li>Removes timing decisions; popular for long-term crypto holders. Many exchanges offer &quot;recurring buy&quot; features and DCA bots.</li>
+</ul>
+<p><strong>Bonus — Grid trading</strong> (popular with bots): place many buy orders below and sell orders above the current price at fixed intervals, profiting from back-and-forth movement. Works in ranges, suffers badly in strong one-way trends.</p>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>Note</div><p><strong>No strategy works all the time.</strong> Trend strategies struggle in ranges; range strategies struggle in trends. What matters is whether, over <strong>hundreds</strong> of trades and <strong>after costs</strong>, the strategy has a positive expectancy (Part 13) — and whether you can follow it.</p>
+</aside>
+</section><section class="part" id="part-13"><h2><span class="part-badge">13</span><span>Risk management</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>Imagine a game where you start with 100 marbles. Rule #1: <strong>never put more than 1 or 2 marbles on any single round.</strong> Then even if you lose ten rounds in a row — which <em>will</em> happen sometimes — you still have more than 80 marbles and can keep playing and learning. The kid who bets 50 marbles per round is out of the game after two bad rounds.</p>
+</aside>
+<p><strong>Risk management is the most important part of trading.</strong> Good traders are wrong often; they survive because their losses are <strong>small and planned</strong>.</p>
+<h3 id="h3-49">13.1 The 1% rule</h3>
+<p>Risk <strong>a small, fixed percentage of your account on each trade</strong> — commonly <strong>0.5%–2%</strong>, and <strong>1%</strong> is a good learning default.</p>
+<p>&quot;Risk&quot; here means: <strong>how much you lose if your stop-loss is hit</strong> — not the size of the position.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Risk per trade</th>
+<th>Account after 10 losses in a row (start = 1,000)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1%</td>
+<td>≈ <strong>904</strong> (−9.6%)</td>
+</tr>
+<tr>
+<td>2%</td>
+<td>≈ 817 (−18.3%)</td>
+</tr>
+<tr>
+<td>5%</td>
+<td>≈ 599 (−40.1%)</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>≈ <strong>349</strong> (−65.1%)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ten losses in a row sounds rare, but over hundreds of trades, long losing streaks are <strong>normal</strong>.</p>
+<h3 id="h3-50">13.2 Position sizing — the most useful formula in this guide</h3>
+<pre class="code ascii"><code>                      Account × Risk %
+Position size  =  ─────────────────────────────
+                  Distance to stop-loss × Value per unit of distance
+</code></pre>
+<p>In plain words: <strong>decide how much money you're willing to lose first, then calculate how big the trade can be.</strong></p>
+<ul>
+<li><strong>Crypto spot example:</strong> account 1,000 USDT, risk 1% = 10 USDT. Entry 60,000, stop 58,800 → distance 1,200 USDT per BTC. Size = 10 ÷ 1,200 = <strong>0.00833 BTC</strong>.</li>
+<li><strong>Forex example:</strong> account $1,000, risk 1% = $10. Stop 30 pips away. Needed pip value = 10 ÷ 30 = $0.333/pip → 0.0333 lots → round <strong>down</strong> to <strong>0.03 lots</strong> (because 0.01 lot = $0.10/pip on EURUSD).</li>
+</ul>
+<h3 id="h3-51">13.3 Risk-to-reward ratio (R:R)</h3>
+<p>Compare what you <strong>risk</strong> (entry → stop) with what you <strong>aim to gain</strong> (entry → target).</p>
+<ul>
+<li>Risk 30 pips, target 60 pips → <strong>1:2</strong>.</li>
+<li>Traders often call the risk amount <strong>1R</strong>. A win of 60 pips = <strong>+2R</strong>; a loss = <strong>−1R</strong>.</li>
+</ul>
+<p>A good R:R means you don't need to win often:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>R:R</th>
+<th>Win rate needed just to break even (before costs)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1:1</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>1:1.5</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>1:2</td>
+<td>33.3%</td>
+</tr>
+<tr>
+<td>1:3</td>
+<td>25%</td>
+</tr>
+</tbody>
+</table></div>
+<pre class="code ascii"><code>Break-even win rate = 1 ÷ (1 + reward/risk)
+</code></pre>
+<h3 id="h3-52">13.4 Expectancy — does the strategy make money on average?</h3>
+<pre class="code ascii"><code>Expectancy (in R) = (Win rate × Average win in R) − (Loss rate × Average loss in R)
+</code></pre>
+<p>Example: win rate 40%, average win +2R, average loss −1R:
+<code>0.40 × 2 − 0.60 × 1 = 0.80 − 0.60 = +0.20R per trade</code>.
+Risking $10 per trade (1R = $10) → about <strong>+$2 per trade on average</strong>, <em>over many trades</em>, <em>before costs</em>.</p>
+<p>A strategy with a <strong>negative</strong> expectancy will lose money in the long run no matter how clever it feels.</p>
+<h3 id="h3-53">13.5 Drawdown and why losses hurt more than gains help</h3>
+<p><strong>Drawdown</strong> = how far your account falls from its highest point.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Loss</th>
+<th>Gain needed to get back to start</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>−10%</td>
+<td>+11.1%</td>
+</tr>
+<tr>
+<td>−20%</td>
+<td>+25%</td>
+</tr>
+<tr>
+<td>−30%</td>
+<td>+42.9%</td>
+</tr>
+<tr>
+<td>−50%</td>
+<td><strong>+100%</strong></td>
+</tr>
+<tr>
+<td>−75%</td>
+<td>+300%</td>
+</tr>
+<tr>
+<td>−90%</td>
+<td>+900%</td>
+</tr>
+</tbody>
+</table></div>
+<div class="diagram"><pre class="mermaid">xychart-beta
+    title &quot;Gain needed to recover from a loss&quot;
+    x-axis [&quot;-10%&quot;, &quot;-20%&quot;, &quot;-30%&quot;, &quot;-50%&quot;, &quot;-75%&quot;, &quot;-90%&quot;]
+    y-axis &quot;Gain needed (%)&quot; 0 --&gt; 950
+    bar [11.1, 25, 42.9, 100, 300, 900]
+</pre></div>
+<p>This is why <strong>protecting your account comes before growing it</strong>.</p>
+<h3 id="h3-54">13.6 A beginner's risk checklist</h3>
+<ul>
+<li class="task"><span class="box"></span>Every trade has a <strong>stop-loss</strong> decided <strong>before</strong> entering.</li>
+<li class="task"><span class="box"></span>Position size calculated from the <strong>1% rule</strong>.</li>
+<li class="task"><span class="box"></span>R:R of at least <strong>1:1.5–1:2</strong> (for most setups).</li>
+<li class="task"><span class="box"></span>A <strong>daily loss limit</strong> (e.g. stop trading for the day after −3%).</li>
+<li class="task"><span class="box"></span>Don't open several trades that are really <strong>the same bet</strong> (e.g. long EURUSD + long GBPUSD + short USDCHF are all &quot;short the dollar&quot; — this is <strong>correlation</strong>).</li>
+<li class="task"><span class="box"></span>Know the <strong>news calendar</strong> (big events can jump over stops).</li>
+<li class="task"><span class="box"></span>Never add money to a losing position just to &quot;average down&quot; without a plan.</li>
+<li class="task"><span class="box"></span>Only trade money you can <strong>truly afford to lose</strong>.</li>
+</ul>
+</section><section class="part" id="part-14"><h2><span class="part-badge">14</span><span>Demo / paper trading vs real money</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>A demo account is like a <strong>flight simulator</strong>. You can crash as many times as you want and learn the controls. But flying a real plane feels very different — your hands shake. So you practise in the simulator first, then start with very short, careful real flights.</p>
+</aside>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>🎮 Demo / Paper</th>
+<th>💵 Real money</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Money</td>
+<td>Virtual</td>
+<td>Real</td>
+</tr>
+<tr>
+<td>Emotions</td>
+<td>Almost none</td>
+<td>Fear, greed, hope, regret</td>
+</tr>
+<tr>
+<td>Fills</td>
+<td>Often &quot;perfect&quot;</td>
+<td>Real slippage, partial fills, requotes</td>
+</tr>
+<tr>
+<td>Costs</td>
+<td>Sometimes simplified</td>
+<td>Every fee is real</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Learn platforms, test rules, build habits</td>
+<td>Test if you can follow rules under pressure</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Demo account</strong> — a broker account with virtual money (Exness offers them for MT5).</li>
+<li><strong>Paper trading</strong> — writing down or simulating trades without real money (TradingView's paper trading, or your own bot in &quot;simulation mode&quot;).</li>
+<li><strong>Testnet</strong> — an exchange's separate test environment for <strong>developers</strong> (Binance Spot testnet, Binance Futures testnet). Fake coins, real API. Perfect for building bots.</li>
+</ul>
+<h3 id="h3-55">A sensible progression</h3>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;📚 Learn&lt;br/&gt;(this guide)&quot;] --&gt; B[&quot;🎮 Demo / paper&lt;br/&gt;50–100+ trades&lt;br/&gt;with a written plan&quot;]
+    B --&gt; C{&quot;Positive results&lt;br/&gt;AND rules followed?&quot;}
+    C -- No --&gt; A
+    C -- Yes --&gt; D[&quot;💵 Tiny real money&lt;br/&gt;(amount you'd accept losing)&quot;]
+    D --&gt; E{&quot;Still disciplined&lt;br/&gt;for months?&quot;}
+    E -- No --&gt; B
+    E -- Yes --&gt; F[&quot;Slowly scale&lt;br/&gt;(if ever)&quot;]
+</pre></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>Note</div><p>Demo success does <strong>not</strong> prove real success. But demo <strong>failure</strong> is a very clear signal: if you can't make it work with fake money and no emotions, real money won't fix it.</p>
+</aside>
+</section><section class="part" id="part-15"><h2><span class="part-badge">15</span><span>Trading psychology</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>Your brain is great at running away from lions, but bad at trading. When you're losing, it screams &quot;don't accept it, maybe it comes back!&quot; When you're winning, it screams &quot;take it now before it disappears!&quot; That's <strong>backwards</strong> from what good trading needs.</p>
+</aside>
+<h3 id="h3-56">The main emotional traps</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Trap</th>
+<th>What it feels like</th>
+<th>What it causes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fear</strong></td>
+<td>&quot;What if it drops more?&quot;</td>
+<td>Closing winners too early, not taking valid trades</td>
+</tr>
+<tr>
+<td><strong>Greed</strong></td>
+<td>&quot;It could go 10x!&quot;</td>
+<td>Oversized positions, no take-profit, too much leverage</td>
+</tr>
+<tr>
+<td><strong>FOMO</strong> (Fear Of Missing Out)</td>
+<td>&quot;Everyone's making money, I need to get in NOW!&quot;</td>
+<td>Buying at the top after a huge rise</td>
+</tr>
+<tr>
+<td><strong>Hope</strong></td>
+<td>&quot;It'll come back…&quot;</td>
+<td>Moving or removing stop-losses, holding losers forever</td>
+</tr>
+<tr>
+<td><strong>Revenge trading</strong></td>
+<td>&quot;I'll win it back right now!&quot;</td>
+<td>Big, impulsive trades after a loss → bigger losses</td>
+</tr>
+<tr>
+<td><strong>Overconfidence</strong></td>
+<td>&quot;I've won 5 in a row, I'm a genius.&quot;</td>
+<td>Increasing size right before a losing streak</td>
+</tr>
+<tr>
+<td><strong>Loss aversion</strong></td>
+<td>Losses hurt ~2x more than equal gains feel good</td>
+<td>Cutting winners, holding losers</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-57">Habits that help</h3>
+<ol>
+<li><strong>Write a trading plan</strong> before the market opens: what you'll trade, the rules, max risk.</li>
+<li><strong>Keep a trading journal</strong>: every trade, why you took it, screenshot, result, how you felt. (Great first software project, see Part 24!)</li>
+<li><strong>Think in series, not single trades.</strong> One trade means nothing; 100 trades show your edge.</li>
+<li><strong>Set limits</strong>: max trades per day, max daily loss, and walk away when reached.</li>
+<li><strong>Accept that losses are a cost of doing business</strong>, like a shop paying rent.</li>
+<li><strong>Automate the rules you break</strong> — this is one honest reason people build bots: a bot doesn't panic. (But a bot also doesn't <em>think</em>, so it must be tested and watched.)</li>
+</ol>
+</section><section class="part" id="part-16"><h2><span class="part-badge">16</span><span>Common beginner mistakes and risks</span></h2>
+<h3 id="h3-58">Trading mistakes</h3>
+<ol>
+<li>❌ <strong>No stop-loss</strong> — &quot;I'll watch it.&quot; Then you fall asleep, or freeze.</li>
+<li>❌ <strong>Risking too much per trade</strong> — one bad day ends the account.</li>
+<li>❌ <strong>Using maximum leverage</strong> because the broker allows it.</li>
+<li>❌ <strong>Overtrading</strong> — too many trades, often out of boredom; costs pile up.</li>
+<li>❌ <strong>Moving the stop-loss further away</strong> when price approaches it.</li>
+<li>❌ <strong>Averaging down</strong> on losers without a plan.</li>
+<li>❌ <strong>Chasing</strong> after a huge candle (FOMO).</li>
+<li>❌ <strong>Trading during major news</strong> without understanding spreads widen and prices gap.</li>
+<li>❌ <strong>Strategy-hopping</strong> — changing method after every loss, so you never learn if anything works.</li>
+<li>❌ <strong>Ignoring costs</strong> — spread, fees, swaps, funding.</li>
+<li>❌ <strong>Trusting &quot;signals&quot; groups, influencers or &quot;guaranteed profit&quot; bots.</strong></li>
+<li>❌ <strong>Skipping the demo phase.</strong></li>
+</ol>
+<h3 id="h3-59">Scams and platform risks (especially in crypto)</h3>
+<aside class="callout callout-caution"><div class="callout-title"><span class="callout-icon">🛑</span>Caution</div>
+<ul>
+<li><strong>&quot;Guaranteed returns&quot;</strong> or &quot;risk-free 5% per day&quot; → always a scam.</li>
+<li><strong>Fake exchanges / fake apps</strong> and phishing links that steal your password or API keys. Always type the URL yourself and turn on <strong>2FA</strong> (two-factor authentication).</li>
+<li><strong>Pump-and-dump</strong> coins: a group pushes a tiny coin up, then sells to latecomers.</li>
+<li><strong>&quot;Account managers&quot;</strong> who message you on Telegram/WhatsApp asking for access or deposits.</li>
+<li><strong>Exchange risk</strong>: an exchange can freeze withdrawals, be hacked or collapse (FTX, 2022). Coins kept on an exchange are <strong>custodial</strong> — the exchange controls them.</li>
+<li><strong>Unregulated brokers</strong> may refuse withdrawals.</li>
+<li><strong>Leaked API keys</strong> can be used to trade your account into losses. Never give a key <strong>withdrawal</strong> permission (Part 21).</li>
+</ul>
+</aside>
+</section><section class="part" id="part-17"><h2><span class="part-badge">17</span><span>The life of a trade</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>A trade is like a trip: <strong>plan</strong> where to go, <strong>check</strong> the weather, <strong>buy</strong> the ticket, <strong>travel</strong>, keep an eye on the road, and <strong>come home</strong> — then write in your diary what you learned.</p>
+</aside>
+<div class="diagram"><pre class="mermaid">flowchart TD
+    I[&quot;💡 1. Idea&lt;br/&gt;'EURUSD looks like it's&lt;br/&gt;bouncing off support'&quot;] --&gt; A[&quot;🔍 2. Analysis&lt;br/&gt;trend, levels, indicators,&lt;br/&gt;news calendar&quot;]
+    A --&gt; P[&quot;📝 3. Plan&lt;br/&gt;entry, stop-loss, take-profit,&lt;br/&gt;R:R, position size&quot;]
+    P --&gt; Q{&quot;Does it pass&lt;br/&gt;my rules?&quot;}
+    Q -- No --&gt; W[&quot;⏸️ No trade&lt;br/&gt;(also a good decision)&quot;]
+    Q -- Yes --&gt; O[&quot;📤 4. Order&lt;br/&gt;market / limit / stop&lt;br/&gt;+ SL + TP attached&quot;]
+    O --&gt; X[&quot;⚙️ 5. Execution&lt;br/&gt;broker / exchange fills it&quot;]
+    X --&gt; M[&quot;👀 6. Monitoring&lt;br/&gt;price, margin, news;&lt;br/&gt;follow the plan, don't tinker&quot;]
+    M --&gt; C[&quot;🏁 7. Closing&lt;br/&gt;TP hit / SL hit /&lt;br/&gt;manual or time exit&quot;]
+    C --&gt; R[&quot;📓 8. Review&lt;br/&gt;journal: result, mistakes,&lt;br/&gt;statistics&quot;]
+    R --&gt; I
+</pre></div>
+<h3 id="h3-60">What happens behind the scenes when you click &quot;Buy&quot;</h3>
+<div class="diagram"><pre class="mermaid">sequenceDiagram
+    autonumber
+    actor T as Trader
+    participant APP as App / MT5 / Bot
+    participant V as Venue (Exchange or Broker)
+    participant ME as Matching engine / Liquidity
+    T-&gt;&gt;APP: Click Buy 0.03 lots EURUSD, SL, TP
+    APP-&gt;&gt;V: Send order (symbol, side, size, type, SL, TP)
+    V-&gt;&gt;V: Check account: margin, limits, symbol open?
+    alt Not OK
+        V--&gt;&gt;APP: Rejected (reason)
+    else OK
+        V-&gt;&gt;ME: Route / match order
+        ME--&gt;&gt;V: Filled at price X
+        V--&gt;&gt;APP: Execution report (fill price, fees, position ID)
+        APP--&gt;&gt;T: Position shows in &quot;Trade&quot; tab
+    end
+    loop While position open
+        V--&gt;&gt;APP: Price updates, floating P/L, margin
+    end
+    V-&gt;&gt;V: Price reaches TP or SL → close automatically
+    V--&gt;&gt;APP: Position closed, realised P/L
+</pre></div>
+<ul>
+<li><strong>Floating (unrealised) P/L</strong> — profit/loss of an open position; it changes every tick.</li>
+<li><strong>Realised P/L</strong> — profit/loss once the position is closed; now it's final.</li>
+</ul>
+</section><section class="part" id="part-18"><h2><span class="part-badge">18</span><span>Complete practical examples</span></h2>
+<aside class="callout callout-important"><div class="callout-title"><span class="callout-icon">📌</span>Important</div><p>These examples are <strong>for learning the mechanics</strong>. Prices are illustrative and simplified. They are <strong>not</strong> trade recommendations. Real fees, spreads and minimum sizes depend on your account type and change over time.</p>
+</aside>
+<h3 id="h3-61">Example 1 — Forex: a long EURUSD trade on Exness MT5 (demo account)</h3>
+<p><strong>Situation.</strong> You have an Exness <strong>demo</strong> account (Standard type) with <strong>$1,000</strong> and leverage <strong>1:100</strong>. On the H4 chart, EURUSD has been in an uptrend (higher highs, higher lows) and has pulled back to an old resistance area around <strong>1.0830</strong>, which now looks like support. A bullish engulfing candle just closed there.</p>
+<p><strong>Step 1 — Read the prices.</strong>
+Bid <strong>1.08500</strong> / Ask <strong>1.08510</strong> → spread = 0.00010 = <strong>1 pip</strong>.
+A long opens at the <strong>ask</strong> (1.08510) and will later close at the <strong>bid</strong>.</p>
+<p><strong>Step 2 — Choose the stop-loss (where the idea is wrong).</strong>
+Below the support zone and the engulfing candle's low: <strong>1.08210</strong>.
+Distance = 1.08510 − 1.08210 = 0.00300 = <strong>30 pips</strong>.</p>
+<p><strong>Step 3 — Choose the take-profit.</strong>
+Near the recent high: <strong>1.09110</strong>. Distance = 0.00600 = <strong>60 pips</strong>.
+R:R = 30 : 60 = <strong>1:2</strong>.</p>
+<p><strong>Step 4 — Decide the risk.</strong>
+1% of $1,000 = <strong>$10</strong> maximum loss.</p>
+<p><strong>Step 5 — Calculate the position size.</strong></p>
+<ul>
+<li>Needed pip value = $10 ÷ 30 pips = <strong>$0.333 per pip</strong>.</li>
+<li>On EURUSD, 0.01 lot ≈ $0.10 per pip → 0.0333 lots.</li>
+<li>MT5 volume step is 0.01 → <strong>round down</strong> to <strong>0.03 lots</strong> (rounding up would risk more than 1%).</li>
+<li>Real pip value = 0.03 × $10 = <strong>$0.30 per pip</strong>.</li>
+<li>Real risk = 30 × $0.30 = <strong>$9.00</strong> (0.9%) ✅.</li>
+</ul>
+<p><strong>Step 6 — Check margin (leverage).</strong></p>
+<ul>
+<li>0.03 lots = 3,000 EUR. Notional ≈ 3,000 × 1.0851 = <strong>$3,255.30</strong>.</li>
+<li>Margin at 1:100 = 3,255.30 ÷ 100 = <strong>$32.55</strong> locked.</li>
+<li>Free margin ≈ $1,000 − $32.55 = <strong>$967.45</strong>. Margin level ≈ 1,000 ÷ 32.55 ≈ <strong>3,072%</strong> — very safe.</li>
+<li>Notice: <strong>1:100 leverage was available, but the trade uses only ~3.3x effective leverage</strong> ($3,255 / $1,000). Position size, not the leverage setting, decided the risk.</li>
+</ul>
+<p><strong>Step 7 — Place the order in MT5.</strong>
+New Order → Symbol <code>EURUSD</code> → Type <strong>Market Execution</strong> → Volume <strong>0.03</strong> → Stop Loss <strong>1.08210</strong> → Take Profit <strong>1.09110</strong> → <strong>Buy by Market</strong>.
+(Or use a <strong>Buy Limit</strong> at a lower price to wait for a better entry.)</p>
+<p><strong>Step 8 — Execution.</strong> Filled at <strong>1.08510</strong> (on a calm market; in fast markets you could get slippage).</p>
+<p><strong>Step 9 — Monitoring.</strong> The position shows floating P/L. At first it shows about <strong>−$0.30</strong> — that's the 1-pip spread you paid. You <strong>don't move the stop further away</strong>. If the trade is still open at the daily rollover, a <strong>swap</strong> (small plus or minus) is applied.</p>
+<p><strong>Step 10 — Closing: three possible endings.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Close price (bid)</th>
+<th>Pips</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🎯 Take-profit hit</td>
+<td>1.09110</td>
+<td>+60</td>
+<td><strong>+$18.00</strong> (+1.8%)</td>
+</tr>
+<tr>
+<td>🛑 Stop-loss hit</td>
+<td>1.08210</td>
+<td>−30</td>
+<td><strong>−$9.00</strong> (−0.9%), maybe a bit more with slippage</td>
+</tr>
+<tr>
+<td>✋ Manual close</td>
+<td>1.08810</td>
+<td>+30</td>
+<td>+$9.00</td>
+</tr>
+</tbody>
+</table></div>
+<p>Plus/minus any swap. On a Standard account the spread was the main cost; on Raw/Zero accounts you'd see a smaller spread but a <strong>commission</strong> per lot.</p>
+<p><strong>Step 11 — Journal.</strong> Write: setup, screenshot, planned vs actual, emotions, result in R (+2R or −1R).</p>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    A[&quot;Account $1,000&lt;br/&gt;Risk 1% = $10&quot;] --&gt; B[&quot;SL distance&lt;br/&gt;30 pips&quot;] --&gt; C[&quot;$10 ÷ 30 = $0.33/pip&lt;br/&gt;→ 0.03 lots&quot;] --&gt; D[&quot;Margin $32.55&lt;br/&gt;(1:100)&quot;] --&gt; E{&quot;Outcome&quot;}
+    E --&gt; F[&quot;TP: +$18&quot;]
+    E --&gt; G[&quot;SL: −$9&quot;]
+</pre></div>
+<hr />
+<h3 id="h3-62">Example 2 — Crypto: a spot BTC/USDT trade on Binance with an OCO exit</h3>
+<p><strong>Situation.</strong> You hold <strong>1,000 USDT</strong> on Binance <strong>Spot</strong> (no leverage, no shorting). On the daily chart, BTC is in an uptrend and is pulling back toward a support zone around <strong>60,000</strong> that held twice before.</p>
+<p><strong>Step 1 — Plan.</strong></p>
+<ul>
+<li>Entry: <strong>Buy Limit at 60,000</strong> (wait for price to come to you → you're a <strong>maker</strong>).</li>
+<li>Stop-loss: <strong>58,800</strong> (−2%, under the support zone).</li>
+<li>Take-profit: <strong>62,400</strong> (+4%).</li>
+<li>R:R = 1,200 : 2,400 = <strong>1:2</strong>.</li>
+</ul>
+<p><strong>Step 2 — Risk.</strong> 1% of 1,000 = <strong>10 USDT</strong>.</p>
+<p><strong>Step 3 — Position size.</strong></p>
+<ul>
+<li>Risk per 1 BTC = 60,000 − 58,800 = 1,200 USDT.</li>
+<li>Size = 10 ÷ 1,200 = 0.0083333 BTC → exchange step size 0.00001 → <strong>0.00833 BTC</strong>.</li>
+<li>Cost = 0.00833 × 60,000 = <strong>499.80 USDT</strong> (the other ~500 USDT stays in your account).</li>
+</ul>
+<p><strong>Step 4 — Place the limit order.</strong> Spot → BTC/USDT → <strong>Limit</strong> → Buy → Price 60,000 → Amount 0.00833 → Buy BTC.
+The order now <strong>waits in the order book</strong>.</p>
+<p><strong>Step 5 — Execution.</strong> Two days later, price dips to 59,950 and your order fills at <strong>60,000</strong> (a limit order never fills at a worse price). Fee: 0.1% × 499.80 = <strong>≈0.50 USDT</strong>.</p>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>Note</div><p>On Binance, the buy fee is taken from what you receive (a little BTC) unless you pay fees with BNB. To keep the maths simple here we count all fees in USDT.</p>
+</aside>
+<p><strong>Step 6 — Attach the exits with an OCO order.</strong>
+Spot orders can't carry SL/TP like MT5, so you place an <strong>OCO sell</strong> for 0.00833 BTC:</p>
+<ul>
+<li><strong>Limit sell</strong> (take-profit) at <strong>62,400</strong>.</li>
+<li><strong>Stop-limit sell</strong>: stop <strong>58,800</strong>, limit <strong>58,700</strong> (a bit lower, to improve the chance it fills in a fast drop).
+When one fills, the exchange cancels the other.</li>
+</ul>
+<p><strong>Step 7 — Possible endings.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Sell value</th>
+<th>Gross P/L</th>
+<th>Fees (buy + sell)</th>
+<th>Net P/L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🎯 TP at 62,400</td>
+<td>0.00833 × 62,400 = 519.79</td>
+<td>+19.99</td>
+<td>0.50 + 0.52 = 1.02</td>
+<td><strong>≈ +18.97 USDT</strong> (+1.9%)</td>
+</tr>
+<tr>
+<td>🛑 SL at ≈58,800</td>
+<td>0.00833 × 58,800 = 489.80</td>
+<td>−10.00</td>
+<td>0.50 + 0.49 = 0.99</td>
+<td><strong>≈ −10.99 USDT</strong> (−1.1%)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Look at the fees: about <strong>1 USDT per round trip</strong>, which is ~10% of the planned risk. For a bot trading many times per day, this matters a lot.</p>
+<p><strong>Step 8 — What could go wrong?</strong></p>
+<ul>
+<li>The limit buy <strong>never fills</strong> (price never dips) → no trade, no loss. That's fine.</li>
+<li>A crash <strong>gaps through</strong> 58,700 → the stop-limit might <strong>not fill</strong>, and you still hold BTC while it falls. (A stop-<strong>market</strong> would fill, but at a worse price.)</li>
+<li>Since it's spot, you can't be liquidated and can't lose more than the 499.80 USDT spent.</li>
+</ul>
+<hr />
+<h3 id="h3-63">Example 3 — Why leverage is dangerous: a BTC perpetual futures short</h3>
+<p><strong>Situation.</strong> You put <strong>100 USDT</strong> into Binance <strong>USDⓈ-M Futures</strong>, isolated margin, and choose <strong>20x</strong> leverage. You think BTC will fall and <strong>short</strong> at <strong>60,000</strong>.</p>
+<p><strong>Step 1 — Size.</strong> Notional = 100 × 20 = <strong>2,000 USDT</strong> → 2,000 ÷ 60,000 = <strong>0.0333 BTC</strong> short.</p>
+<p><strong>Step 2 — How each move feels.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>BTC price</th>
+<th>Move</th>
+<th>P/L on 0.0333 BTC short</th>
+<th>Effect on your 100 USDT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>57,000</td>
+<td>−5%</td>
+<td>+100 USDT</td>
+<td><strong>+100%</strong> 🤩</td>
+</tr>
+<tr>
+<td>59,400</td>
+<td>−1%</td>
+<td>+20 USDT</td>
+<td>+20%</td>
+</tr>
+<tr>
+<td>60,600</td>
+<td>+1%</td>
+<td>−20 USDT</td>
+<td>−20%</td>
+</tr>
+<tr>
+<td>~62,700</td>
+<td>≈ +4.5%</td>
+<td>≈ −90 USDT</td>
+<td><strong>Liquidated</strong> 💥 (the rest goes to fees / insurance fund)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The liquidation happens <strong>before</strong> the full 5% (100 ÷ 2,000) because the exchange needs to keep a <strong>maintenance margin</strong>. The exact liquidation price is shown on the exchange's order screen.</p>
+<p><strong>Step 3 — Funding.</strong> If the funding rate is +0.01% (longs pay shorts), every 8 hours you <strong>receive</strong> 0.01% × 2,000 = 0.20 USDT. If it's negative, you <strong>pay</strong>. On volatile days funding can be much larger.</p>
+<p><strong>Lesson.</strong> A normal ~4–5% daily move in BTC is enough to wipe out a 20x position.</p>
+<p><strong>The same idea, sized with the 1% rule:</strong> say your whole futures balance is 1,000 USDT. You risk 1% = 10 USDT and put the stop-loss at <strong>60,600</strong> (600 USDT above entry, i.e. 1%).</p>
+<ul>
+<li>Size = 10 ÷ 600 = <strong>0.0167 BTC</strong> → notional ≈ 1,000 USDT → only <strong>~1x effective leverage</strong>.</li>
+<li>If the stop is hit, you lose ≈ <strong>10 USDT + fees</strong> — not the whole account.</li>
+<li>The leverage setting only decides how much margin is locked; the <strong>stop-loss and position size</strong> decide the risk.</li>
+</ul>
+<aside class="callout callout-caution"><div class="callout-title"><span class="callout-icon">🛑</span>Caution</div><p>The exchange lets you choose up to 100x+ leverage. <strong>The platform allowing it doesn't make it sensible.</strong> Liquidation cascades (many traders being force-closed at once) cause the sudden huge candles you'll often see in crypto.</p>
+</aside>
+</section><section class="part" id="part-19"><h2><span class="part-badge">19</span><span>Crypto vs Forex infrastructure</span></h2>
+<p>This part is about <strong>how the systems are built</strong> — essential before you write software that talks to them.</p>
+<h3 id="h3-64">19.1 The big picture</h3>
+<div class="diagram"><pre class="mermaid">flowchart TB
+    subgraph CRYPTO[&quot;🪙 Crypto (Binance / MEXC)&quot;]
+        direction TB
+        CU[&quot;Your app / bot&quot;] -- &quot;REST + WebSocket API&quot; --&gt; CX[&quot;Exchange servers&quot;]
+        CX --&gt; CME[&quot;Central order book&lt;br/&gt;&amp; matching engine&quot;]
+        CX --&gt; CW[&quot;Exchange wallets&lt;br/&gt;(custody)&quot;]
+        CW &lt;--&gt;|&quot;deposits / withdrawals&quot;| BC[&quot;⛓️ Blockchains&lt;br/&gt;(Bitcoin, Ethereum, Tron...)&quot;]
+    end
+    subgraph FOREX[&quot;💱 Forex (Exness + MT5)&quot;]
+        direction TB
+        FU[&quot;Your app / EA / Python&quot;] -- &quot;MT5 terminal&lt;br/&gt;(MQL5 or Python pkg)&quot; --&gt; MTS[&quot;MT5 trade server&lt;br/&gt;(run by the broker)&quot;]
+        MTS --&gt; DD[&quot;Broker dealing desk /&lt;br/&gt;risk management&quot;]
+        DD -- &quot;A-book: pass on&quot; --&gt; LP[&quot;Liquidity providers&lt;br/&gt;banks, ECNs&quot;]
+        DD -. &quot;B-book: keep in house&quot; .-&gt; DD
+        MTS --&gt; BANK[&quot;Bank / card / e-wallet&lt;br/&gt;deposits &amp; withdrawals&quot;]
+    end
+</pre></div>
+<h3 id="h3-65">19.2 Side-by-side</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>🪙 Crypto exchanges</th>
+<th>💱 Forex broker + MT5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Market structure</td>
+<td><strong>Centralised order book</strong> on each exchange; many exchanges with slightly different prices</td>
+<td><strong>Decentralised / OTC</strong> (&quot;over the counter&quot;) — no single central exchange; each broker streams its own prices</td>
+</tr>
+<tr>
+<td>Who you trade against</td>
+<td>Other users (and market makers)</td>
+<td>The broker or its liquidity providers</td>
+</tr>
+<tr>
+<td><strong>A-book / B-book</strong></td>
+<td>Not applicable</td>
+<td><strong>A-book</strong>: broker passes your trade to the market. <strong>B-book</strong>: broker takes the other side itself (profits when you lose). Many brokers do both.</td>
+</tr>
+<tr>
+<td>Price data</td>
+<td>Public: every trade and the full order book via API</td>
+<td>Broker's own quote feed inside MT5</td>
+</tr>
+<tr>
+<td>Hours</td>
+<td>24/7</td>
+<td>24/5 for forex; weekend <strong>gaps</strong> possible</td>
+</tr>
+<tr>
+<td>Custody</td>
+<td>Exchange holds your coins; you can withdraw to your own wallet</td>
+<td>Broker holds your money; you only own a claim on it</td>
+</tr>
+<tr>
+<td>Settlement</td>
+<td>Instant internal balance change; blockchain for deposits/withdrawals</td>
+<td>Internal to broker; bank/e-wallet transfers</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td><strong>KYC</strong> (Know Your Customer: ID verification) required on major exchanges</td>
+<td>KYC required by brokers</td>
+</tr>
+<tr>
+<td>Programming access</td>
+<td>Open <strong>REST/WebSocket APIs</strong> with API keys; public docs; testnets</td>
+<td><strong>MQL5</strong> Expert Advisors inside MT5; official <strong>Python</strong> package; (MetaQuotes' Manager/Server APIs are for brokers, not clients)</td>
+</tr>
+<tr>
+<td>Symbols</td>
+<td><code>BTCUSDT</code>, <code>ETHUSDT</code>…</td>
+<td><code>EURUSD</code>, <code>XAUUSD</code>… (brokers sometimes add suffixes like <code>EURUSDm</code>)</td>
+</tr>
+<tr>
+<td>Units</td>
+<td>Coin quantity with step size</td>
+<td>Lots (0.01 minimum usually)</td>
+</tr>
+<tr>
+<td>Unique costs</td>
+<td>Maker/taker fee, funding, network fees</td>
+<td>Spread, commission, swap</td>
+</tr>
+<tr>
+<td>Arbitrage</td>
+<td>Price differences between exchanges exist (small, competitive)</td>
+<td>Price differences between brokers exist, but trading them is usually against terms</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-66">19.3 What &quot;the price&quot; really is</h3>
+<ul>
+<li>In <strong>crypto</strong>, BTC's price on Binance is literally the last match in Binance's order book. MEXC's price is slightly different. Arbitrage bots keep them close.</li>
+<li>In <strong>forex</strong>, there's no single &quot;official&quot; live price. Each broker builds its quote from its liquidity providers and adds its spread/markup. Your MT5 chart is <strong>your broker's</strong> version of the price.</li>
+</ul>
+</section><section class="part" id="part-20"><h2><span class="part-badge">20</span><span>Trading bots and automation</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>A trading bot is a <strong>robot that follows your recipe exactly</strong> — it never gets tired, scared or greedy. But it's also not smart: if the recipe is bad, it will cook bad food very fast and very consistently. And if the kitchen catches fire, it keeps cooking unless you taught it to stop.</p>
+</aside>
+<p>A <strong>trading bot</strong> is a program that <strong>reads market data, decides using rules, and sends orders automatically</strong>. An <strong>algorithm</strong> is the set of rules. <strong>Algorithmic trading (algo trading)</strong> is trading with such programs.</p>
+<h3 id="h3-67">20.1 The parts of a bot</h3>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    D[&quot;📡 Market data&lt;br/&gt;candles, ticks, order book&lt;br/&gt;(REST + WebSocket)&quot;] --&gt; S[&quot;🧠 Strategy&lt;br/&gt;indicators → signals&quot;]
+    S --&gt; R[&quot;🛡️ Risk manager&lt;br/&gt;position size, max loss,&lt;br/&gt;kill switch&quot;]
+    R --&gt; E[&quot;📤 Execution&lt;br/&gt;send / modify / cancel orders&quot;]
+    E --&gt; V[&quot;🏛️ Exchange / Broker&quot;]
+    V -- &quot;fills, balances,&lt;br/&gt;order updates&quot; --&gt; P[&quot;📒 Portfolio &amp; state&lt;br/&gt;positions, P/L&quot;]
+    P --&gt; R
+    P --&gt; L[&quot;📊 Logging, alerts,&lt;br/&gt;dashboard&quot;]
+</pre></div>
+<ol>
+<li><strong>Data feed</strong> — gets prices (historical and live).</li>
+<li><strong>Strategy</strong> — turns data into signals (&quot;go long&quot;, &quot;exit&quot;).</li>
+<li><strong>Risk manager</strong> — the most important piece: can <strong>veto</strong> any trade (too big, daily loss reached, too many open positions, abnormal price).</li>
+<li><strong>Execution engine</strong> — turns decisions into real orders; handles retries, partial fills, errors.</li>
+<li><strong>State/portfolio</strong> — knows what positions and orders really exist (always re-sync with the exchange!).</li>
+<li><strong>Monitoring</strong> — logs, alerts (Telegram/email), dashboards, a <strong>kill switch</strong> to stop everything.</li>
+</ol>
+<h3 id="h3-68">20.2 Types of bots</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bot type</th>
+<th>What it does</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Signal / alert bot</strong></td>
+<td>Only notifies you (&quot;RSI &lt; 30 on BTC&quot;)</td>
+<td>Safest first project — no orders</td>
+</tr>
+<tr>
+<td><strong>Rule-based trading bot</strong></td>
+<td>Follows a strategy (e.g. EMA crossover)</td>
+<td>Needs backtesting + risk module</td>
+</tr>
+<tr>
+<td><strong>DCA bot</strong></td>
+<td>Buys fixed amounts on a schedule</td>
+<td>Simple, long-term</td>
+</tr>
+<tr>
+<td><strong>Grid bot</strong></td>
+<td>Buy/sell ladder in a range</td>
+<td>Popular on crypto exchanges; hurt by strong trends</td>
+</tr>
+<tr>
+<td><strong>Market-making bot</strong></td>
+<td>Places both bids and asks to earn the spread</td>
+<td>Needs speed, low fees and inventory risk management</td>
+</tr>
+<tr>
+<td><strong>Arbitrage bot</strong></td>
+<td>Exploits price differences between venues</td>
+<td>Very competitive; fees and transfer times kill most opportunities</td>
+</tr>
+<tr>
+<td><strong>Copy-trading</strong></td>
+<td>Copies another trader's positions</td>
+<td>Your risk depends on someone else</td>
+</tr>
+<tr>
+<td><strong>Expert Advisor (EA)</strong></td>
+<td>A bot running inside MT5, written in MQL5</td>
+<td>The standard way to automate forex on MT5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-69">20.3 From idea to live bot</h3>
+<div class="diagram"><pre class="mermaid">flowchart LR
+    I[&quot;Idea&lt;br/&gt;written rules&quot;] --&gt; BT[&quot;Backtest&lt;br/&gt;on historical data&quot;]
+    BT --&gt; FW[&quot;Forward test /&lt;br/&gt;paper trading&lt;br/&gt;on live data&quot;]
+    FW --&gt; TN[&quot;Testnet / demo&lt;br/&gt;real API, fake money&quot;]
+    TN --&gt; SM[&quot;Small real money&lt;br/&gt;strict limits&quot;]
+    SM --&gt; MON[&quot;Monitor &amp; review&lt;br/&gt;continuously&quot;]
+    BT -. &quot;bad results&quot; .-&gt; I
+    FW -. &quot;doesn't match backtest&quot; .-&gt; I
+</pre></div>
+<ul>
+<li><strong>Backtesting</strong> — running your rules on <strong>past data</strong> to see how they would have performed.</li>
+<li><strong>Forward testing / paper trading</strong> — running them on <strong>live data</strong> without real money.</li>
+</ul>
+<h3 id="h3-70">20.4 Backtesting traps (very important for builders)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Trap</th>
+<th>What it means</th>
+<th>How to avoid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Overfitting</strong> (curve fitting)</td>
+<td>Tuning settings until the past looks perfect; fails on new data</td>
+<td>Few parameters, test on <strong>unseen</strong> data (out-of-sample), walk-forward testing</td>
+</tr>
+<tr>
+<td><strong>Look-ahead bias</strong></td>
+<td>Using information that wasn't available yet (e.g. today's close to trade today's open)</td>
+<td>Only use data up to the previous closed candle</td>
+</tr>
+<tr>
+<td><strong>Survivorship bias</strong></td>
+<td>Testing only coins that still exist (the dead ones are gone from the list)</td>
+<td>Include delisted assets where possible</td>
+</tr>
+<tr>
+<td><strong>Ignoring costs</strong></td>
+<td>No fees, spread, slippage, funding</td>
+<td>Model them pessimistically</td>
+</tr>
+<tr>
+<td><strong>Unrealistic fills</strong></td>
+<td>Assuming every limit order fills</td>
+<td>Model partial/no fills</td>
+</tr>
+<tr>
+<td><strong>Too few trades</strong></td>
+<td>15 trades &quot;prove&quot; nothing</td>
+<td>Hundreds of trades, different market conditions</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-71">20.5 Things that break live bots</h3>
+<ul>
+<li>Internet or server down, API outage, exchange maintenance.</li>
+<li><strong>Rate limits</strong> exceeded → your requests are blocked (Part 21).</li>
+<li>Wrong <strong>precision</strong> (too many decimals) → orders rejected.</li>
+<li>Bot &quot;thinks&quot; it has a position that doesn't exist (state out of sync).</li>
+<li>Duplicate orders after a retry.</li>
+<li>Sudden volatility / flash crash.</li>
+<li>A bug that loops and places hundreds of orders.</li>
+</ul>
+<p>→ Always build: <strong>max position size, max orders per minute, daily loss limit, and a kill switch</strong> — before any strategy code.</p>
+</section><section class="part" id="part-21"><h2><span class="part-badge">21</span><span>APIs and exchange/broker connections</span></h2>
+<aside class="callout callout-kid"><div class="callout-title"><span class="callout-icon">🧒</span>Like I'm 10</div><p>An <strong>API</strong> is a <strong>waiter</strong> in a restaurant. Your program (the customer) doesn't walk into the kitchen (the exchange's servers). It gives the waiter a clear order from the menu (&quot;get me BTC's price&quot;, &quot;place this order&quot;), and the waiter brings back the answer. The <strong>API key</strong> is your membership card that proves the order is really from you.</p>
+</aside>
+<p>An <strong>API</strong> (Application Programming Interface) is a defined way for programs to talk to each other.</p>
+<h3 id="h3-72">21.1 Two ways to talk: REST and WebSocket</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>REST API</strong></th>
+<th><strong>WebSocket API</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Style</td>
+<td>Ask → answer (like sending letters)</td>
+<td>An open phone line that stays connected</td>
+</tr>
+<tr>
+<td>Used for</td>
+<td>Placing/cancelling orders, balances, historical candles</td>
+<td>Live prices, order book updates, your order/fill updates</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><code>GET /api/v3/klines?symbol=BTCUSDT&amp;interval=1h</code></td>
+<td>subscribe to <code>btcusdt@kline_1m</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="diagram"><pre class="mermaid">sequenceDiagram
+    participant Bot
+    participant REST as Exchange REST API
+    participant WS as Exchange WebSocket
+    Bot-&gt;&gt;REST: GET candles (history)
+    REST--&gt;&gt;Bot: last 500 candles
+    Bot-&gt;&gt;WS: subscribe to live candles + my order updates
+    WS--&gt;&gt;Bot: new price...
+    WS--&gt;&gt;Bot: new price...
+    Bot-&gt;&gt;REST: POST order (signed)
+    REST--&gt;&gt;Bot: order accepted, id 12345
+    WS--&gt;&gt;Bot: order 12345 FILLED
+</pre></div>
+<h3 id="h3-73">21.2 Public vs private endpoints</h3>
+<ul>
+<li><strong>Public</strong> — market data anyone can read (prices, candles, order book). No key needed.</li>
+<li><strong>Private</strong> — your account (balances, orders, trading). Needs an <strong>API key</strong> and a <strong>signature</strong>.</li>
+</ul>
+<h3 id="h3-74">21.3 API keys and signatures</h3>
+<p>When you create an API key on Binance or MEXC you get:</p>
+<ul>
+<li><strong>API key</strong> — like a username; sent in a header (<code>X-MBX-APIKEY</code> for Binance, <code>X-MEXC-APIKEY</code> for MEXC).</li>
+<li><strong>Secret key</strong> — like a password; <strong>never sent</strong>, never shared, never committed to git. It's used to create a <strong>signature</strong>: an <strong>HMAC-SHA256</strong> hash of your request, proving it came from you and wasn't changed.</li>
+<li>A <strong>timestamp</strong> is included so old requests can't be replayed.</li>
+</ul>
+<aside class="callout callout-caution"><div class="callout-title"><span class="callout-icon">🛑</span>Caution</div><p><strong>API key safety rules</strong></p>
+<ol>
+<li>Enable <strong>only</strong> the permissions you need: <em>Read</em> and <em>Spot trading</em>. <strong>Never enable Withdrawals</strong> for a bot.</li>
+<li><strong>Restrict by IP address</strong> (whitelist your server's IP).</li>
+<li>Store secrets in <strong>environment variables</strong> or a secrets manager — never in code or in a public repository.</li>
+<li>Use <strong>separate keys</strong> per bot/project, and delete keys you no longer use.</li>
+<li>Start on the <strong>testnet</strong>.</li>
+</ol>
+</aside>
+<h3 id="h3-75">21.4 Rate limits and precision rules</h3>
+<ul>
+<li><strong>Rate limits</strong> — exchanges limit how many requests you can send per minute (Binance counts &quot;request weight&quot;). Exceed it and you get errors (HTTP 429) or a temporary ban (418). Use WebSockets for live data instead of polling REST constantly.</li>
+<li><strong>Exchange info / filters</strong> — each symbol has rules: minimum quantity, step size, tick size, minimum order value (&quot;notional&quot;). Read them from the exchange-info endpoint and round your orders accordingly.</li>
+</ul>
+<h3 id="h3-76">21.5 Tiny code examples (read-only — nothing here places a real order)</h3>
+<p><strong>Binance: public candles with plain HTTP (Python)</strong></p>
+<pre class="code" data-lang="python"><code class="language-python">import requests
+
+r = requests.get(
+    &quot;https://api.binance.com/api/v3/klines&quot;,
+    params={&quot;symbol&quot;: &quot;BTCUSDT&quot;, &quot;interval&quot;: &quot;1h&quot;, &quot;limit&quot;: 5},
+    timeout=10,
+)
+for open_time, o, h, l, c, volume, *_ in r.json():
+    print(open_time, &quot;O&quot;, o, &quot;H&quot;, h, &quot;L&quot;, l, &quot;C&quot;, c)
+</code></pre>
+<p><strong>Binance / MEXC with the <code>ccxt</code> library (one interface for 100+ exchanges)</strong></p>
+<pre class="code" data-lang="python"><code class="language-python">import ccxt
+
+exchange = ccxt.binance()          # or ccxt.mexc()
+exchange.load_markets()            # symbols, precision, limits
+print(exchange.fetch_ticker(&quot;BTC/USDT&quot;)[&quot;last&quot;])
+candles = exchange.fetch_ohlcv(&quot;BTC/USDT&quot;, timeframe=&quot;4h&quot;, limit=100)
+
+# Private calls need keys (use testnet / sandbox first):
+# exchange = ccxt.binance({&quot;apiKey&quot;: KEY, &quot;secret&quot;: SECRET})
+# exchange.set_sandbox_mode(True)
+# exchange.fetch_balance()
+</code></pre>
+<p><strong>MT5 with the official Python package (Windows, MT5 terminal installed and logged in)</strong></p>
+<pre class="code" data-lang="python"><code class="language-python">import MetaTrader5 as mt5
+
+mt5.initialize()                                   # connects to the running terminal
+print(mt5.account_info().balance)
+tick = mt5.symbol_info_tick(&quot;EURUSD&quot;)              # symbol name may have a suffix at your broker
+print(&quot;bid&quot;, tick.bid, &quot;ask&quot;, tick.ask)
+rates = mt5.copy_rates_from_pos(&quot;EURUSD&quot;, mt5.TIMEFRAME_H4, 0, 100)
+mt5.shutdown()
+</code></pre>
+<p><strong>Signing a private request by hand (how it works under the hood)</strong></p>
+<pre class="code" data-lang="python"><code class="language-python">import hmac, hashlib, time, urllib.parse
+
+params = {&quot;symbol&quot;: &quot;BTCUSDT&quot;, &quot;timestamp&quot;: int(time.time() * 1000)}
+query = urllib.parse.urlencode(params)
+signature = hmac.new(SECRET.encode(), query.encode(), hashlib.sha256).hexdigest()
+# GET https://testnet.binance.vision/api/v3/openOrders?{query}&amp;signature={signature}
+# header: X-MBX-APIKEY: &lt;your key&gt;
+</code></pre>
+<h3 id="h3-77">21.6 Connection options summary</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Venue</th>
+<th>Market data</th>
+<th>Trading</th>
+<th>Test environment</th>
+<th>Popular tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Binance</strong></td>
+<td>REST + WebSocket (public)</td>
+<td>REST + WebSocket API (signed)</td>
+<td>Spot &amp; Futures testnets</td>
+<td><code>python-binance</code>, <code>ccxt</code>, official connectors</td>
+</tr>
+<tr>
+<td><strong>MEXC</strong></td>
+<td>REST + WebSocket</td>
+<td>REST (signed); futures trading API has had access limits</td>
+<td>No full public testnet (test with tiny amounts / order-test endpoint)</td>
+<td><code>ccxt</code>, official SDKs</td>
+</tr>
+<tr>
+<td><strong>Exness via MT5</strong></td>
+<td>From the terminal (MQL5 / Python)</td>
+<td>MQL5 EAs or Python <code>order_send</code></td>
+<td>Exness demo accounts</td>
+<td>MetaEditor, <code>MetaTrader5</code> Python package</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-note"><div class="callout-title"><span class="callout-icon">ℹ️</span>Note</div><p>The MT5 Python package needs the <strong>MT5 desktop terminal running</strong> on the same machine (Windows, or Linux via Wine/virtual machine). That's a big architectural difference from crypto exchanges, which you can call from any server over the internet.</p>
+</aside>
+</section><section class="part" id="part-22"><h2><span class="part-badge">22</span><span>How your future project could connect to all this</span></h2>
+<p>Here is how the pieces could fit, whatever you decide to build.</p>
+<h3 id="h3-78">22.1 A reference architecture</h3>
+<div class="diagram"><pre class="mermaid">flowchart TB
+    subgraph UI[&quot;🖥️ Frontend (web app)&quot;]
+        DASH[&quot;Dashboard: prices, charts,&lt;br/&gt;positions, P/L, journal&quot;]
+    end
+    subgraph CORE[&quot;⚙️ Your backend&quot;]
+        API[&quot;Backend API&quot;]
+        STRAT[&quot;Strategy engine&quot;]
+        RISK[&quot;Risk manager&lt;br/&gt;+ kill switch&quot;]
+        EXEC[&quot;Execution service&quot;]
+        BTE[&quot;Backtester&quot;]
+        DB[(&quot;Database&lt;br/&gt;candles, trades,&lt;br/&gt;journal, logs&quot;)]
+        SEC[&quot;🔐 Secrets vault&lt;br/&gt;API keys&quot;]
+    end
+    subgraph ADAPT[&quot;🔌 Adapters (one per venue)&quot;]
+        A1[&quot;Binance adapter&lt;br/&gt;REST + WS&quot;]
+        A2[&quot;MEXC adapter&lt;br/&gt;REST + WS&quot;]
+        A3[&quot;MT5 bridge&lt;br/&gt;Python on Windows VM&lt;br/&gt;or MQL5 EA&quot;]
+    end
+    DASH &lt;--&gt; API
+    API &lt;--&gt; DB
+    API --&gt; STRAT --&gt; RISK --&gt; EXEC
+    BTE &lt;--&gt; DB
+    EXEC --&gt; A1 &amp; A2 &amp; A3
+    A1 &amp; A2 &amp; A3 -- &quot;prices, fills, balances&quot; --&gt; DB
+    SEC -.-&gt; A1 &amp; A2 &amp; A3
+    A1 --&gt; BIN[&quot;Binance&quot;]
+    A2 --&gt; MEX[&quot;MEXC&quot;]
+    A3 --&gt; EXN[&quot;Exness MT5 server&quot;]
+    API -- &quot;events&quot; --&gt; NOTIF[&quot;📣 Alerts&lt;br/&gt;Telegram / email&quot;]
+</pre></div>
+<p>Key design ideas:</p>
+<ul>
+<li><strong>Adapter pattern</strong> — each venue gets its own adapter that translates your internal &quot;place order&quot; into that venue's API. The rest of the system doesn't care whether it's Binance or MT5. (<code>ccxt</code> already does this for crypto.)</li>
+<li><strong>Normalise data</strong> — convert symbols (<code>BTC/USDT</code> vs <code>BTCUSDT</code> vs <code>EURUSDm</code>), sizes (coins vs lots) and timestamps (always UTC) into one internal format.</li>
+<li><strong>The exchange is the source of truth</strong> — always reconcile your database with real balances and orders.</li>
+<li><strong>Risk manager sits between strategy and execution</strong> — no order bypasses it.</li>
+<li><strong>Secrets never reach the frontend.</strong></li>
+</ul>
+<h3 id="h3-79">22.2 Possible projects, from safest to riskiest</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Project</th>
+<th>Touches money?</th>
+<th>Difficulty</th>
+<th>What you learn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Market data dashboard</strong> (prices, charts, indicators from Binance/MEXC public APIs)</td>
+<td>❌ No</td>
+<td>⭐</td>
+<td>APIs, WebSockets, charts</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Trading journal / portfolio tracker</strong> (read-only keys, import trades, stats: win rate, R, drawdown)</td>
+<td>❌ Read-only</td>
+<td>⭐⭐</td>
+<td>Private APIs, statistics, UI</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Alert / signal bot</strong> (notifies on conditions, no trading)</td>
+<td>❌ No</td>
+<td>⭐⭐</td>
+<td>Indicators, scheduling, notifications</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Backtester</strong> (test strategies on historical candles with costs)</td>
+<td>❌ No</td>
+<td>⭐⭐⭐</td>
+<td>Strategy logic, statistics, bias traps</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Paper-trading bot</strong> (live data, simulated orders) / testnet bot</td>
+<td>❌ Fake money</td>
+<td>⭐⭐⭐</td>
+<td>Execution logic, state, risk module</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Live bot, small size, strict limits</strong></td>
+<td>✅ Yes</td>
+<td>⭐⭐⭐⭐</td>
+<td>Reliability, monitoring, ops</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Multi-user trading platform</strong> (other people's money/keys)</td>
+<td>✅✅</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>Security, compliance, legal, scale</td>
+</tr>
+</tbody>
+</table></div>
+<aside class="callout callout-warning"><div class="callout-title"><span class="callout-icon">⚠️</span>Warning</div><p>Handling <strong>other people's</strong> money or API keys, giving trading &quot;signals&quot; to the public, or managing accounts can be a <strong>regulated activity</strong> in many countries and brings serious security responsibility. Get legal advice before project #7.</p>
+</aside>
+</section><section class="part" id="part-23"><h2><span class="part-badge">23</span><span>Glossary</span></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Simple meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Algorithmic trading</strong></td>
+<td>Trading with a computer program that follows rules</td>
+</tr>
+<tr>
+<td><strong>Altcoin</strong></td>
+<td>Any cryptocurrency other than Bitcoin</td>
+</tr>
+<tr>
+<td><strong>API</strong></td>
+<td>A way for programs to talk to a platform</td>
+</tr>
+<tr>
+<td><strong>Ask / Offer</strong></td>
+<td>Lowest price a seller accepts; you <strong>buy</strong> here</td>
+</tr>
+<tr>
+<td><strong>ATR</strong></td>
+<td>Indicator measuring average candle range (volatility)</td>
+</tr>
+<tr>
+<td><strong>Backtest</strong></td>
+<td>Testing a strategy on past data</td>
+</tr>
+<tr>
+<td><strong>Balance</strong></td>
+<td>Account money not counting open trades</td>
+</tr>
+<tr>
+<td><strong>Base currency</strong></td>
+<td>First asset in a pair (EUR in EURUSD)</td>
+</tr>
+<tr>
+<td><strong>Bearish</strong></td>
+<td>Expecting / showing falling prices</td>
+</tr>
+<tr>
+<td><strong>Bid</strong></td>
+<td>Highest price a buyer pays; you <strong>sell</strong> here</td>
+</tr>
+<tr>
+<td><strong>Blockchain</strong></td>
+<td>Shared public record of crypto transactions</td>
+</tr>
+<tr>
+<td><strong>Breakout</strong></td>
+<td>Price moving through support/resistance</td>
+</tr>
+<tr>
+<td><strong>Broker</strong></td>
+<td>Company giving you access to markets (e.g. Exness)</td>
+</tr>
+<tr>
+<td><strong>Bullish</strong></td>
+<td>Expecting / showing rising prices</td>
+</tr>
+<tr>
+<td><strong>Candlestick</strong></td>
+<td>Chart bar showing open, high, low, close</td>
+</tr>
+<tr>
+<td><strong>CFD</strong></td>
+<td>Contract paying the price difference; you don't own the asset</td>
+</tr>
+<tr>
+<td><strong>Commission</strong></td>
+<td>Fixed fee per trade/lot</td>
+</tr>
+<tr>
+<td><strong>Correlation</strong></td>
+<td>When two assets tend to move together</td>
+</tr>
+<tr>
+<td><strong>Custody</strong></td>
+<td>Who actually holds your assets</td>
+</tr>
+<tr>
+<td><strong>DCA</strong></td>
+<td>Buying fixed amounts regularly</td>
+</tr>
+<tr>
+<td><strong>Demo account</strong></td>
+<td>Practice account with virtual money</td>
+</tr>
+<tr>
+<td><strong>Derivative</strong></td>
+<td>Contract whose value comes from another asset's price</td>
+</tr>
+<tr>
+<td><strong>Drawdown</strong></td>
+<td>Fall from the account's peak</td>
+</tr>
+<tr>
+<td><strong>EA (Expert Advisor)</strong></td>
+<td>Trading robot inside MetaTrader</td>
+</tr>
+<tr>
+<td><strong>Equity</strong></td>
+<td>Balance ± open profit/loss</td>
+</tr>
+<tr>
+<td><strong>Exchange</strong></td>
+<td>Platform matching buyers and sellers (e.g. Binance)</td>
+</tr>
+<tr>
+<td><strong>Execution / Fill</strong></td>
+<td>When an order actually happens</td>
+</tr>
+<tr>
+<td><strong>Expectancy</strong></td>
+<td>Average result per trade over many trades</td>
+</tr>
+<tr>
+<td><strong>Fakeout</strong></td>
+<td>False breakout</td>
+</tr>
+<tr>
+<td><strong>FOMO</strong></td>
+<td>Fear of missing out</td>
+</tr>
+<tr>
+<td><strong>Funding rate</strong></td>
+<td>Periodic payment between longs and shorts on perpetual futures</td>
+</tr>
+<tr>
+<td><strong>Futures</strong></td>
+<td>Contract to trade at a set price in the future; &quot;perpetual&quot; = no expiry</td>
+</tr>
+<tr>
+<td><strong>Indicator</strong></td>
+<td>Formula applied to price to help read the chart</td>
+</tr>
+<tr>
+<td><strong>KYC</strong></td>
+<td>Identity verification</td>
+</tr>
+<tr>
+<td><strong>Leverage</strong></td>
+<td>Controlling a larger position than your money</td>
+</tr>
+<tr>
+<td><strong>Limit order</strong></td>
+<td>Order at a specific price or better</td>
+</tr>
+<tr>
+<td><strong>Liquidation</strong></td>
+<td>Forced closing of a leveraged position when margin runs out</td>
+</tr>
+<tr>
+<td><strong>Liquidity</strong></td>
+<td>How easily something can be traded without moving price</td>
+</tr>
+<tr>
+<td><strong>Long</strong></td>
+<td>Buying to profit from a rise</td>
+</tr>
+<tr>
+<td><strong>Lot</strong></td>
+<td>Forex trade size unit (1 lot = 100,000 units)</td>
+</tr>
+<tr>
+<td><strong>Maker / Taker</strong></td>
+<td>Adds liquidity (waits in book) / removes it (fills instantly)</td>
+</tr>
+<tr>
+<td><strong>Margin</strong></td>
+<td>Money locked as deposit for a leveraged position</td>
+</tr>
+<tr>
+<td><strong>Margin call</strong></td>
+<td>Warning that margin is running low</td>
+</tr>
+<tr>
+<td><strong>Market order</strong></td>
+<td>Buy/sell now at the best available price</td>
+</tr>
+<tr>
+<td><strong>Market maker</strong></td>
+<td>Firm that constantly quotes buy and sell prices</td>
+</tr>
+<tr>
+<td><strong>MQL5</strong></td>
+<td>Programming language for MT5 robots and indicators</td>
+</tr>
+<tr>
+<td><strong>Notional value</strong></td>
+<td>Full value of a position</td>
+</tr>
+<tr>
+<td><strong>OCO</strong></td>
+<td>Two linked orders; one filling cancels the other</td>
+</tr>
+<tr>
+<td><strong>OHLC</strong></td>
+<td>Open, High, Low, Close</td>
+</tr>
+<tr>
+<td><strong>Order book</strong></td>
+<td>Live list of waiting buy and sell orders</td>
+</tr>
+<tr>
+<td><strong>Overfitting</strong></td>
+<td>Tuning a strategy to past data so it fails on new data</td>
+</tr>
+<tr>
+<td><strong>Pair</strong></td>
+<td>Two assets priced against each other</td>
+</tr>
+<tr>
+<td><strong>Pip</strong></td>
+<td>Standard small price step in forex (0.0001 for most pairs)</td>
+</tr>
+<tr>
+<td><strong>Position</strong></td>
+<td>An open trade you currently hold</td>
+</tr>
+<tr>
+<td><strong>Quote currency</strong></td>
+<td>Second asset in a pair (USD in EURUSD)</td>
+</tr>
+<tr>
+<td><strong>R / R-multiple</strong></td>
+<td>Result measured in units of the risk you took</td>
+</tr>
+<tr>
+<td><strong>Rate limit</strong></td>
+<td>Max API requests allowed per time period</td>
+</tr>
+<tr>
+<td><strong>Resistance</strong></td>
+<td>Price zone where rises tend to stop</td>
+</tr>
+<tr>
+<td><strong>Risk-to-reward (R:R)</strong></td>
+<td>Planned loss vs planned gain</td>
+</tr>
+<tr>
+<td><strong>RSI</strong></td>
+<td>Momentum indicator from 0 to 100</td>
+</tr>
+<tr>
+<td><strong>Short</strong></td>
+<td>Selling to profit from a fall</td>
+</tr>
+<tr>
+<td><strong>Slippage</strong></td>
+<td>Getting a different price than expected</td>
+</tr>
+<tr>
+<td><strong>Spot</strong></td>
+<td>Buying/selling the real asset for immediate delivery</td>
+</tr>
+<tr>
+<td><strong>Spread</strong></td>
+<td>Ask − Bid</td>
+</tr>
+<tr>
+<td><strong>Stablecoin</strong></td>
+<td>Crypto designed to stay at a fixed value (e.g. 1 USD)</td>
+</tr>
+<tr>
+<td><strong>Stop-loss (SL)</strong></td>
+<td>Order that closes a trade to limit loss</td>
+</tr>
+<tr>
+<td><strong>Stop out</strong></td>
+<td>Broker force-closing positions when margin level is too low</td>
+</tr>
+<tr>
+<td><strong>Support</strong></td>
+<td>Price zone where falls tend to stop</td>
+</tr>
+<tr>
+<td><strong>Swap</strong></td>
+<td>Overnight fee/credit for holding forex/CFD positions</td>
+</tr>
+<tr>
+<td><strong>Take-profit (TP)</strong></td>
+<td>Order that closes a trade at a target profit</td>
+</tr>
+<tr>
+<td><strong>Testnet</strong></td>
+<td>Exchange test environment with fake money</td>
+</tr>
+<tr>
+<td><strong>Tick size</strong></td>
+<td>Smallest possible price change</td>
+</tr>
+<tr>
+<td><strong>Timeframe</strong></td>
+<td>Time covered by each candle</td>
+</tr>
+<tr>
+<td><strong>Trailing stop</strong></td>
+<td>Stop-loss that follows price as it moves in your favour</td>
+</tr>
+<tr>
+<td><strong>Trend</strong></td>
+<td>General direction of price</td>
+</tr>
+<tr>
+<td><strong>Volatility</strong></td>
+<td>How much and how fast price moves</td>
+</tr>
+<tr>
+<td><strong>Volume</strong></td>
+<td>Amount traded in a period</td>
+</tr>
+<tr>
+<td><strong>WebSocket</strong></td>
+<td>Always-open connection for live data</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="part" id="part-24"><h2><span class="part-badge">24</span><span>What should I learn next?</span></h2>
+<h3 id="h3-80">24.1 A learning roadmap</h3>
+<div class="diagram"><pre class="mermaid">flowchart TD
+    subgraph S1[&quot;Stage 1 — Understand (weeks 1–4)&quot;]
+        A1[&quot;Re-read Parts 1–13&quot;] --&gt; A2[&quot;Open Exness MT5 demo&lt;br/&gt;+ Binance testnet&quot;] --&gt; A3[&quot;Place every order type&lt;br/&gt;on demo: market, limit,&lt;br/&gt;stop, SL, TP, OCO&quot;]
+    end
+    subgraph S2[&quot;Stage 2 — Practise (weeks 4–12)&quot;]
+        B1[&quot;Pick ONE market&lt;br/&gt;(e.g. EURUSD or BTCUSDT)&quot;] --&gt; B2[&quot;Pick ONE simple strategy&lt;br/&gt;write exact rules&quot;] --&gt; B3[&quot;50–100 demo trades&lt;br/&gt;+ journal every trade&quot;]
+    end
+    subgraph S3[&quot;Stage 3 — Build (in parallel)&quot;]
+        C1[&quot;Fetch candles via API&quot;] --&gt; C2[&quot;Compute indicators&quot;] --&gt; C3[&quot;Backtest with costs&quot;] --&gt; C4[&quot;Paper / testnet bot&lt;br/&gt;with risk manager&quot;]
+    end
+    S1 --&gt; S2
+    S1 --&gt; S3
+</pre></div>
+<h3 id="h3-81">24.2 Topics to study next (in this order)</h3>
+<ol>
+<li><strong>Statistics basics</strong> — averages, standard deviation, win rate, expectancy, sample size. (The honest language of trading.)</li>
+<li><strong>Position sizing &amp; risk</strong> — practise the formula until it's automatic.</li>
+<li><strong>Market microstructure</strong> — order books, maker/taker, slippage, how matching engines work.</li>
+<li><strong>One charting platform deeply</strong> — MT5 or TradingView.</li>
+<li><strong>Python for data</strong> — <code>pandas</code> for candles, <code>ccxt</code> for exchanges, <code>MetaTrader5</code> for MT5, plotting charts.</li>
+<li><strong>Backtesting properly</strong> — frameworks like <code>backtesting.py</code>, <code>vectorbt</code>, <code>backtrader</code>, or MT5's Strategy Tester; learn walk-forward and out-of-sample testing.</li>
+<li><strong>Exchange API docs</strong> — read Binance's Spot API docs (general info, filters, rate limits, user data streams).</li>
+<li><strong>Security engineering</strong> — secrets management, key permissions, IP whitelisting, auditing.</li>
+<li><strong>Macro basics for forex</strong> — interest rates, inflation, central banks, the economic calendar.</li>
+<li><strong>Crypto basics</strong> — wallets, blockchains, stablecoins, custody risk.</li>
+</ol>
+<h3 id="h3-82">24.3 Choosing your project — a decision guide</h3>
+<div class="diagram"><pre class="mermaid">flowchart TD
+    Q1{&quot;What do you want most&lt;br/&gt;right now?&quot;}
+    Q1 -- &quot;Understand markets better&quot; --&gt; P1[&quot;📊 Market dashboard&lt;br/&gt;+ indicator viewer&quot;]
+    Q1 -- &quot;Improve my own trading&quot; --&gt; P2[&quot;📓 Trading journal&lt;br/&gt;&amp; analytics web app&quot;]
+    Q1 -- &quot;Automate an idea&quot; --&gt; Q2{&quot;Have I tested the idea&lt;br/&gt;on 100+ trades?&quot;}
+    Q2 -- No --&gt; P3[&quot;🧪 Backtester first&quot;]
+    Q2 -- Yes --&gt; P4[&quot;🤖 Paper / testnet bot&lt;br/&gt;with risk manager&quot;]
+    Q1 -- &quot;Build a product for others&quot; --&gt; P5[&quot;🏗️ Platform&lt;br/&gt;(start with #1–#4 as modules;&lt;br/&gt;check legal requirements)&quot;]
+</pre></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>If you want to…</th>
+<th>Build first</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Learn APIs with zero risk</td>
+<td><strong>Market data dashboard</strong> (Binance + MEXC public data)</td>
+<td>No keys, instant visual results, reusable data layer</td>
+</tr>
+<tr>
+<td>Become a better trader</td>
+<td><strong>Trading journal</strong> (import from Binance/MEXC via read-only keys, manual entry for MT5)</td>
+<td>Shows your real statistics; the tool most traders actually need</td>
+</tr>
+<tr>
+<td>Automate</td>
+<td><strong>Backtester → paper bot</strong></td>
+<td>Proves the strategy before money is involved</td>
+</tr>
+<tr>
+<td>Build a business</td>
+<td><strong>Modular platform</strong></td>
+<td>Each module above becomes a feature; start small</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h3-83">24.4 A recommended starting path</h3>
+<aside class="callout callout-tip"><div class="callout-title"><span class="callout-icon">💡</span>Tip</div><p>A path that fits &quot;I don't know yet what I'll build&quot;:</p>
+<ol>
+<li><strong>Data layer</strong> — a small service that downloads and stores candles from Binance and MEXC (public APIs) and from MT5 (Python package on a demo account).</li>
+<li><strong>Dashboard</strong> — show charts and a few indicators in a web app.</li>
+<li><strong>Journal</strong> — record demo trades with entry, SL, TP, size, R-multiple; compute win rate, expectancy, drawdown.</li>
+<li><strong>Backtester</strong> — reuse the data layer; include fees, spread and slippage.</li>
+<li><strong>Paper bot</strong> — reuse strategy code from the backtester; add the risk manager and kill switch; run on Binance testnet / Exness demo.</li>
+</ol>
+<p>Every step is useful on its own, none needs real money, and together they become the foundation of <strong>whichever</strong> project you choose — bot, platform, or web app.</p>
+</aside>
+<h3 id="h3-84">24.5 Final reminders</h3>
+<ul>
+<li><strong>Survival first, profit second.</strong> Small risk per trade, always a stop-loss.</li>
+<li><strong>Written rules &gt; feelings.</strong> If you can't write it down, you can't test it or automate it.</li>
+<li><strong>Costs are real.</strong> Always include spread, fees, swaps and funding.</li>
+<li><strong>Demo and testnet are free.</strong> Use them far longer than feels necessary.</li>
+<li><strong>Be sceptical</strong> of anything promising easy or guaranteed profit — including your own backtests.</li>
+</ul>
+<hr />
+<p><em>Built as a long-term learning reference. Platform features, fees, leverage limits and regulations change often — always check the official documentation of Binance, MEXC, MetaTrader 5 and Exness for current details.</em></p>
+</section>
+  </main>
+</div>
+<button class="btn" id="toTop" aria-label="Back to top">↑ Back to top</button>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const root = document.documentElement;
+const saved = (() => { try { return localStorage.getItem('guide-theme'); } catch (e) { return null; } })();
+if (saved) root.dataset.theme = saved;
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+const blocks = [...document.querySelectorAll('pre.mermaid')];
+blocks.forEach(b => b.dataset.src = b.textContent);
+let renderGen = 0;
+async function renderDiagrams() {
+  mermaid.initialize({
+    startOnLoad: false, securityLevel: 'loose', theme: 'base',
+    fontFamily: css('--font'),
+    themeVariables: {
+      darkMode: isDark(), fontSize: '15px',
+      primaryColor: css('--accent-soft'), primaryBorderColor: css('--accent'), primaryTextColor: css('--heading'),
+      secondaryColor: css('--tip-bg'), tertiaryColor: css('--surface'), lineColor: css('--muted'),
+      textColor: css('--text'), mainBkg: css('--accent-soft'), clusterBkg: css('--surface'), clusterBorder: css('--border'),
+      edgeLabelBackground: css('--surface'), noteBkgColor: css('--warning-bg'), noteTextColor: css('--text'),
+      actorBkg: css('--accent-soft'), actorBorder: css('--accent'), actorTextColor: css('--heading'), signalColor: css('--text'), signalTextColor: css('--text'),
+      labelBoxBkgColor: css('--surface'), labelTextColor: css('--text'), loopTextColor: css('--text'),
+      xyChart: { plotColorPalette: css('--accent'), backgroundColor: 'transparent', titleColor: css('--heading'),
+                 xAxisLabelColor: css('--text'), yAxisLabelColor: css('--text'), xAxisTitleColor: css('--text'), yAxisTitleColor: css('--text'),
+                 xAxisLineColor: css('--muted'), yAxisLineColor: css('--muted'), xAxisTickColor: css('--muted'), yAxisTickColor: css('--muted') },
+      git0: css('--accent'), cScale0: css('--accent-soft'), cScale1: css('--tip-bg'), cScale2: css('--kid-bg'), cScale3: css('--important-bg'), cScale4: css('--warning-bg'),
+      sectionBkgColor: css('--accent-soft'), altSectionBkgColor: css('--surface-2'), taskBkgColor: css('--accent'), taskBorderColor: css('--accent'),
+      taskTextColor: '#ffffff', taskTextOutsideColor: css('--text'), gridColor: css('--border'), todayLineColor: 'transparent'
+    },
+    flowchart: { htmlLabels: true, curve: 'basis' },
+    gantt: { axisFormat: '%H:%M' }
+  });
+  // render one by one with explicit ids (mermaid's default ids are timestamps and can collide)
+  const gen = ++renderGen;
+  for (const [i, b] of blocks.entries()) {
+    try {
+      const { svg } = await mermaid.render(`dg-${gen}-${i}`, b.dataset.src);
+      if (gen !== renderGen) return;
+      b.innerHTML = svg; b.dataset.processed = 'true';
+    } catch (e) { console.error('diagram', i, e); b.textContent = b.dataset.src; }
+  }
+}
+renderDiagrams();
+document.getElementById('themeBtn').addEventListener('click', () => {
+  root.dataset.theme = isDark() ? 'light' : 'dark';
+  try { localStorage.setItem('guide-theme', root.dataset.theme); } catch (e) {}
+  renderDiagrams();
+});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (!root.dataset.theme) renderDiagrams(); });
+const toc = document.querySelector('nav.toc');
+document.getElementById('menuBtn').addEventListener('click', () => toc.classList.toggle('open'));
+toc.addEventListener('click', e => { if (e.target.closest('a')) toc.classList.remove('open'); });
+const links = new Map([...toc.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { links.forEach(a => a.classList.remove('active')); const a = links.get(en.target.id); if (a) { a.classList.add('active'); a.scrollIntoView({block: 'nearest'}); } } });
+}, { rootMargin: '-80px 0px -70% 0px' });
+document.querySelectorAll('section.part').forEach(s => obs.observe(s));
+const bar = document.getElementById('progress'), top = document.getElementById('toTop');
+addEventListener('scroll', () => {
+  const h = document.documentElement; const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+  bar.style.width = (p * 100).toFixed(2) + '%'; top.classList.toggle('show', h.scrollTop > 900);
+}, { passive: true });
+top.addEventListener('click', () => scrollTo({ top: 0 }));
+</script>
+</body>
+</html>
